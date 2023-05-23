@@ -9,11 +9,30 @@
       <typeAlias type="com.spring.bf.event.eventVO" alias="eventVO"></typeAlias>
        <typeAlias type="com.spring.bf.location.locationVO" alias="locationVO"></typeAlias>
        <typeAlias type="com.spring.bf.myevent.myeventVO" alias="myeventVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.BikeVO" alias="bikeVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.PageVO" alias="pageVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.BikeReplyVO" alias="bikereplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.pay.PayVO" alias="PayVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bbsReply.BbsReplyVO" alias="bbsReplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.group.GroupVO" alias="groupVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bbsLike.BbsLikeVO" alias="bbsLikeVO"></typeAlias>
+       <typeAlias type="com.spring.bf.course.CourseVO" alias="courseVO"></typeAlias>
+       <typeAlias type="com.spring.bf.member.MemberVO" alias="memberVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bbs.BbsVO" alias="bbsVO"></typeAlias>
    </typeAliases>
    <mappers>
    <!-- SQL문 정의하는 파일들의 목록을 지정. -->
       <mapper resource="mapper/eventMapper.xml" />
       <mapper resource="mapper/locationMapper.xml" />
       <mapper resource="mapper/myeventMapper.xml" />
+      <mapper resource="mapper/bikeMapper.xml" />
+      <mapper resource="mapper/bikeReplyMapper.xml" />
+      <mapper resource="mapper/payMapper.xml" />
+      <mapper resource="mapper/bbsMapper.xml" />
+      <mapper resource="mapper/bbsReplyMapper.xml" />
+      <mapper resource="mapper/GroupMapper.xml" />
+      <mapper resource="mapper/bbsLikeMapper.xml" />
+      <mapper resource="mapper/courseMapper.xml" />
+      <mapper resource="mapper/member.xml" />
    </mappers>
 </configuration>

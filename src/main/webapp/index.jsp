@@ -1,22 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/hongkyun
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-<<<<<<< HEAD
-asdfasdfasdfasdf
-</body>
-=======
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +12,6 @@ asdfasdfasdfasdf
 	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 	<link rel="stylesheet" href="resources/css/bbsstyle.css">
 </head>
-
 <body>
     <jsp:include page="nav.jsp"></jsp:include>
 	
@@ -59,10 +43,4 @@ asdfasdfasdfasdf
     <div style="text-align: center;padding-top: 30px;">©백엔드 9회차 6조</div>
 
 </body>
-
->>>>>>> cb0fb9f9f5a44599c5bd6a8073209d7d19fdc59b
-=======
-hi
-</body>
->>>>>>> origin/hongkyun
 </html>
