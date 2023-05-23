@@ -5,7 +5,23 @@
 <head>
 <script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
-	
+
+
+$(function() {
+$("#b1").click(function() {
+	$.ajax({
+		url : 'bikereplyupdate2',
+		data : {
+			bikereply_no : ${vo.bikereply_no},
+			bikereply_content : $('#content').val()
+		},
+		success : function(result){
+			opener.location.href = 'bikeone?bike_no=' + ${vo.bike_no}		
+			window.close();
+		}		
+		})
+	})
+})
 </script>
 <style type="text/css">
 #main {
@@ -32,10 +48,10 @@
 	<jsp:include page="../../../nav.jsp"></jsp:include>
 	<div id="main">
 		<div style="padding: 0px 20px 10px;">
-			<b>댓글 수정하기</b>
+			<b>리뷰 수정하기</b>
 		</div>
 		<textarea id="content" rows="10" cols="60"
-			style="width: 560px; margin: 10px 20px 0; resize: none; " >${vo.bikereply_content}</textarea>
+			style="width: 560px; margin: 10px 20px 0; resize: none;">${vo.bikereply_content}</textarea>
 		<div style="padding: 10px 20px 0; text-align: right;">
 			<button id="b1">수정</button>
 		</div>

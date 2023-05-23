@@ -48,10 +48,11 @@
 		
 		/* 리뷰 수정 버튼 */
 		 $(document).on('click', '#replyup', function(e){
-				
+					
+			 
 				e.preventDefault();
-				console.log($('#replyup').val());
-				let popUrl = "bikereplyupdate?bikereply_no=" + $('#replyup').val();	
+				bikereply_no = $(this).data('no')
+				let popUrl = "bikereplyupdate?bikereply_no=" + bikereply_no	
 				let popOption = "width = 600px, height=490px, top=300px, left=300px, scrollbars=yes"	
 				
 				window.open(popUrl,"리뷰 수정",popOption);			
@@ -98,13 +99,13 @@
 
 #myform input[type=radio] {
 	display: none;
-} 
+}
 
 #myform label {
 	font-size: 2em;
 	color: transparent;
 	text-shadow: 0 0 0 #f0f0f0;
-}  
+}
 
 #myform label:hover {
 	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
@@ -116,7 +117,7 @@
 
 #myform input[type=radio]:checked ~ label {
 	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-} 
+}
 
 #reviewContents {
 	width: 100%;
@@ -163,45 +164,48 @@
 		<div id="bikereply">
 			<form id="myform">
 				<fieldset>
-					<span class="text-bold">추천점수</span> 
-						<input type="radio"	name="rating" value="★★★★★" id="rate1"><label for="rate1">★</label> 
-						<input type="radio" name="rating" value="★★★★" id="rate2"><label for="rate2">★</label> 
-						<input type="radio" name="rating" value="★★★" id="rate3"><label for="rate3">★</label> 
-						<input type="radio" name="rating" value="★★" id="rate4"><label for="rate4">★</label> 
-						<input type="radio" name="rating" value="★" id="rate5"><label for="rate5">★</label>
+					<span class="text-bold">추천점수</span> <input type="radio"
+						name="rating" value="★★★★★" id="rate1"><label for="rate1">★</label>
+					<input type="radio" name="rating" value="★★★★" id="rate2"><label
+						for="rate2">★</label> <input type="radio" name="rating"
+						value="★★★" id="rate3"><label for="rate3">★</label> <input
+						type="radio" name="rating" value="★★" id="rate4"><label
+						for="rate4">★</label> <input type="radio" name="rating" value="★"
+						id="rate5"><label for="rate5">★</label>
 				</fieldset>
 				<div>
-					<textarea style="resize: none; width: 100%;"
-						id="content" name="bikereply_content"
-						placeholder="1000자 이내로 작성해주세요"></textarea>
+					<textarea style="resize: none; width: 100%;" id="content"
+						name="bikereply_content" placeholder="1000자 이내로 작성해주세요"></textarea>
 				</div>
 			</form>
-				<button style="float: right;"  id="bikereplybtn">등록</button>
-				<br>
+			<button style="float: right;" id="bikereplybtn">등록</button>
+			<br>
 		</div>
 		<div id="onereply" style="width: 100%;">
 			<c:forEach items="${list}" var="vo" varStatus="vs">
-			<table style="width: 100%; margin: 5px;" >
-				<tr>
-					<td style="width: 15%; color: #FAD000;">${vo.bikereply_rating}</td>
-					<td style="width: 60%; text-align: right;">${vo.bikereply_writer}</td>
-					<td style="width: 25%; text-align: right; font-size: 6px">${vo.date}</td>
-				</tr>
-				<tr >
-					<td colspan="3"  >${vo.bikereply_content}</td>
-				</tr>
-				<tr >
-					<td colspan="3" >
-					<%-- <a href="bikereplyupdate?bikereply_no=${vo.bikereply_no}"> --%><button id="replyup" style="float:right;" value="${vo.bikereply_no}">수정</button><!-- </a> -->
-					<button id="replydel" style="float:right;" data-no="${vo.bikereply_no}">삭제</button>
-					</td>
-				</tr>
-			</table>
-			</c:forEach> 	
+				<table style="width: 100%; margin: 5px;">
+					<tr>
+						<td style="width: 15%; color: #FAD000;">${vo.bikereply_rating}</td>
+						<td style="width: 60%; text-align: right;">${vo.bikereply_writer}</td>
+						<td style="width: 25%; text-align: right; font-size: 6px">${vo.date}</td>
+					</tr>
+					<tr>
+						<td colspan="3">${vo.bikereply_content}</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+							<%-- <a href="bikereplyupdate?bikereply_no=${vo.bikereply_no}"> --%>
+							<button id="replyup" style="float: right;"
+								data-no="${vo.bikereply_no}">수정</button>
+							<!-- </a> -->
+							<button id="replydel" style="float: right;"
+								data-no="${vo.bikereply_no}">삭제</button>
+						</td>
+					</tr>
+				</table>
+			</c:forEach>
 		</div>
-		<div id="insertreply" style="width: 100%;">
-				
-		</div>
+		<div id="insertreply" style="width: 100%;"></div>
 	</div>
 </body>
 </html>

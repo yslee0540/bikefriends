@@ -48,6 +48,11 @@ public class BikeReplyController {
 		model.addAttribute("vo",vo);
 	}
 	
+	@RequestMapping("bike/bikereplyupdate2")
+	public void update2(BikeReplyVO vo) {
+		dao.update(vo);
+	}
+	
 	
 	
 
