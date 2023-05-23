@@ -25,7 +25,7 @@
                 <a href="bbs/grouplist">
                     <button class="btn btn-dark mainbtn">지역별 게시판</button>
                 </a>
-                <a href="#">
+                <a href="이벤트메인3.jsp">
                     <button class="btn btn-dark mainbtn">이벤트</button>
                 </a>
             </div>
@@ -33,7 +33,7 @@
                 <a href="bike/bikemain">
                     <button class="btn btn-dark mainbtn">자전거 정보</button>
                 </a>
-                <a href="#">
+                <a href="payment/dailyticket.jsp">
                     <button class="btn btn-dark mainbtn">이용권 구매</button>
                 </a>
             </div>

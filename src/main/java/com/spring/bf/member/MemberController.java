@@ -58,7 +58,7 @@ public class MemberController {
 		System.out.println(bag);
 		System.out.println(dao);
 		dao.insert(bag);
-		return "redirect:main.jsp";
+		return "redirect:/index.jsp";
 	}
 
 	@RequestMapping("member/sign_in")
@@ -70,7 +70,7 @@ public class MemberController {
 			//로그인이 성공하면, 세션을 잡아두자.!!!
 			System.out.println("로그인 성공");
 			session.setAttribute("id", bag.getSign_id());
-			return "redirect:main.jsp"; //views아래 파일이름.jsp
+			return "redirect:/index.jsp"; //views아래 파일이름.jsp
 		}else {
 			//views아래가 아니고, webapp아래
 			//member.jsp로 가고 싶은 경우!
@@ -202,7 +202,7 @@ public class MemberController {
 			} //catch
 		} //else 로그인 시도
 		
-		return "redirect:main.jsp";
+		return "redirect:/index.jsp";
 		
 	}
 	
@@ -214,6 +214,6 @@ public class MemberController {
     	 
     	 session.invalidate();
     	 System.out.println("로그아웃 실행");
-    	 return "redirect:main.jsp";
+    	 return "redirect:/index.jsp";
     }
 }
