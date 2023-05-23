@@ -3,16 +3,15 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- SQL문 정의할 때 VO표현을 간단하게 하고 싶은 경우. 
-     별명을 지어서 사용 -->
+<!-- 
+
    <typeAliases>
-       <typeAlias type="com.spring.bf.bike.BikeVO" alias="bikeVO"></typeAlias>
-       <typeAlias type="com.spring.bf.bike.PageVO" alias="pageVO"></typeAlias>
-       <typeAlias type="com.spring.bf.bike.BikeReplyVO" alias="bikereplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.????.shopVO" alias="shopVO"></typeAlias>
    </typeAliases>
+   
    <mappers>
-   <!-- SQL문 정의하는 파일들의 목록을 지정. -->
-      <mapper resource="mapper/bikeMapper.xml" />
-      <mapper resource="mapper/bikeReplyMapper.xml" />
+      <mapper resource="mapper/memberMapper.xml" />
    </mappers>
+   
+    -->
 </configuration>
