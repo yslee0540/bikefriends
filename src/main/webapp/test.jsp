@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-testtest
+<a href="note/receive_notelist?receiver=apple">TOTAL LIST </a>
 </body>
 </html>
