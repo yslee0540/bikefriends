@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<insert id="create" parameterType="memberVO">
+		insert into member values
+		(#{Sign_id}, #{Sign_pw}, #{Sign_name}, #{Sign_gender}, #{Sign_birthday}, #{Sign_email}, #{Sign_age}, #{Sign_img}, #{Sign_bio}, #{Sign_address}, #{Sign_phone})
+	</insert>
+	
+	<select id="one" parameterType="String" resultType="memberVO">
+		select * from member
+		where Sign_id = #{Sign_id}
+	</select>
+	
+	<select id="idChk" resultType="int">
+		select COUNT(*) from member
+		where Sign_id = #{Sign_id}
+	</select>
+	
+	<update id="up"  parameterType="memberVO">
+		update `member`
+		set Sign_name = #{Sign_name}, Sign_age = #{Sign_age}, Sign_gender = #{Sign_gender}, Sign_bio = #{Sign_bio}
+		where Sign_id = #{Sign_id}
+	</update>
+	
+	<update id="upimg"  parameterType="memberVO">
+		update `member`
+		set Sign_img = #{Sign_img}
+		where Sign_id = #{Sign_id}
+	</update>
+</mapper>

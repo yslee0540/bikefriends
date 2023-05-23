@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,7 +12,6 @@
 	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 	<link rel="stylesheet" href="resources/css/bbsstyle.css">
 </head>
-
 <body>
     <jsp:include page="nav.jsp"></jsp:include>
 	
@@ -45,5 +43,4 @@
     <div style="text-align: center;padding-top: 30px;">©백엔드 9회차 6조</div>
 
 </body>
-
 </html>

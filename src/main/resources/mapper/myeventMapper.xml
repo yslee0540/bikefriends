@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="myevent">
+	
+	<insert id="create" parameterType="myeventVO">
+		insert into myevent values (#{myevent_id}, #{myevent_location}, #{myevent_date}, #{myevent_img},#{myevent_size})
+	</insert>
+	
+	<delete id="del"  parameterType="String">
+		delete from myevent where id = #{myevent_id}
+	</delete>
+	
+	<update id="up"  parameterType="myeventVO">
+		update myevent set myevent = #{myevent_location} where id = #{myevent_id}
+	</update>
+	
+	<select id="one" parameterType="String" resultType="myeventVO"> 
+	select * from myevent where id=#{myevent_id}
+	</select>
+	
+	<select id="all" resultType="myeventVO">
+	select * from myevent
+	</select>
+</mapper>

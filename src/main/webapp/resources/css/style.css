@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+body {
+    margin: 0px 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+#main {
+    margin: auto;
+    width: 600px;
+    border: 1px solid rgb(240 240 240);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(240 240 240);
+    padding: 20px 0;
+}
+
+#top {
+    text-align: right;
+    padding: 0 20px;
+}
+
+#title {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#title2 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 게시판 */
+table {
+    width: 600px;
+    table-layout: fixed;
+}
+
+.post {
+    width: 600px;
+}
+
+.profile {
+    vertical-align: top;
+    width: 80px;
+    padding: 10px 5px 10px 20px;
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.bbswriter {
+    width: 270px;
+    padding: 10px 5px 10px;
+}
+
+.bbsdate {
+    width: 250px;
+    text-align: right;
+    padding: 10px 20px 10px 5px;
+}
+
+.bbscon {
+    width: 520px;
+    padding: 5px 20px 10px 5px;
+    word-wrap: break-word;
+}
+
+.bbsinfo {
+    padding: 10px 20px 10px 5px;
+    text-align: right;
+}
+
+#search {
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+/* 그룹 */
+.groupbtn {
+    width: 250px;
+    height: 50px;
+    text-align: left;
+    margin: 10px 0;
+}
+
+.group1 {
+    width: 260px;
+    padding: 0px 5px 0 20px;
+    text-align: center;
+}
+
+.group2 {
+    width: 260px;
+    padding: 0px 20px 0 5px;
+    text-align: center;
+}
+
+/* 게시물 상세 */
+#reinsert {
+    padding: 10px 20px;
+}
+
+#reinput {
+    width: 450px;
+}
+
+.reply {
+    padding: 10px 20px;
+}
+
+.rewriter {
+    width: 50px;
+    padding: 10px 5px 10px 20px;
+}
+
+.redate {
+    width: 450px;
+    padding: 10px 20px 10px 5px;
+}
+
+.redate {
+    width: 100px;
+    padding: 10px 20px 10px 5px;
+}
+
+.recon {
+    padding: 0px 20px 15px;
+    word-wrap: break-word;
+}
+
+#like {
+    cursor: pointer;
+}
+
+/* 글쓰기 */
+#bbsinsert {
+    padding: 10px 20px 0 0;
+    width: 520px;
+}
+
+textarea {
+    width: 100%;
+}
+
+/* 메인페이지 */
+.mainbtn {
+    width: 200px;
+    height: 80px;
+    margin: 20px 0;
+    font-size: 17px;
+}
+
+.main_image {
+    position: relative;
+    opacity: 0.7;
+}
+
+.main_image_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
