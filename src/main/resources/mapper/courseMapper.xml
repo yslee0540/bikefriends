@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="course">
+	
+	<insert id="insert" parameterType="courseVO">
+		insert into course
+		values (null, #{start_location}, #{start_lat}, #{start_lng}, 
+		#{end_location}, #{end_lat}, #{end_lng}, #{rate}, #{content}, #{title}, #{writer}, now())
+	</insert>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from course where course_no = #{course_no}
+	</delete>
+	
+	<update id="update" parameterType="courseVO">
+		update course
+		set start_location = #{start_location}, start_lat = #{start_lat}, start_lng = #{start_lng}, 
+		end_location = #{end_location}, end_lat = #{end_lat}, end_lng = #{end_lng},
+		rate = #{rate}, content = #{content}, title = #{title}
+		where course_no = #{course_no}
+	</update>
+	
+	<select id="one" parameterType="int" resultType="courseVO">
+		select * from course
+		where course_no = #{course_no}
+	</select>
+	
+	<select id="list" parameterType="courseVO" resultType="courseVO">
+		select * from course 
+		order by course_no desc
+	</select>
+	
+	<select id="search" parameterType="String" resultType="courseVO">
+		select * from course
+		where title like CONCAT('%', #{title}, '%')
+		order by course_no desc
+	</select>
+	
+</mapper>

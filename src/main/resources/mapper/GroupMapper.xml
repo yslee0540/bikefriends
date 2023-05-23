@@ -2,10 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="group">
 	
-	<!--
-	 <select id="all"  resultType="groupVO">
-		select * from group
-	</select> 
-	-->
+	<select id="one" parameterType="int" resultType="groupVO">
+		select * from `bbsgroup` where group_no = #{group_no}
+	</select>
 	
+	<select id="one2" parameterType="String" resultType="groupVO">
+		select * from `bbsgroup` where group_name = #{group_name}
+	</select>
+	
+	<select id="all" resultType="groupVO">
+		select * from `bbsgroup`
+	</select>
+	
+	<!-- 게시판 즐겨찾기 -->
+	<select id="book" parameterType="String" resultType="String">
+		select Sign_address from member
+		where Sign_id = #{Sign_id}
+	</select>
 </mapper>
