@@ -2,12 +2,16 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> origin/hongkyun
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
 asdfasdfasdfasdf
 </body>
 =======
@@ -57,4 +61,8 @@ asdfasdfasdfasdf
 </body>
 
 >>>>>>> cb0fb9f9f5a44599c5bd6a8073209d7d19fdc59b
+=======
+hi
+</body>
+>>>>>>> origin/hongkyun
 </html>
