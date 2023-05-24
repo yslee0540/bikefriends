@@ -33,7 +33,7 @@
 <script type="text/javascript">
 	$(function() {
 		/* 별점 */
-		var rate = '';
+		var rate = ${rate};
 		$('.starRev span').click(function () {
             $(this).parent().children('span').removeClass('on');
             $(this).addClass('on').prevAll('span').addClass('on');

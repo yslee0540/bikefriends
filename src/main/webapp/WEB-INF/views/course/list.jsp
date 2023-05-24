@@ -17,7 +17,8 @@ tr:hover {
 <div id="main">
 	<div id="top">
         <div id="title">코스 공유</div>
-		<a href="insert.jsp"><button class="btn btn-primary">글쓰기</button></a>
+		<a href="insert.jsp"><button class="btn btn-primary">출발점/도착점 선택</button></a>
+		<a href="insertline.jsp"><button class="btn btn-primary">코스그리기</button></a>
      </div>
      <hr>
 	
@@ -31,9 +32,18 @@ tr:hover {
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td>${vo.writer}</td>
-				<td><a href="one?course_no=${vo.course_no}">${vo.title}</a></td>
+				<td>
+					<c:choose>
+						<c:when test="${empty vo.line_lat}">
+							<a href="one?course_no=${vo.course_no}">${vo.title}</a>
+						</c:when>
+						<c:otherwise>
+							<a href="one2?course_no=${vo.course_no}">${vo.title}</a>
+						</c:otherwise>
+					</c:choose>
+				</td>
 				<td>${vo.rate}</td>
-				<td>${vo.date}</td>
+				<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 			</tr>
 		</c:forEach>
 	</table>

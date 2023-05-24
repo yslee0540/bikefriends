@@ -5,7 +5,14 @@
 	<insert id="insert" parameterType="courseVO">
 		insert into course
 		values (null, #{start_location}, #{start_lat}, #{start_lng}, 
-		#{end_location}, #{end_lat}, #{end_lng}, #{rate}, #{content}, #{title}, #{writer}, now())
+		#{end_location}, #{end_lat}, #{end_lng}, #{rate}, #{content}, #{title}, #{writer},
+		now(), null, null)
+	</insert>
+	
+	<insert id="insert2" parameterType="courseVO">
+		insert into course(start_location, line_lat, line_lng, writer, title, content, rate)
+		values (#{start_location}, #{line_lat}, #{line_lng},
+		#{writer}, #{title}, #{content}, #{rate})
 	</insert>
 	
 	<delete id="delete" parameterType="Integer">
@@ -17,6 +24,12 @@
 		set start_location = #{start_location}, start_lat = #{start_lat}, start_lng = #{start_lng}, 
 		end_location = #{end_location}, end_lat = #{end_lat}, end_lng = #{end_lng},
 		rate = #{rate}, content = #{content}, title = #{title}
+		where course_no = #{course_no}
+	</update>
+	
+	<update id="update2" parameterType="courseVO">
+		update course
+		set rate = #{rate}, content = #{content}, title = #{title}
 		where course_no = #{course_no}
 	</update>
 	

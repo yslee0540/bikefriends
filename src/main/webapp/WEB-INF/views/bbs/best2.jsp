@@ -43,14 +43,19 @@
 
 		<c:if test="${empty list}">
 			<div style="text-align: center; padding: 0 0 20px;">게시물 없음</div>
+			<div style="padding: 0 20px;">
+				<a href="grouplist">
+					<button style="margin-right: 50px;" class="btn btn-dark">
+						<i class="fa-solid fa-list-ul"></i> 목록
+					</button>
+				</a>
+			</div>
 		</c:if>
 		<c:if test="${!empty list}">
 			<c:forEach var="vo" items="${list}">
 				<table>
 					<tr class="post">
-						<td class="profile" rowspan="3"><img
-							src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-							class="img"></td>
+						<td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
 						<td class="bbswriter"><b>${vo.writer}</b></td>
 						<td class="bbsdate"><fmt:formatDate value="${vo.date}"
 								pattern="yyyy-MM-dd" /></td>

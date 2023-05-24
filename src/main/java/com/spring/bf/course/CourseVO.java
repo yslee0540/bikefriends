@@ -1,6 +1,8 @@
 package com.spring.bf.course;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class CourseVO {
 
@@ -15,7 +17,27 @@ public class CourseVO {
 	private String content;
 	private String title;
 	private String writer;
-	private Date date;
+	private String line_lat;
+	private String line_lng;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Timestamp date;
+
+	public String getLine_lat() {
+		return line_lat;
+	}
+
+	public void setLine_lat(String line_lat) {
+		this.line_lat = line_lat;
+	}
+
+	public String getLine_lng() {
+		return line_lng;
+	}
+
+	public void setLine_lng(String line_lng) {
+		this.line_lng = line_lng;
+	}
 
 	public String getWriter() {
 		return writer;
@@ -25,11 +47,11 @@ public class CourseVO {
 		this.writer = writer;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

@@ -41,15 +41,23 @@ tr:hover {
 				<c:forEach var="vo" items="${list}">
 					<tr>
 						<td style="word-wrap: break-word;">${vo.writer}</td>
-						<td class="scontent"><a href="one?course_no=${vo.course_no}">${vo.title}</a>
+						<td>
+							<c:choose>
+								<c:when test="${empty vo.line_lat}">
+									<a href="one?course_no=${vo.course_no}">${vo.title}</a>
+								</c:when>
+								<c:otherwise>
+									<a href="one2?course_no=${vo.course_no}">${vo.title}</a>
+								</c:otherwise>
+							</c:choose>
 						</td>
-						<td>${vo.date}</td>
+						<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</c:if>
 
-		<div id="search" style="text-align:center;padding:20px 0 0;">
+		<div id="search" style="text-align:center;padding-bottom:0px;">
 			<form action="search">
 				<input placeholder="제목" name="title">
 				<input name="page" value="1" type="hidden">

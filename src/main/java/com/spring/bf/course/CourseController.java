@@ -25,6 +25,21 @@ public class CourseController {
 		model.addAttribute("rate", vo.getRate());
 	}
 	
+	@RequestMapping("course/one2")
+	public void one2(int course_no, Model model) {
+		CourseVO vo = dao.one(course_no);
+		
+		String[] lat = vo.getLine_lat().split("/");
+		String[] lng = vo.getLine_lng().split("/");
+		
+		model.addAttribute("vo", vo);
+		model.addAttribute("rate", vo.getRate());
+		
+		model.addAttribute("lat", lat);
+		model.addAttribute("lng", lng);
+		model.addAttribute("length", lng.length);
+	}
+	
 	//update 페이지에 현재 정보 보여주기
 	@RequestMapping("course/update")
 	public void update(int course_no, Model model) {
@@ -34,13 +49,31 @@ public class CourseController {
 	}
 	
 	@RequestMapping("course/update2")
-	public void update2(CourseVO vo) {
+	public void update(CourseVO vo) {
 		dao.update(vo);
+	}
+	
+	//update 페이지에 현재 정보 보여주기
+	@RequestMapping("course/updateline")
+	public void update2(int course_no, Model model) {
+		CourseVO vo = dao.one(course_no);
+		model.addAttribute("vo", vo);
+		model.addAttribute("rate", vo.getRate());
+	}
+	
+	@RequestMapping("course/updateline2")
+	public void update2(CourseVO vo) {
+		dao.update2(vo);
 	}
 	
 	@RequestMapping("course/insert")
 	public void insert(CourseVO vo) {
 		dao.insert(vo);
+	}
+	
+	@RequestMapping("course/insertline")
+	public void insert2(CourseVO vo) {
+		dao.insert2(vo);
 	}
 	
 	@RequestMapping("course/delete")

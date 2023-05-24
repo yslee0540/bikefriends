@@ -148,11 +148,9 @@
 
         <table>
             <tr class="post1">
-                <td class="profile" rowspan="3"><img
-                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                        class="img"></td>
+                <td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
                 <td class="bbswriter"><b>${vo.writer}</b></td>
-                <td class="bbsdate">${vo.date}</td>
+                <td class="bbsdate"><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
             </tr>
             <tr>
                 <td class="bbscon" colspan="2">

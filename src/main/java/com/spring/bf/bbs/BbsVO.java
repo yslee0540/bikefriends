@@ -1,13 +1,14 @@
 package com.spring.bf.bbs;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class BbsVO {
 
 	private int bbs_no;
 	private String content;
 	private String writer;
-	private Date date;
 	private int group_no;
 	private String img;
 	private int cmt_cnt;
@@ -17,6 +18,18 @@ public class BbsVO {
 	private int start;
 	private int end;
 	private int page;
+	private String Sign_img;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Timestamp date;
+
+	public String getSign_img() {
+		return Sign_img;
+	}
+
+	public void setSign_img(String sign_img) {
+		Sign_img = sign_img;
+	}
 
 	public void setStartEnd(int page) {
 		start = 1 + (page - 1) * 20;
@@ -103,11 +116,11 @@ public class BbsVO {
 		this.writer = writer;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 
@@ -129,9 +142,10 @@ public class BbsVO {
 
 	@Override
 	public String toString() {
-		return "BbsVO [bbs_no=" + bbs_no + ", content=" + content + ", writer=" + writer + ", date=" + date
-				+ ", group_no=" + group_no + ", img=" + img + ", cmt_cnt=" + cmt_cnt + ", like_cnt=" + like_cnt
-				+ ", hit=" + hit + ", group_name=" + group_name + "]";
+		return "BbsVO [bbs_no=" + bbs_no + ", content=" + content + ", writer=" + writer + ", group_no=" + group_no
+				+ ", img=" + img + ", cmt_cnt=" + cmt_cnt + ", like_cnt=" + like_cnt + ", hit=" + hit + ", group_name="
+				+ group_name + ", start=" + start + ", end=" + end + ", page=" + page + ", Sign_img=" + Sign_img
+				+ ", date=" + date + "]";
 	}
 
 }

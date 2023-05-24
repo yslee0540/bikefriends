@@ -1,14 +1,18 @@
 package com.spring.bf.bbsReply;
 
-import java.sql.Date;
+import java.sql.Timestamp;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 public class BbsReplyVO {
 
 	private int reply_no;
 	private int bbs_no;
 	private String writer;
-	private Date date;
 	private String content;
+	
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Timestamp date;
 
 	public int getReply_no() {
 		return reply_no;
@@ -34,11 +38,11 @@ public class BbsReplyVO {
 		this.writer = writer;
 	}
 
-	public Date getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

@@ -10,15 +10,10 @@
 <script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet" href="../resources/css/bbsstyle.css">
 <style type="text/css">
-	.style {
-		 padding: 0 20px;
-	}
-	.bAddr {
-		padding:5px;
-		text-overflow: ellipsis;
-		overflow: hidden;
-		white-space: nowrap;
-	}
+.style {
+	 padding: 0 20px;
+}
+.modes {position: absolute;top: 15px;left: 15px;z-index: 1;}
 </style>
 <script type="text/javascript">
 	$(function() {
@@ -33,27 +28,24 @@
         
 		$('#save').click(function() {
 			title = $('#ctitle').val()
-			if (startaddr != '' && endaddr != '' && title != '' && rate != '') {
+			if (title == '' || rate == '' || lat == '') {
+				alert('코스, 제목, 별점은 필수항목입니다')
+			} else {
 				$.ajax({
-					url : "insert",
+					url : "insertline",
 					data : {
 						start_location : startaddr,
-						start_lat : startLat,
-						start_lng : startLng,
-						end_location : endaddr,
-						end_lat : endLat,
-						end_lng : endLng,
+						line_lat : lat,
+						line_lng : lng,
 						rate: rate,
 						title: title,
 						content: $('#content').val(),
 						writer: '${id}'
 					},
 					success : function() {
-						location.href = "list"
+						location.href = "list";
 					}
 				})
-			} else {
-				alert('출발지, 도착지, 제목, 별점은 필수항목입니다')
 			}
 		})
 	})
@@ -66,17 +58,18 @@
 			<input id="csearch" placeholder="장소 검색">
 			<button onclick="search()">검색</button>
 		</div>
-		<div id="map" style="width: 600px; height: 350px;"></div>
+		<div style="position: relative;">
+			<div id="map" style="width: 600px; height: 350px;"></div>
+			<p class="modes">
+			    <button onclick="selectOverlay('POLYLINE')" class="btn btn-dark">그리기</button>
+			</p>
+		</div>
 		<p class="style">
 			<input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" checked/>
 			자전거도로 정보 보기
 		</p>
 		<div class="style">
-			<button onclick="start()" id="startbtn">출발지 선택하기</button>
-			<button onclick="end()" id="endbtn">도착지 선택하기</button>
-			<button onclick="finish()">완료</button><br>
-			출발: <span id="start"></span><br>
-			도착: <span id="end"></span><br><br>
+			출발: <span id="start"></span><br><br>
 		
 			제목: <input id="ctitle"><br>
 			내용<br> <textarea rows="5" cols="30" id="content"></textarea><br>
@@ -88,12 +81,12 @@
 		        <span class="starR" value="4">★</span>
 		        <span class="starR" value="5">★</span>
 		    </div>
-			<button id="save">작성</button>
+			<button onclick="getDataFromDrawingMap()" id="save">작성</button>
 		</div>
 	</div>
 	
 	<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed39086327d2b4332a5533af606ec521&libraries=services"></script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed39086327d2b4332a5533af606ec521&libraries=services,drawing"></script>
 	<script type="text/javascript">
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
@@ -105,15 +98,8 @@
 		// 지도를 생성합니다    
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
-		var startaddr = '';
-		var endaddr = '';
-		var startLat = '';
-		var startLng = '';
-		var endLat = '';
-		var endLng = '';
-		
 	</script>
-	<jsp:include page="map.jsp"></jsp:include>
+	<jsp:include page="drawingmap.jsp"></jsp:include>
 	
 </body>
 </html>

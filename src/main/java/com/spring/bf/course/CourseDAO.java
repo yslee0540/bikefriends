@@ -17,6 +17,11 @@ public class CourseDAO {
 		return result;
 	}
 	
+	public int insert2(CourseVO vo) {
+		int result = my.insert("course.insert2", vo);
+		return result;
+	}
+	
 	public int delete(int course_no) {
 		int result = my.delete("course.delete", course_no);
 		return result;
@@ -24,6 +29,11 @@ public class CourseDAO {
 	
 	public int update(CourseVO vo) {
 		int result = my.update("course.update", vo);
+		return result;
+	}
+	
+	public int update2(CourseVO vo) {
+		int result = my.update("course.update2", vo);
 		return result;
 	}
 	
@@ -36,7 +46,6 @@ public class CourseDAO {
 		List<CourseVO> list = my.selectList("course.list", vo);
 		return list;
 	}
-	
 
 	public List<CourseVO> search(String title) {
 		List<CourseVO> list = my.selectList("course.search", title);

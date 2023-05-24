@@ -42,10 +42,10 @@
 			<% } else { %>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" role="button"
-				data-bs-toggle="dropdown">aaa님</a>
+				data-bs-toggle="dropdown">${id}님</a>
 				<ul class="dropdown-menu dropdown-menu-end">
 					<li><a class="dropdown-item" href="/bf/member/myInfo.jsp">마이페이지</a></li>
-					<li><a class="dropdown-item" href="#">쪽지</a></li>
+					<li><a class="dropdown-item" href="/bf/note/receive_notelist?receiver=${id}">쪽지</a></li>
 				</ul></li>
 			<li class="nav-item" style="text-align: right;"><a
 				class="nav-link" href="/bf/member/logout">로그아웃</a></li>

@@ -3,8 +3,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>코스 상세페이지</title>
+<style type="text/css">
+.style {
+	padding: 0 20px;
+}
+
+.starR {
+	cursor: auto;
+}
+
+.starR.off:hover {
+	text-shadow: 0 0 0 #f0f0f0;
+}
+
+.modes {position: absolute;top: 15px;left: 15px;z-index: 1;}
+#zoom {
+	border: none;
+	background: white;
+	padding: 5px 10px;
+	font-size: 14px;
+	font-weight: bold;
+}
+</style>
 <%@ include file="header.jsp"%>
 <script type="text/javascript">
 	$(function() {
@@ -36,39 +58,6 @@
 		});
 	})
 </script>
-<style type="text/css">
-.style {
-	padding: 0 20px;
-}
-
-.customoverlay {
-	position: relative;
-	bottom: 40px;
-	border-radius: 6px;
-	border: 1px solid #ccc;
-	text-align: center;
-	background: #fff;
-	padding: 5px 15px;
-	font-size: 14px;
-	font-weight: bold;
-}
-
-.starR {
-	cursor: auto;
-}
-.starR.off:hover {
-	text-shadow: 0 0 0 #f0f0f0;
-}
-
-.modes {position: absolute;top: 15px;left: 15px;z-index: 1;}
-#zoom {
-	border: none;
-	background: white;
-	padding: 5px 10px;
-	font-size: 14px;
-	font-weight: bold;
-}
-</style>
 </head>
 <body>
 	<%@ include file="../../../nav.jsp"%>
@@ -77,7 +66,7 @@
 			<c:choose>
 				<c:when test="${id == vo.writer}">
 					<div id="title">${vo.title}</div>
-					<a href="update?course_no=${vo.course_no}">
+					<a href="updateline?course_no=${vo.course_no}">
 						<button class="btn btn-primary" id="b2">수정</button></a>
 					<button class="btn btn-danger" id="coursedelete">삭제</button>
 				</c:when>
@@ -97,10 +86,10 @@
 		</div>
 		<p class="style">
 			<input type="checkbox" id="chkBicycle"
-				onclick="setOverlayMapTypeId()" checked /> 자전거도로 정보 보기
+				onclick="setOverlayMapTypeId()"/> 자전거도로 정보 보기
 		</p>
 		<div class="style">
-			<b>출발</b> ${vo.start_location}<br> <b>도착</b> ${vo.end_location}<br>
+			<b>출발</b> ${vo.start_location}<br>
 			<br> <b>내용</b><br> ${vo.content}<br>
 			<br>
 			<div class="starRev" style="padding-bottom: 10px;">
@@ -122,22 +111,28 @@
 			</div>
 			<br>
 		</div>
-		<a
-			href="https://map.kakao.com/?sName=${vo.start_location}&eName=${vo.end_location}"
-			target="_blank">카카오맵</a>
 	</div>
+	
+	<c:forEach var="lat" items="${lat}" varStatus="status">
+		<input value="${lat}" class="lat${status.index}" type="hidden">
+	</c:forEach>
+	<c:forEach var="lng" items="${lng}" varStatus="status">
+		<input value="${lng}" class="lng${status.index}" type="hidden">
+	</c:forEach>
+		
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed39086327d2b4332a5533af606ec521&libraries=services"></script>
-	<script>
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed39086327d2b4332a5533af606ec521&libraries=services"></script>
+	<script type="text/javascript">
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 		mapOption = {
-			center : new kakao.maps.LatLng(${vo.start_lat}, ${vo.start_lng}), // 지도의 중심좌표
-			level : 3 // 지도의 확대 레벨
+			center : new kakao.maps.LatLng(${lat[0]}, ${lng[0]}), // 지도의 중심좌표
+			level : 6
+		// 지도의 확대 레벨
 		};
-
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+	
+		// 지도를 생성합니다    
+		var map = new kakao.maps.Map(mapContainer, mapOption);
 		
-		map.addOverlayMapTypeId(kakao.maps.MapTypeId.BICYCLE);
 		// 체크 박스를 선택하면 호출되는 함수입니다
 		function setOverlayMapTypeId() {
 			var chkBicycle = document.getElementById('chkBicycle')
@@ -151,38 +146,38 @@
 			}
 		}
 		
-		// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다 
-		var points = [ 
-			new kakao.maps.LatLng(${vo.start_lat}, ${vo.start_lng}),
-			new kakao.maps.LatLng(${vo.end_lat}, ${vo.end_lng})
-		];
+		var len = ${length}, 
+        path = [];
 		
-		var iwContent = ['출발', '도착'];
-
+		for (var i = 0; i < len; i++) {
+			var lat = $('.lat' + i).val();
+			var lng = $('.lng' + i).val();
+	        var latlng = new kakao.maps.LatLng(lat, lng);
+	        path.push(latlng);
+		}
+		
 		// 지도를 재설정할 범위정보를 가지고 있을 LatLngBounds 객체를 생성합니다
 		var bounds = new kakao.maps.LatLngBounds();
-
-		var i, marker, customOverlay;
-		for (i = 0; i < points.length; i++) {
-			// 배열의 좌표들이 잘 보이게 마커를 지도에 추가합니다
-			marker = new kakao.maps.Marker({
-				position : points[i]
-			});
-			marker.setMap(map);
-			
-			customOverlay = new kakao.maps.CustomOverlay({
-				map: map,
-				position : points[i],
-			    content : '<div class="customoverlay">' + iwContent[i] + '</div>', 
-				yAnchor: 1
-			});
-
+		
+		for (var i = 0; i < len; i++) {
 			// LatLngBounds 객체에 좌표를 추가합니다
-			bounds.extend(points[i]);
+			bounds.extend(path[i]);
 		}
 		map.setBounds(bounds);
-		map.setZoomable(false); 
-		
+    
+	    //지도에 표시할 선을 생성합니다
+	    let polyline = new kakao.maps.Polyline({
+	        map: map, // 지도에 선을 표시합니다 
+	        path: path, // 선을 구성하는 좌표배열 입니다
+	        strokeWeight: 4, // 선의 두께 입니다
+	        strokeColor: 'red', // 선의 색깔입니다
+	        strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+	        strokeStyle: 'solid' // 선의 스타일입니다
+	    });
+	    
+	  	//map.setDraggable(false);
+		map.setZoomable(false);
 	</script>
+	
 </body>
 </html>
