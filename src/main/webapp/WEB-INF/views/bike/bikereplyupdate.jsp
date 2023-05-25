@@ -41,7 +41,7 @@ $("#b1").click(function() {
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../resources/css/bbsstyle.css">
+<link rel="stylesheet" href="../resources/css/bbsstyle.css">
 <title>자전거 리뷰 수정</title>
 </head>
 <body>

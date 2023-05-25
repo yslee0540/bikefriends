@@ -13,7 +13,7 @@
 	
 	$(function() {
 		$('#bikereplybtn').click(function() {
-			bikereply_writer = "APPLE"
+			bikereply_writer = "<%=session.getAttribute("id")%>"
 			bikereply_content =  $('#content').val()
 			bikereply_rating =  $('input[name=rating]:checked').val();
 			$.ajax({
@@ -53,7 +53,7 @@
 				e.preventDefault();
 				bikereply_no = $(this).data('no')
 				let popUrl = "bikereplyupdate?bikereply_no=" + bikereply_no	
-				let popOption = "width = 600px, height=490px, top=300px, left=300px, scrollbars=yes"	
+				let popOption = "width = 800px, height=490px, top=300px, left=300px, scrollbars=yes"	
 				
 				window.open(popUrl,"리뷰 수정",popOption);			
 			 
@@ -68,70 +68,9 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<style>
-#main {
-	margin: auto;
-	width: 600px;
-	border: 1px solid rgb(240, 240, 240);
-	border-radius: 15px;
-	box-shadow: 2px 2px 10px rgb(240, 240, 240);
-	padding: 20px 0;
-	height: auto;
-}
-
-.onelefttd {
-	width: 20%;
-	text-align: center;
-}
-
-.onerighttd {
-	width: 80%;
-	text-align: center;
-}
-
-#myform fieldset {
-	width: 100%;
-	display: inline-block;
-	direction: rtl;
-	border: 0;
-	text-align: center;
-}
-
-#myform input[type=radio] {
-	display: none;
-}
-
-#myform label {
-	font-size: 2em;
-	color: transparent;
-	text-shadow: 0 0 0 #f0f0f0;
-}
-
-#myform label:hover {
-	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-
-#myform label:hover ~ label {
-	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-
-#myform input[type=radio]:checked ~ label {
-	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
-}
-
-#reviewContents {
-	width: 100%;
-	height: 100px;
-	padding: 10px;
-	box-sizing: border-box;
-	border: solid 1.5px #D3D3D3;
-	border-radius: 5px;
-	font-size: 16px;
-	resize: none;
-}
-</style>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../resources/css/bbsstyle.css">
+<link rel="stylesheet" href="../resources/css/bbsstyle.css">
+<link rel="stylesheet" href="../resources/css/bikestyle.css">
 <title>자전거상세페이지</title>
 </head>
 <body>
@@ -161,6 +100,7 @@
 				</tr>
 			</table>
 		</div>
+		<%if(session.getAttribute("id") != null){ %>
 		<div id="bikereply">
 			<form id="myform">
 				<fieldset>
@@ -181,6 +121,7 @@
 			<button style="float: right;" id="bikereplybtn">등록</button>
 			<br>
 		</div>
+		<%} %>
 		<div id="onereply" style="width: 100%;">
 			<c:forEach items="${list}" var="vo" varStatus="vs">
 				<table style="width: 100%; margin: 5px;">
@@ -192,16 +133,18 @@
 					<tr>
 						<td colspan="3">${vo.bikereply_content}</td>
 					</tr>
+					<c:choose>
+					<c:when test="${id == vo.bikereply_writer}">
 					<tr>
 						<td colspan="3">
-							<%-- <a href="bikereplyupdate?bikereply_no=${vo.bikereply_no}"> --%>
 							<button id="replyup" style="float: right;"
 								data-no="${vo.bikereply_no}">수정</button>
-							<!-- </a> -->
 							<button id="replydel" style="float: right;"
 								data-no="${vo.bikereply_no}">삭제</button>
 						</td>
 					</tr>
+					</c:when>
+					</c:choose>
 				</table>
 			</c:forEach>
 		</div>

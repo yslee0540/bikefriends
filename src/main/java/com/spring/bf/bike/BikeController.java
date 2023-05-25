@@ -78,6 +78,8 @@ public class BikeController {
 		System.out.println(list.size());
 		model.addAttribute("list", list);
 		
+		BikeReplyVO bag2 = dao2.one(bike_no);
+		model.addAttribute("bag2", bag2);
 	}
 
 }
