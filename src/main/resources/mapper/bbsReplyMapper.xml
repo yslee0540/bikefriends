@@ -21,6 +21,7 @@
 	
 	<select id="all" resultType="bbsreplyVO">
 		select * from bbsreply where bbs_no = #{bbs_no}
+		order by reply_no
 	</select>
 	
 </mapper>

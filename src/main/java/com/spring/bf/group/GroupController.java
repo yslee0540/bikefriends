@@ -17,12 +17,6 @@ public class GroupController {
 		List<GroupVO> list = dao.list();
 		model.addAttribute("list", list);
 	}
-	
-	@RequestMapping("bbs/groupone")
-	public void one(int no, Model model) {
-		GroupVO vo = dao.one(no);
-		model.addAttribute("vo", vo);
-	}
 
 	//각 게시판 즐겨찾기
 	@RequestMapping("bbs/book")

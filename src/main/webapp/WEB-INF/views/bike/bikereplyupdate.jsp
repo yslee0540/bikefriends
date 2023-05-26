@@ -5,7 +5,24 @@
 <head>
 <script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
-	
+
+
+$(function() {
+$("#b1").click(function() {
+	$.ajax({
+		url : 'bikereplyupdate2',
+		data : {
+			bikereply_no : ${vo.bikereply_no},
+			bikereply_content : $('#content').val(),	
+			bikereply_rating :  $('input[name=rating]:checked').val()
+		},
+		success : function(result){
+			opener.location.href = 'bikeone?bike_no=' + ${vo.bike_no}		
+			window.close();
+		}		
+		})
+	})
+})
 </script>
 <style type="text/css">
 #main {
@@ -25,17 +42,30 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../../resources/css/bbsstyle.css">
+<link rel="stylesheet" href="../resources/css/bbsstyle.css">
+<link rel="stylesheet" href="../resources/css/bikestyle.css">
 <title>자전거 리뷰 수정</title>
 </head>
 <body>
 	<jsp:include page="../../../nav.jsp"></jsp:include>
 	<div id="main">
 		<div style="padding: 0px 20px 10px;">
-			<b>댓글 수정하기</b>
+			<b>리뷰 수정하기</b>
 		</div>
+		<form id="myform">
+				<fieldset>
+					<span class="text-bold">별점수정</span> <input type="radio"
+						name="rating" value="★★★★★" id="rate1"><label for="rate1">★</label>
+					<input type="radio" name="rating" value="★★★★" id="rate2"><label
+						for="rate2">★</label> <input type="radio" name="rating"
+						value="★★★" id="rate3"><label for="rate3">★</label> <input
+						type="radio" name="rating" value="★★" id="rate4"><label
+						for="rate4">★</label> <input type="radio" name="rating" value="★"
+						id="rate5"><label for="rate5">★</label>
+				</fieldset>
+		</form>
 		<textarea id="content" rows="10" cols="60"
-			style="width: 560px; margin: 10px 20px 0; resize: none; " >${vo.bikereply_content}</textarea>
+			style="width: 560px; margin: 10px 20px 0; resize: none;">${vo.bikereply_content}</textarea>
 		<div style="padding: 10px 20px 0; text-align: right;">
 			<button id="b1">수정</button>
 		</div>

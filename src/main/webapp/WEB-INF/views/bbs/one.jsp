@@ -134,13 +134,13 @@
         <div id="top">
             <c:choose>
             	<c:when test="${id == vo.writer}">
-            		<div id="title">${group.group_name}</div>
+            		<div id="title">${vo.group_name}</div>
 		            <a href="update?bbs_no=${vo.bbs_no}">
 		            	<button class="btn btn-primary" id="b2">수정</button></a>
 		            <button class="btn btn-danger" id="b3">삭제</button>
             	</c:when>
             	<c:otherwise>
-            		<div id="title2">${group.group_name}</div>
+            		<div id="title2">${vo.group_name}</div>
             	</c:otherwise>
             </c:choose>
         </div>
@@ -148,11 +148,9 @@
 
         <table>
             <tr class="post1">
-                <td class="profile" rowspan="3"><img
-                        src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-                        class="img"></td>
+                <td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
                 <td class="bbswriter"><b>${vo.writer}</b></td>
-                <td class="bbsdate">${vo.date}</td>
+                <td class="bbsdate"><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
             </tr>
             <tr>
                 <td class="bbscon" colspan="2">
@@ -190,7 +188,7 @@
         </table>
         <div id="replylist"></div>
         <div style="padding: 20px 20px 0;">
-            <a href="list?group_no=${group.group_no}&page=1">
+            <a href="list?group_no=${vo.group_no}&page=1">
                 <button class="btn btn-dark">
                     <i class="fa-solid fa-list-ul"></i> 목록
                 </button>

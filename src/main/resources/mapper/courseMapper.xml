@@ -3,9 +3,9 @@
 <mapper namespace="course">
 	
 	<insert id="insert" parameterType="courseVO">
-		insert into course
-		values (null, #{start_location}, #{start_lat}, #{start_lng}, 
-		#{end_location}, #{end_lat}, #{end_lng}, #{rate}, #{content}, #{title}, #{writer}, now())
+		insert into course(line_lat, line_lng, writer, title, content, rate)
+		values (#{line_lat}, #{line_lng},
+		#{writer}, #{title}, #{content}, #{rate})
 	</insert>
 	
 	<delete id="delete" parameterType="Integer">
@@ -14,9 +14,7 @@
 	
 	<update id="update" parameterType="courseVO">
 		update course
-		set start_location = #{start_location}, start_lat = #{start_lat}, start_lng = #{start_lng}, 
-		end_location = #{end_location}, end_lat = #{end_lat}, end_lng = #{end_lng},
-		rate = #{rate}, content = #{content}, title = #{title}
+		set rate = #{rate}, content = #{content}, title = #{title}
 		where course_no = #{course_no}
 	</update>
 	
@@ -26,14 +24,30 @@
 	</select>
 	
 	<select id="list" parameterType="courseVO" resultType="courseVO">
-		select * from course 
-		order by course_no desc
+		select * from (
+			select row_number() over(order by course_no desc) as no, c.*
+			from course c 
+		) as c2
+		where c2.no between #{start} and #{end}
 	</select>
 	
-	<select id="search" parameterType="String" resultType="courseVO">
-		select * from course
+	<select id="search" parameterType="courseVO" resultType="courseVO">
+		select * from (
+			select row_number() over(order by course_no desc) as no, c.*
+			from course c 
+			where title like CONCAT('%', #{title}, '%')
+		) as c2
+		where c2.no between #{start} and #{end}
+	</select>
+	
+	<!-- 페이징 -->
+	<select id="count" resultType="Integer">
+		select count(*) from course
+	</select>
+	
+	<select id="count2" parameterType="String" resultType="Integer">
+		select count(*) from course
 		where title like CONCAT('%', #{title}, '%')
-		order by course_no desc
 	</select>
 	
 </mapper>

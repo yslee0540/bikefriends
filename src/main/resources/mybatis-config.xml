@@ -35,6 +35,6 @@
       <mapper resource="mapper/bbsLikeMapper.xml" />
       <mapper resource="mapper/courseMapper.xml" />
       <mapper resource="mapper/member.xml" />
-       <mapper resource="mapper/noteMapper.xml" />
+      <mapper resource="mapper/noteMapper.xml" />
    </mappers>
 </configuration>

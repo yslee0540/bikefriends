@@ -8,7 +8,7 @@
 			<td style="width: 25%; text-align: right; font-size: 6px">${bag.date}</td>
 		</tr>
 		<tr>
-			<td colspan="3">${bag.bikereply_content}</td>
+			<td colspan="3" style="width: 100%;  overflow:scroll; ">${bag.bikereply_content}</td>
 		</tr>
 		<tr>
 			<td colspan="3"><button style="float: right;">수정</button>

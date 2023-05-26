@@ -17,21 +17,20 @@
 				if (session.getAttribute("id") != null) {
 			%>
 			<div id="title">
-				${group.group_name} 
-				<a href="list?group_no=${group.group_no}&page=1">
+				${bbsVO.group_name} 
+				<a href="list?group_no=${bbsVO.group_no}&page=1">
 					<span class="best" style="color: red;">BEST</span>
 				</a>
 			</div>
-			<form action="insert.jsp">
-				<input name="group_no" value="${group.group_no}" type="hidden">
+			<a href="insert.jsp?group_no=${bbsVO.group_no}">
 				<button class="btn btn-primary">글쓰기</button>
-			</form>
+			</a>
 			<%
 				} else {
 			%>
 			<div id="title2">
-				${group.group_name} 
-				<a href="list?group_no=${group.group_no}&page=1">
+				${bbsVO.group_name} 
+				<a href="list?group_no=${bbsVO.group_no}&page=1">
 					<span class="best" style="color: red;">BEST</span>
 				</a>
 			</div>
@@ -43,14 +42,19 @@
 
 		<c:if test="${empty list}">
 			<div style="text-align: center; padding: 0 0 20px;">게시물 없음</div>
+			<div style="padding: 0 20px;">
+				<a href="grouplist">
+					<button style="margin-right: 50px;" class="btn btn-dark">
+						<i class="fa-solid fa-list-ul"></i> 목록
+					</button>
+				</a>
+			</div>
 		</c:if>
 		<c:if test="${!empty list}">
 			<c:forEach var="vo" items="${list}">
 				<table>
 					<tr class="post">
-						<td class="profile" rowspan="3"><img
-							src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-							class="img"></td>
+						<td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
 						<td class="bbswriter"><b>${vo.writer}</b></td>
 						<td class="bbsdate"><fmt:formatDate value="${vo.date}"
 								pattern="yyyy-MM-dd" /></td>
@@ -84,7 +88,7 @@
 						if (nowpage > 1) {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="best2?group_no=${group.group_no}&page=<%= nowpage - 1 %>">Previous</a>
+						href="bestlist?group_no=${bbsVO.group_no}&page=<%= nowpage - 1 %>">Previous</a>
 					</li>
 					<%
 						} else {
@@ -98,13 +102,13 @@
 						if (p == nowpage) {
 					%>
 					<li class="page-item active"><a class="page-link"
-						href="best2?group_no=${group.group_no}&page=<%= p %>"><%=p%></a>
+						href="bestlist?group_no=${bbsVO.group_no}&page=<%= p %>"><%=p%></a>
 					</li>
 					<%
 						} else {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="best2?group_no=${group.group_no}&page=<%= p %>"><%=p%></a>
+						href="bestlist?group_no=${bbsVO.group_no}&page=<%= p %>"><%=p%></a>
 					</li>
 					<%
 						}
@@ -114,7 +118,7 @@
 						if (nowpage < pages) {
 					%>
 					<li class="page-item"><a class="page-link"
-						href="best2?group_no=${group.group_no}&page=<%= nowpage + 1 %>">Next</a>
+						href="bestlist?group_no=${bbsVO.group_no}&page=<%= nowpage + 1 %>">Next</a>
 					</li>
 					<%
 						} else {

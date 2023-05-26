@@ -17,11 +17,6 @@ public class GroupDAO {
 		return list;
 	}
 	
-	public GroupVO one(int no) {
-		GroupVO vo = my.selectOne("group.one", no);
-		return vo;
-	}
-	
 	public String book(String id) {
 		String address = my.selectOne("group.book", id);
 		return address;
@@ -29,7 +24,7 @@ public class GroupDAO {
 	
 	//그룹이름, 주소 비교
 	public GroupVO one(String name) {
-		GroupVO vo = my.selectOne("group.one2", name);
+		GroupVO vo = my.selectOne("group.one", name);
 		return vo;
 	}
 

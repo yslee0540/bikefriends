@@ -2,11 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="group">
 	
-	<select id="one" parameterType="int" resultType="groupVO">
-		select * from `bbsgroup` where group_no = #{group_no}
-	</select>
-	
-	<select id="one2" parameterType="String" resultType="groupVO">
+	<select id="one" parameterType="String" resultType="groupVO">
 		select * from `bbsgroup` where group_name = #{group_name}
 	</select>
 	

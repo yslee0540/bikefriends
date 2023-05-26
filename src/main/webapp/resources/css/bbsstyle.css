@@ -127,18 +127,20 @@ table {
     padding: 10px 20px;
 }
 
+#refresh {
+	font-size: 13px;
+	color: #777;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
 .rewriter {
     width: 50px;
     padding: 10px 5px 10px 20px;
 }
 
 .redate {
-    width: 450px;
-    padding: 10px 20px 10px 5px;
-}
-
-.redate {
-    width: 100px;
+	width: 100px;
     padding: 10px 20px 10px 5px;
 }
 
@@ -190,16 +192,34 @@ textarea {
 }
 
 /* 인기게시물 */
-#demo {
-    margin: auto;
-    background: rgb(242, 242, 242);
-    width: 550px;
-    height: 160px;
-    vertical-align: middle;
-}
-
 .hotcon {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* 코스 공유 */
+#map, #drawingMap {
+	margin: 20px 0;
+}
+
+.starR {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	color: transparent;
+	text-shadow: 0 0 0 #f0f0f0;
+	font-size: 1.4em;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+	text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on {
+	text-shadow: 0 0 0 #ffbc00;
 }

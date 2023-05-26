@@ -1,7 +1,5 @@
 package com.spring.bf.bbsLike;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +17,6 @@ public class BbsLikeController {
 	@RequestMapping("bbs/likeDown")
 	public void delete(BbsLikeVO vo) {
 		dao.delete(vo);
-	}
-	
-	@RequestMapping("bbs/login")
-	public void login(String id, HttpSession session) {
-		session.setAttribute("id", id);
-	}
-	
-	@RequestMapping("bbs/logout")
-	public void logout(HttpSession session) {
-		session.invalidate();
 	}
 	
 }
