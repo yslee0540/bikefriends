@@ -47,5 +47,6 @@
     <div class="label">내용:</div>
     <div class = "box1">${bag.content}</div>
   </div>
+ <button type="button" onclick="location.href='NoteReply.jsp?sender=${bag.sender}'">답장 보내기</button>
 </body>
 </html>
