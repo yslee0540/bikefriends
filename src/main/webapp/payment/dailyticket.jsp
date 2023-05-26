@@ -132,10 +132,8 @@ div.c {
 		<header id="header">
 			<h1>이용권 선택</h1>
 			
-			<form action="paidList">
-			<input type="submit" />
-			</form>
-		</header>
+			<a href="paidList"><button>구매내역</button></a>
+				</header>
 		
 		<main id="contents">
 		<a href="dailyticket.jsp">
