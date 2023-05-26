@@ -28,7 +28,7 @@
 					<td style="word-wrap: break-word;">${vo.group_name}</td>
 					<td class="scontent"><a href="one?bbs_no=${vo.bbs_no}">${vo.content}</a>
 					</td>
-					<td>${vo.date}</td>
+					<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 					<td>${vo.hit}</td>
 					<td>${vo.like_cnt}</td>
 				</tr>

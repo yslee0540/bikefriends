@@ -34,7 +34,7 @@
 	        <div style="padding: 0px 20px" id="img">
 	        	<input name="img" value="${vo.img}" readonly>
 	        	<button id="delete" type="button">삭제</button>
-	       		<input type="file" name="file" type="hidden">
+	       		<input type="file" name="file" style="display:none;">
        		</div>
 	        <div style="padding: 10px 20px 0;text-align: right;">
 	            <button>수정</button>

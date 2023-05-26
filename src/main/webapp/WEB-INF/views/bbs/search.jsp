@@ -35,7 +35,7 @@ tr:hover {
 		<c:if test="${!empty list}">
 			<table class="table">
 				<tr class="table-info">
-					<th width="120">작성자</th>
+					<th width="100">작성자</th>
 					<th>내용</th>
 					<th width="150">날짜</th>
 				</tr>
@@ -44,7 +44,7 @@ tr:hover {
 						<td style="word-wrap: break-word;">${vo.writer}</td>
 						<td class="scontent"><a href="one?bbs_no=${vo.bbs_no}">${vo.content}</a>
 						</td>
-						<td>${vo.date}</td>
+						<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 				</c:forEach>
 			</table>

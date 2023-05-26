@@ -37,6 +37,11 @@ public class BbsDAO {
 		return list;
 	}
 	
+	public String groupone(int no) {
+		BbsVO vo = my.selectOne("bbs.groupone", no);
+		return vo.getGroup_name();
+	}
+	
 	public List<BbsVO> search(BbsVO vo) {
 		List<BbsVO> list = my.selectList("bbs.search", vo);
 		return list;

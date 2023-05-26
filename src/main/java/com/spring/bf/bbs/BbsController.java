@@ -14,8 +14,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.bf.bbsLike.BbsLikeDAO;
 import com.spring.bf.bbsLike.BbsLikeVO;
-import com.spring.bf.group.GroupDAO;
-import com.spring.bf.group.GroupVO;
 
 @Controller
 public class BbsController {
@@ -23,10 +21,7 @@ public class BbsController {
 	BbsDAO dao;
 	
 	@Autowired
-	GroupDAO dao2;
-	
-	@Autowired
-	BbsLikeDAO dao3;
+	BbsLikeDAO dao2;
 	
 	@RequestMapping("bbs/list")
 	public void list(BbsVO vo, Model model) {
@@ -43,8 +38,8 @@ public class BbsController {
 		model.addAttribute("pages", pages);
 		
 		//그룹이름
-		GroupVO vo2 = dao2.one(vo.getGroup_no());
-		model.addAttribute("group", vo2);
+		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
+		model.addAttribute("bbsVO", vo);
 	}
 	
 	@RequestMapping("bbs/one")
@@ -53,23 +48,20 @@ public class BbsController {
 		dao.update(bbs_no);
 		
 		BbsVO vo = dao.one(bbs_no);
+		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
 		model.addAttribute("vo", vo);
-		
-		//그룹이름
-		GroupVO vo3 = dao2.one(vo.getGroup_no());
-		model.addAttribute("group", vo3);
 		
 		//좋아요 눌렀는지 확인
 		String id = (String)session.getAttribute("id");
 		BbsLikeVO vo2 = new BbsLikeVO();
 		vo2.setBbs_no(bbs_no);
 		vo2.setMember_id(id);
-		int count = dao3.one(vo2);
+		int count = dao2.one(vo2);
 		model.addAttribute("like", count);
 	}
 	
 	@RequestMapping("bbs/insert")
-	public String list(BbsVO vo, HttpServletRequest request, MultipartFile file) throws Exception {
+	public String insert(BbsVO vo, HttpServletRequest request, MultipartFile file) throws Exception {
 		if (!file.isEmpty()) {
 			String savedName = file.getOriginalFilename();
 			String uploadPath = request.getSession().getServletContext().getRealPath("resources/upload");
@@ -105,7 +97,7 @@ public class BbsController {
 	}
 	
 	@RequestMapping("bbs/update")
-	public void update(int bbs_no, Model model) {
+	public void updateView(int bbs_no, Model model) {
 		BbsVO vo = dao.one(bbs_no);
 		model.addAttribute("vo", vo);
 	}
@@ -134,7 +126,7 @@ public class BbsController {
 	}
 	
 	//각 게시판별
-	@RequestMapping("bbs/best2")
+	@RequestMapping("bbs/bestlist")
 	public void best(BbsVO vo, Model model) {
 		vo.setStartEnd(vo.getPage());
 		List<BbsVO> list = dao.best(vo);
@@ -150,8 +142,8 @@ public class BbsController {
 		model.addAttribute("pages", pages);
 		
 		//그룹이름
-		GroupVO vo2 = dao2.one(vo.getGroup_no());
-		model.addAttribute("group", vo2);
+		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
+		model.addAttribute("bbsVO", vo);
 	}
 	
 }

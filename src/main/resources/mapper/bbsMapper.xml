@@ -17,20 +17,22 @@
 	</update>
 	
 	<select id="one" parameterType="int" resultType="bbsVO">
-		select *,
+		select b.*, m.Sign_img,
 		(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
 		(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
-     	from bbs b
-		where bbs_no = #{bbs_no}
+     	from bbs b, member m
+		where b.writer = m.Sign_id
+		and bbs_no = #{bbs_no}
 	</select>
 	
 	<select id="list" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
-			select row_number() over(order by date desc) as no, b.*,
+			select row_number() over(order by date desc) as no, b.*, m.Sign_img,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
 			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
-			from bbs b
-			where group_no = #{group_no}
+			from bbs b, member m
+			where b.writer = m.Sign_id
+			and group_no = #{group_no}
 		) as b2
 		where b2.no between #{start} and #{end}
 	</select>
@@ -44,6 +46,11 @@
 		select count(*) from bbs
 		where content like CONCAT('%', #{content}, '%')
 		and group_no = #{group_no}
+	</select>
+	
+	<!-- 그룹이름 -->
+	<select id="groupone" parameterType="int" resultType="bbsVO">
+		select * from `bbsgroup` where group_no = #{group_no}
 	</select>
 	
 	<select id="search" parameterType="bbsVO" resultType="bbsVO">
@@ -67,8 +74,9 @@
 			select *, row_number() over(order by date desc) as no,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
 			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
-			from bbs b 
-			where group_no = #{group_no}
+			from bbs b, member m
+			where b.writer = m.Sign_id
+			and group_no = #{group_no}
 		) as b2
 		where hit >= 30 and like_cnt >= 3
 		and b2.no between #{start} and #{end}

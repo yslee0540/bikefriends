@@ -36,11 +36,19 @@ public class CourseDAO {
 		List<CourseVO> list = my.selectList("course.list", vo);
 		return list;
 	}
-	
 
-	public List<CourseVO> search(String title) {
-		List<CourseVO> list = my.selectList("course.search", title);
+	public List<CourseVO> search(CourseVO vo) {
+		List<CourseVO> list = my.selectList("course.search", vo);
 		return list;
 	}
+
+	//게시판 페이징
+	public int count(int course_no) {
+		return my.selectOne("course.count", course_no);
+	}
 	
+	//검색 페이징
+	public int count(String title) {
+		return my.selectOne("course.count2", title);
+	}
 }
