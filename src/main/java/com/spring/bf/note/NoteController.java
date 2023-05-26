@@ -17,7 +17,7 @@ public class NoteController {
 		System.out.println(bag);
 		dao.insert(bag);
 		
-		return "redirect:list2";
+		return "redirect:receive_notelist";
 	}
 
 	@RequestMapping("note/delete")
