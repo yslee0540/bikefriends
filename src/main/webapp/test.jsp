@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="note/receive_notelist?receiver=apple">TOTAL LIST </a>
+<a href="note/receive_notelist?receiver=<%= session.getAttribute("userId") %>">TOTAL LIST</a>
 </body>
 </html>

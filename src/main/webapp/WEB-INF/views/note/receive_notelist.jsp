@@ -45,8 +45,8 @@ button {
 	<h1>받은 쪽지함</h1>
 	<p>메인으로</p>
 	<div>
-		<a href="receive_notelist?receiver=apple"><button type="button" id="receive">받은쪽지함</button></a>
-		<a href="send_notelist?sender=apple"><button type="button" id="send">보낸쪽지함</button></a> 
+		<a href="receive_notelist?receiver=<%= session.getAttribute("userId") %>">"><button type="button" id="receive">받은쪽지함</button></a>
+		<a href="send_notelist?sender=<%= session.getAttribute("userId") %>">"><button type="button" id="send">보낸쪽지함</button></a> 
 	</div>
 	<table id="messageTable">
 		<tr>
