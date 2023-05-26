@@ -19,11 +19,7 @@
        <typeAlias type="com.spring.bf.course.CourseVO" alias="courseVO"></typeAlias>
        <typeAlias type="com.spring.bf.member.MemberVO" alias="memberVO"></typeAlias>
        <typeAlias type="com.spring.bf.bbs.BbsVO" alias="bbsVO"></typeAlias>
-<<<<<<< HEAD
        <typeAlias type="com.spring.bf.note.NoteVO" alias="noteVO"></typeAlias> 
-=======
-       <typeAlias type="com.spring.bf.note.NoteVO" alias="noteVO"></typeAlias>
->>>>>>> origin/donwoo
    </typeAliases>
    <mappers>
    <!-- SQL문 정의하는 파일들의 목록을 지정. -->
@@ -39,10 +35,6 @@
       <mapper resource="mapper/bbsLikeMapper.xml" />
       <mapper resource="mapper/courseMapper.xml" />
       <mapper resource="mapper/member.xml" />
-<<<<<<< HEAD
-       <mapper resource="mapper/noteMapper.xml" />
-=======
       <mapper resource="mapper/noteMapper.xml" />
->>>>>>> origin/donwoo
    </mappers>
 </configuration>
