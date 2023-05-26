@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%
 	String title = request.getParameter("title");
-	/* int pages = (int) request.getAttribute("pages");
-	int nowpage = Integer.parseInt(request.getParameter("page")); */
+	int pages = (int) request.getAttribute("pages");
+	int nowpage = Integer.parseInt(request.getParameter("page"));
 %>
 <!DOCTYPE html>
 <html>
@@ -29,7 +29,7 @@ tr:hover {
 		</div>
 		<hr>
 		<c:if test="${empty list}">
-			<div style="text-align: center;">검색 결과 없음</div>
+			<div style="text-align: center;padding-bottom:20px;">검색 결과 없음</div>
 		</c:if>
 		<c:if test="${!empty list}">
 			<table class="table">
@@ -41,36 +41,28 @@ tr:hover {
 				<c:forEach var="vo" items="${list}">
 					<tr>
 						<td style="word-wrap: break-word;">${vo.writer}</td>
-						<td>
-							<c:choose>
-								<c:when test="${empty vo.line_lat}">
-									<a href="one?course_no=${vo.course_no}">${vo.title}</a>
-								</c:when>
-								<c:otherwise>
-									<a href="one2?course_no=${vo.course_no}">${vo.title}</a>
-								</c:otherwise>
-							</c:choose>
-						</td>
+						<td><a href="one?course_no=${vo.course_no}">${vo.title}</a></td>
 						<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 				</c:forEach>
 			</table>
 		</c:if>
 
-		<div id="search" style="text-align:center;padding-bottom:0px;">
+		<div id="search" style="text-align:center;">
 			<form action="search">
 				<input placeholder="제목" name="title">
 				<input name="page" value="1" type="hidden">
 				<button>검색</button>
 			</form>
 		</div>
-		<%-- <div id="page">
+		
+		<div id="page">
 			<ul class="pagination justify-content-center">
 				<%
 					if (nowpage > 1) {
 				%>
 				<li class="page-item"><a class="page-link"
-					href="search?group_no=<%= group_no %>&content=<%= content %>&page=<%= nowpage - 1 %>">Previous</a>
+					href="search?title=<%= title %>&page=<%= nowpage - 1 %>">Previous</a>
 				</li>
 				<%
 					} else {
@@ -84,12 +76,14 @@ tr:hover {
 					if (p == nowpage) {
 				%>
 				<li class="page-item active"><a class="page-link"
-					href="search?group_no=<%= group_no %>&content=<%= content %>&page=<%= p %>"><%=p%></a></li>
+					href="search?title=<%= title %>&page=<%= p %>"><%=p%></a>
+				</li>
 				<%
 					} else {
 				%>
 				<li class="page-item"><a class="page-link"
-					href="search?group_no=<%= group_no %>&content=<%= content %>&page=<%= p %>"><%=p%></a></li>
+					href="search?title=<%= title %>&page=<%= p %>"><%=p%></a>
+				</li>
 				<%
 					}
 				}
@@ -98,7 +92,7 @@ tr:hover {
 					if (nowpage < pages) {
 				%>
 				<li class="page-item"><a class="page-link"
-					href="search?group_no=<%= group_no %>&content=<%= content %>&page=<%= nowpage + 1 %>">Next</a>
+					href="search?title=<%= title %>&page=<%= nowpage + 1 %>">Next</a>
 				</li>
 				<%
 					} else {
@@ -108,7 +102,7 @@ tr:hover {
 					}
 				%>
 			</ul>
-		</div> --%>
+		</div>
 	</div>
 </body>
 </html>

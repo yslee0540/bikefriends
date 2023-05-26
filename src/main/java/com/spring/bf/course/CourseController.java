@@ -14,26 +14,27 @@ public class CourseController {
 	
 	@RequestMapping("course/list")
 	public void list(CourseVO vo, Model model) {
+		vo.setStartEnd(vo.getPage());
 		List<CourseVO> list = dao.list(vo);
+		int count = dao.count(vo.getCourse_no());
+		int pages = 0;
+		if (count % 20 == 0) {
+			pages = count / 20;
+		} else {
+			pages = count / 20 + 1;
+		}
 		model.addAttribute("list", list);
+		model.addAttribute("pages", pages);
 	}
 	
 	@RequestMapping("course/one")
 	public void one(int course_no, Model model) {
-		CourseVO vo = dao.one(course_no);
-		model.addAttribute("vo", vo);
-		model.addAttribute("rate", vo.getRate());
-	}
-	
-	@RequestMapping("course/one2")
-	public void one2(int course_no, Model model) {
 		CourseVO vo = dao.one(course_no);
 		
 		String[] lat = vo.getLine_lat().split("/");
 		String[] lng = vo.getLine_lng().split("/");
 		
 		model.addAttribute("vo", vo);
-		model.addAttribute("rate", vo.getRate());
 		
 		model.addAttribute("lat", lat);
 		model.addAttribute("lng", lng);
@@ -41,39 +42,20 @@ public class CourseController {
 	}
 	
 	//update 페이지에 현재 정보 보여주기
-	@RequestMapping("course/update")
-	public void update(int course_no, Model model) {
+	@RequestMapping("course/updateline")
+	public void updateView(int course_no, Model model) {
 		CourseVO vo = dao.one(course_no);
 		model.addAttribute("vo", vo);
-		model.addAttribute("rate", vo.getRate());
 	}
 	
-	@RequestMapping("course/update2")
+	@RequestMapping("course/updateline2")
 	public void update(CourseVO vo) {
 		dao.update(vo);
 	}
 	
-	//update 페이지에 현재 정보 보여주기
-	@RequestMapping("course/updateline")
-	public void update2(int course_no, Model model) {
-		CourseVO vo = dao.one(course_no);
-		model.addAttribute("vo", vo);
-		model.addAttribute("rate", vo.getRate());
-	}
-	
-	@RequestMapping("course/updateline2")
-	public void update2(CourseVO vo) {
-		dao.update2(vo);
-	}
-	
-	@RequestMapping("course/insert")
+	@RequestMapping("course/insertline")
 	public void insert(CourseVO vo) {
 		dao.insert(vo);
-	}
-	
-	@RequestMapping("course/insertline")
-	public void insert2(CourseVO vo) {
-		dao.insert2(vo);
 	}
 	
 	@RequestMapping("course/delete")
@@ -83,19 +65,19 @@ public class CourseController {
 	}
 	
 	@RequestMapping("course/search")
-	public void search(String title, Model model) {
-//		vo.setStartEnd(vo.getPage());
-		List<CourseVO> list = dao.search(title);
-//		int count = dao.count(vo);
-//		int pages = 0;
-//		if (count % 20 == 0) {
-//			pages = count / 20;
-//		} else {
-//			pages = count / 20 + 1;
-//		}
+	public void search(CourseVO vo, Model model) {
+		vo.setStartEnd(vo.getPage());
+		List<CourseVO> list = dao.search(vo);
+		int count = dao.count(vo.getTitle());
+		int pages = 0;
+		if (count % 20 == 0) {
+			pages = count / 20;
+		} else {
+			pages = count / 20 + 1;
+		}
 		
 		model.addAttribute("list", list);
-//		model.addAttribute("pages", pages);
+		model.addAttribute("pages", pages);
 	}
 	
 }

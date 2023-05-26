@@ -48,6 +48,11 @@
 		and group_no = #{group_no}
 	</select>
 	
+	<!-- 그룹이름 -->
+	<select id="groupone" parameterType="int" resultType="bbsVO">
+		select * from `bbsgroup` where group_no = #{group_no}
+	</select>
+	
 	<select id="search" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
 			select row_number() over(order by date desc) as no, b.*

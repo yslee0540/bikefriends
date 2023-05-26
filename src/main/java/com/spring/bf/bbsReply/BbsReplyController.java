@@ -24,14 +24,15 @@ public class BbsReplyController {
 	}
 	
 	@RequestMapping("bbs/replyupdate")
-	public void update(int reply_no, Model model) {
+	public void updateView(int reply_no, Model model) {
 		BbsReplyVO vo = dao.one(reply_no);
 		model.addAttribute("vo", vo);
 	}
 	
 	@RequestMapping("bbs/replyupdate2")
-	public void update2(BbsReplyVO vo) {
+	public String update(BbsReplyVO vo) {
 		dao.update(vo);
+		return "redirect:one?bbs_no=" + vo.getBbs_no();
 	}
 	
 	@RequestMapping("bbs/replylist")

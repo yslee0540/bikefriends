@@ -17,19 +17,18 @@
 				if (session.getAttribute("id") != null) {
 			%>
 			<div id="title">
-				${group.group_name} <a href="best2?group_no=${group.group_no}&page=1">
+				${bbsVO.group_name} <a href="bestlist?group_no=${bbsVO.group_no}&page=1">
 					<span class="best">BEST</span>
 				</a>
 			</div>
-			<form action="insert.jsp">
-				<input name="group_no" value="${group.group_no}" type="hidden">
+			<a href="insert.jsp?group_no=${bbsVO.group_no}">
 				<button class="btn btn-primary">글쓰기</button>
-			</form>
+			</a>
 			<%
 				} else {
 			%>
 			<div id="title2">
-				${group.group_name} <a href="best2?group_no=${group.group_no}&page=1">
+				${bbsVO.group_name} <a href="bestlist?group_no=${bbsVO.group_no}&page=1">
 					<span class="best">BEST</span>
 				</a>
 			</div>
@@ -87,7 +86,7 @@
 					</div>
 					<div id="search" class="col-sm-7">
 						<form action="search">
-							<input name="group_no" value="${group.group_no}" type="hidden">
+							<input name="group_no" value="${bbsVO.group_no}" type="hidden">
 							<input placeholder="내용" name="content">
 							<input name="page" value="1" type="hidden">
 							<button>검색</button>
@@ -105,7 +104,7 @@
 							if (nowpage > 1) {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="list?group_no=${group.group_no}&page=<%= nowpage - 1 %>">Previous</a>
+							href="list?group_no=${bbsVO.group_no}&page=<%= nowpage - 1 %>">Previous</a>
 						</li>
 						<%
 							} else {
@@ -119,13 +118,13 @@
 							if (p == nowpage) {
 						%>
 						<li class="page-item active"><a class="page-link"
-							href="list?group_no=${group.group_no}&page=<%= p %>"><%=p%></a>
+							href="list?group_no=${bbsVO.group_no}&page=<%= p %>"><%=p%></a>
 						</li>
 						<%
 							} else {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="list?group_no=${group.group_no}&page=<%= p %>"><%=p%></a>
+							href="list?group_no=${bbsVO.group_no}&page=<%= p %>"><%=p%></a>
 						</li>
 						<%
 							}
@@ -135,7 +134,7 @@
 							if (nowpage < pages) {
 						%>
 						<li class="page-item"><a class="page-link"
-							href="list?group_no=${group.group_no}&page=<%= nowpage + 1 %>">Next</a>
+							href="list?group_no=${bbsVO.group_no}&page=<%= nowpage + 1 %>">Next</a>
 						</li>
 						<%
 							} else {

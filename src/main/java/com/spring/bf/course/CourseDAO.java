@@ -17,11 +17,6 @@ public class CourseDAO {
 		return result;
 	}
 	
-	public int insert2(CourseVO vo) {
-		int result = my.insert("course.insert2", vo);
-		return result;
-	}
-	
 	public int delete(int course_no) {
 		int result = my.delete("course.delete", course_no);
 		return result;
@@ -29,11 +24,6 @@ public class CourseDAO {
 	
 	public int update(CourseVO vo) {
 		int result = my.update("course.update", vo);
-		return result;
-	}
-	
-	public int update2(CourseVO vo) {
-		int result = my.update("course.update2", vo);
 		return result;
 	}
 	
@@ -47,9 +37,18 @@ public class CourseDAO {
 		return list;
 	}
 
-	public List<CourseVO> search(String title) {
-		List<CourseVO> list = my.selectList("course.search", title);
+	public List<CourseVO> search(CourseVO vo) {
+		List<CourseVO> list = my.selectList("course.search", vo);
 		return list;
 	}
+
+	//게시판 페이징
+	public int count(int course_no) {
+		return my.selectOne("course.count", course_no);
+	}
 	
+	//검색 페이징
+	public int count(String title) {
+		return my.selectOne("course.count2", title);
+	}
 }

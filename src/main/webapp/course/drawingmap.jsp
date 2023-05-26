@@ -97,8 +97,6 @@ function drawPolyline(lines) {
 
 var lat = '';
 var lng = '';
-var startaddr = '';
-var geocoder = new kakao.maps.services.Geocoder();
 
 // Drawing Manager에서 가져온 데이터 중 
 // 선과 다각형의 꼭지점 정보를 kakao.maps.LatLng객체로 생성하고 배열로 반환하는 함수입니다 
@@ -115,15 +113,6 @@ function pointsToPath(points) {
         lat += points[i].y.toFixed(5) + '/'
         lng += points[i].x.toFixed(5) + '/'
     }
-
-	var coord = new kakao.maps.LatLng(points[0].y, points[0].x);
-	var callback = function(result, status) {
-	    if (status === kakao.maps.services.Status.OK) {
-	    	startaddr = result[0].address.address_name;
-	    }
-	};
-	
-	geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 }
 
 </script>

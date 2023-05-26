@@ -17,7 +17,6 @@ tr:hover {
 <div id="main">
 	<div id="top">
         <div id="title">코스 공유</div>
-		<a href="insert.jsp"><button class="btn btn-primary">출발점/도착점 선택</button></a>
 		<a href="insertline.jsp"><button class="btn btn-primary">코스그리기</button></a>
      </div>
      <hr>
@@ -32,16 +31,7 @@ tr:hover {
 		<c:forEach items="${list}" var="vo">
 			<tr>
 				<td>${vo.writer}</td>
-				<td>
-					<c:choose>
-						<c:when test="${empty vo.line_lat}">
-							<a href="one?course_no=${vo.course_no}">${vo.title}</a>
-						</c:when>
-						<c:otherwise>
-							<a href="one2?course_no=${vo.course_no}">${vo.title}</a>
-						</c:otherwise>
-					</c:choose>
-				</td>
+				<td><a href="one?course_no=${vo.course_no}">${vo.title}</a></td>
 				<td>${vo.rate}</td>
 				<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 			</tr>
@@ -53,6 +43,57 @@ tr:hover {
 			<input name="page" value="1" type="hidden">
 			<button>검색</button>
 		</form>
+	</div>
+	<%
+		int pages = (int) request.getAttribute("pages");
+		int nowpage = Integer.parseInt(request.getParameter("page"));
+	%>
+	<div id="page">
+		<ul class="pagination justify-content-center">
+			<%
+				if (nowpage > 1) {
+			%>
+			<li class="page-item"><a class="page-link"
+				href="list?page=<%= nowpage - 1 %>">Previous</a>
+			</li>
+			<%
+				} else {
+			%>
+			<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+			<%
+				}
+			%>
+			<%
+				for (int p = 1; p <= pages; p++) {
+				if (p == nowpage) {
+			%>
+			<li class="page-item active"><a class="page-link"
+				href="list?page=<%= p %>"><%=p%></a>
+			</li>
+			<%
+				} else {
+			%>
+			<li class="page-item"><a class="page-link"
+				href="list?page=<%= p %>"><%=p%></a>
+			</li>
+			<%
+				}
+			}
+			%>
+			<%
+				if (nowpage < pages) {
+			%>
+			<li class="page-item"><a class="page-link"
+				href="list?page=<%= nowpage + 1 %>">Next</a>
+			</li>
+			<%
+				} else {
+			%>
+			<li class="page-item disabled"><a class="page-link" href="#">Next</a></li>
+			<%
+				}
+			%>
+		</ul>
 	</div>
 </div>
 </body>

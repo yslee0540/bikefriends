@@ -28,7 +28,7 @@
 					<li><a class="dropdown-item" href="/bf/bbs/grouplist">전체
 							게시판 목록</a></li>
 					<li><a class="dropdown-item" href="/bf/bbs/best">인기 게시판</a></li>
-					<li><a class="dropdown-item" href="/bf/course/list">코스
+					<li><a class="dropdown-item" href="/bf/course/list?page=1">코스
 							공유하기</a></li>
 				</ul></li>
 			<li class="nav-item"><a class="nav-link" href="/bf/bike/bikemain">자전거정보</a></li>

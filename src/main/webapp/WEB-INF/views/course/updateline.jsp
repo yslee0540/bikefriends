@@ -33,7 +33,7 @@
 <script type="text/javascript">
 	$(function() {
 		/* 별점 */
-		var rate = ${rate};
+		var rate = ${vo.rate};
 		$('.starRev span').click(function () {
             $(this).parent().children('span').removeClass('on');
             $(this).addClass('on').prevAll('span').addClass('on');
@@ -51,7 +51,7 @@
 					content: $('#content').val()
 				},
 				success : function() {
-					location.href = "one2?course_no=" + ${vo.course_no};
+					location.href = "one?course_no=" + ${vo.course_no};
 				}
 			})
 		})
@@ -69,20 +69,16 @@
 
 			<div class="starRev" style="padding-bottom: 10px;">
 				점수:
-				<%
-				int rate = (int) request.getAttribute("rate");
-				for (int i = 1; i <= 5; i++) {
-					if (rate >= i) {
-				%>
-				<span class="starR on" value="<%=i%>">★</span>
-				<%
-					} else {
-				%>
-				<span class="starR" value="<%=i%>">★</span>
-				<%
-					}
-				}
-				%>
+				<c:forEach begin="1" end="5" varStatus="status">
+					<c:choose>
+						<c:when test="${status.count <= vo.rate}">
+							<span class="starR on" value="${status.count}">★</span>
+						</c:when>
+						<c:otherwise>
+							<span class="starR off" value="${status.count}">★</span>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</div>
 			<button id="save">수정</button>
 		</div>

@@ -34,7 +34,6 @@
 				$.ajax({
 					url : "insertline",
 					data : {
-						start_location : startaddr,
 						line_lat : lat,
 						line_lng : lng,
 						rate: rate,
@@ -69,8 +68,6 @@
 			자전거도로 정보 보기
 		</p>
 		<div class="style">
-			출발: <span id="start"></span><br><br>
-		
 			제목: <input id="ctitle"><br>
 			내용<br> <textarea rows="5" cols="30" id="content"></textarea><br>
 			<div class="starRev" style="padding-bottom:10px;">
