@@ -42,9 +42,9 @@
 			<% } else { %>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" role="button"
-				data-bs-toggle="dropdown">aaa님</a>
+				data-bs-toggle="dropdown"><%=session.getAttribute("name")%></a>
 				<ul class="dropdown-menu dropdown-menu-end">
-					<li><a class="dropdown-item" href="/bf/member/myInfo.jsp">마이페이지</a></li>
+					<li><a class="dropdown-item" href="/bf/member/one?id=<%=session.getAttribute("id")%>">마이페이지</a></li>
 					<li><a class="dropdown-item" href="#">쪽지</a></li>
 				</ul></li>
 			<li class="nav-item" style="text-align: right;"><a

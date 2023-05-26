@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 import java.util.Locale;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.spring.bf.bbs.BbsVO;
 
 @Component
 public class MemberDAO { // CRUD
@@ -32,7 +35,7 @@ public class MemberDAO { // CRUD
 				}
 			}
 		}
-		System.out.println("result" + result);
+		System.out.println("result : " + result);
 		return result;
 
 	}
@@ -66,6 +69,17 @@ public class MemberDAO { // CRUD
 	public void updateIMG(MemberVO bag) {
 		my.selectOne("member.upimg", bag);
 		System.out.println(bag);
+	}
+	
+	public MemberVO one(String id) {
+		MemberVO bag = my.selectOne("member.one", id);
+		return bag;
+	}
+	
+	//지정된 writer만 가져옴
+	public List<BbsVO> list(BbsVO vo) {
+		List<BbsVO> list = my.selectList("member.list", vo);
+		return list;
 	}
 	
 	public MemberVO select(String id) {

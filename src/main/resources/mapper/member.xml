@@ -12,6 +12,17 @@
 		where Sign_id = #{Sign_id}
 	</select>
 	
+	<select id="list" parameterType="bbsVO" resultType="bbsVO">
+		select * from (
+			select row_number() over(order by date desc) as no, b.*,
+			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
+			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
+			from bbs b
+			where group_no = #{group_no}
+		) as b2
+		where b2.no between #{start} and #{end} AND writer = #{writer}
+	</select>
+	
 	<select id="idChk" resultType="int">
 		select COUNT(*) from member
 		where Sign_id = #{Sign_id}
@@ -19,7 +30,9 @@
 	
 	<update id="up"  parameterType="memberVO">
 		update `member`
-		set Sign_name = #{Sign_name}, Sign_age = #{Sign_age}, Sign_gender = #{Sign_gender}, Sign_bio = #{Sign_bio}
+		set Sign_name = #{Sign_name}, Sign_age = #{Sign_age}, Sign_gender = #{Sign_gender}, 
+		Sign_bio = #{Sign_bio}, Sign_email = #{Sign_email}, Sign_address = #{Sign_address}, 
+		Sign_phone = #{Sign_phone}, Sign_birthday = #{Sign_birthday} 
 		where Sign_id = #{Sign_id}
 	</update>
 	
