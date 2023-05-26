@@ -77,10 +77,10 @@ public class eventController {
 	}
 	
 	@RequestMapping("event/delete")
-	public void delete(String id) {
+	public void delete(String event_id) {
 		System.out.println("delete요청됨.");
-		System.out.println(id);
-		dao.delete(id);
+		System.out.println(event_id);
+		dao.delete(event_id);
 	}
 
 //	@RequestMapping("one")
@@ -102,9 +102,9 @@ public class eventController {
 	}
 
 	@RequestMapping("event/one")
-	public void one(String id, Model model) {
-		System.out.println(id);
-		eventVO vo = dao.one(id);
+	public void one(String event_id, Model model) {
+		System.out.println("id="+event_id);
+		eventVO vo = dao.one(event_id);
 		model.addAttribute("vo", vo);
 	}
 

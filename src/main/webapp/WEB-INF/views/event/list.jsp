@@ -6,12 +6,20 @@
 <style>
   table {
     width: 100%;
-    border: 1px solid #444444;
+   /*  border: 1px solid #444444; */
     border-collapse: collapse;
   }
+  </style>
+  <style>
   th, td {
-    border: 1px solid #444444;
+   /*  border: 1px solid #444444; */
   }
+</style>
+<style>
+a {
+	text-decoration: none;
+	color: blue;
+}
 </style>
 <table style="background:white;">
 	<tr align="center">
@@ -25,7 +33,7 @@
 
 		<tr align="center">
 			<td class="down">${eventVO.event_id}</td>
-			<td class="down">${eventVO.event_location}</td>
+			<td class="down"  ><a href="event/one?event_id=${eventVO.event_id}">${eventVO.event_location}</a></td>
 			<td class="down">${eventVO.event_date}</td>
 			<td class="down">${eventVO.event_size}</td>
 		</tr>
