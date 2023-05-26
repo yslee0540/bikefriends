@@ -124,14 +124,14 @@
 		<%} %>
 		<div id="onereply" style="width: 100%;">
 			<c:forEach items="${list}" var="vo" varStatus="vs">
-				<table style="width: 100%; margin: 5px;">
+				<table style="width: 100%; height:100px; margin-bottom:3px; border: 1px solid #444444; table-layout: fixed;">
 					<tr>
 						<td style="width: 15%; color: #FAD000;">${vo.bikereply_rating}</td>
 						<td style="width: 60%; text-align: right;">${vo.bikereply_writer}</td>
 						<td style="width: 25%; text-align: right; font-size: 6px">${vo.date}</td>
 					</tr>
 					<tr>
-						<td colspan="3">${vo.bikereply_content}</td>
+						<td colspan="3" style="width: 100%;  overflow-x:auto;">${vo.bikereply_content}</td>
 					</tr>
 					<c:choose>
 					<c:when test="${id == vo.bikereply_writer}">

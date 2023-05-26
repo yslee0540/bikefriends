@@ -21,7 +21,7 @@
 	</select>
 	
 	<update id="update" parameterType="bikereplyVO">
-		update bikereply set bikereply_content = #{bikereply_content} where bikereply_no = #{bikereply_no}
+		update bikereply set bikereply_content = #{bikereply_content} , bikereply_rating = #{bikereply_rating} where bikereply_no = #{bikereply_no}
 	</update>
 
 </mapper>
