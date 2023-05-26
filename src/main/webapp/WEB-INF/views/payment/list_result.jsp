@@ -23,97 +23,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.min.css" />
 
-<script type="text/javascript">
-	$(function() {
-		$.ajax({
-			url : "payList2", //views/payList2.jsp가 결과!
-			data : {
-				page : 1
-			},
-			success : function(result) { //결과가 담겨진 table부분코드
-				$('#d1').html(result)
-			},
-			error : function() {
-				alert('실패.@@@')
-			}
-		}) //ajax
-		
-		//alert('test...')
-		$('#b1').click(function() {
-			$.ajax({
-				url : "payList", //views/payList.jsp가 결과!
-				success : function(result) { //결과가 담겨진 table부분코드
-					$('#d1').html(result)
-				},
-				error : function() {
-					alert('실패.@@@')
-				}
-			}) //ajax
-		}) //b1
-		$('#b2').click(function() {
-			$.ajax({
-				url : "payList2", //views/payList2.jsp가 결과!
-				data : {
-					start : 1, 
-					end : 5
-				},
-				success : function(result) { //결과가 담겨진 table부분코드
-					$('#d1').html(result)
-				},
-				error : function() {
-					alert('실패.@@@')
-				}
-			}) //ajax
-		}) //b2
-		
-		$('#b3').click(function() {
-			$.ajax({
-				url : "payList2", //views/payList2.jsp가 결과!
-				data : {
-					start : 6, 
-					end : 10
-				},
-				success : function(result) { //결과가 담겨진 table부분코드
-					$('#d1').html(result)
-				},
-				error : function() {
-					alert('실패.@@@')
-				}
-			}) //ajax
-		}) //b3
-		
-		$('#b4').click(function() {
-			$.ajax({
-				url : "payList2", //views/payList2.jsp가 결과!
-				data : {
-					page : 1
-				},
-				success : function(result) { //결과가 담겨진 table부분코드
-					$('#d1').html(result)
-				},
-				error : function() {
-					alert('실패.@@@')
-				}
-			}) //ajax
-		}) //b4
-		
-		$('#b5').click(function() {
-			$.ajax({
-				url : "payAll", //views/payList2.jsp가 결과!
-				data : {
-					page : 2
-				},
-				success : function(result) { //결과가 담겨진 table부분코드
-					$('#d1').html(result)
-				},
-				error : function() {
-					alert('실패.@@@')
-				}
-			}) //ajax
-		}) //b5
-		
-	})
-</script>
+
 
 
 
@@ -193,16 +103,25 @@ td {
 		function onclick_es5(value) {
 			console.log('onclick_es5')
 		}
-		
-</script>
-	<script type="text/javascript">
+
 	$(function() {
-		$('#delete').click(function() {
-			console.log('delete')
-		})//b3
-		
-		
-	})//$
+		$('.delete').click(function() {
+			alert($(this).attr("value"))
+			
+			$.ajax ({
+			url : "delete", 
+			data : { 
+				id : $(this).attr("value")
+			},
+			success : function(x) {
+				
+				location.href="list_result.jsp"
+				$('#result').append(x+"<br>")
+			}
+
+		}) //ajax
+	}) //b2
+	})
 </script>
 
 	<div id="container">
@@ -229,7 +148,7 @@ td {
 						<td class="down">${bag.email}</td>
 						
 						
-						<td><button id="delete" >삭제</button></td>
+						<td><button class="delete" value="${bag.id}" >삭제</button></td>
 					</tr>
 
 				</c:forEach>
