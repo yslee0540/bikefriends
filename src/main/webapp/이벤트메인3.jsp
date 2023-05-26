@@ -13,7 +13,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery-3.6.1.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/out.css">
 <script type="text/javascript">
 	$(function() {
@@ -32,7 +32,7 @@
  <jsp:include page="nav.jsp"></jsp:include>
 <div id="map" style="width:100%;height:800px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15f705da222625307144938e873224ed"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ed39086327d2b4332a5533af606ec521"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
