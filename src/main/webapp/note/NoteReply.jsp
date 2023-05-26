@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="insert" method="post">
-		<input type="text" name="sender" value="apple"> 
+		<input type="text" name="sender" value="<%= session.getAttribute("userId") %>"> 
 
 		<input type="text" name="reciever" value="${param.sender}">
  		<label for="title">제목:</label>
