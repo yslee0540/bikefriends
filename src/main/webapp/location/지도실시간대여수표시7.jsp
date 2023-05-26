@@ -8,10 +8,14 @@
 <meta charset="utf-8">
 <title>여러개 마커에 이벤트 등록하기1</title>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15f705da222625307144938e873224ed&&libraries=services"></script>
 <script type="text/javascript">
 let jsonArray1 = [];
 let jsonArray2 = [];
 let jsonArray3 = [];
+var geocoder = new kakao.maps.services.Geocoder();
+
 	var ajax1=$.ajax({
 		url : "http://openapi.seoul.go.kr:8088/49747167436369633836706f6a5367/json/bikeList/1/1000/",
 		success : function(response) {
@@ -56,15 +60,48 @@ let jsonArray3 = [];
 		}
 	})
 	$.when(ajax1, ajax2, ajax3).done(function(){
+		
 		var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
 		mapOption = {
 			center : new kakao.maps.LatLng(37.5556488,	126.91062927), // 지도의 중심좌표
-			level : 3
+			level : 4
 		// 지도의 확대 레벨
 		};
-		
-		var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
+		// 주소-좌표 변환 객체를 생성합니다
+		/* var geocoder = new kakao.maps.services.Geocoder(); */
+var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
+var imageSize = new kakao.maps.Size(24, 35); 
+
+// 마커 이미지를 생성합니다    
+var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
+		// 주소로 좌표를 검색합니다
+		geocoder.addressSearch('서울시 송파구 석촌호수로 262', function(result, status) {
+
+		    // 정상적으로 검색이 완료됐으면 
+		     if (status === kakao.maps.services.Status.OK) {
+
+		        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+		        // 결과값으로 받은 위치를 마커로 표시합니다
+		        var marker = new kakao.maps.Marker({
+		            map: map,
+		            position: coords,
+		            image : markerImage 
+		        });
+
+		        // 인포윈도우로 장소에 대한 설명을 표시합니다
+		        var infowindow = new kakao.maps.InfoWindow({
+		            content: '<div style="width:150px;text-align:center;padding:6px 0;">내위치</div>'
+		        });
+		        infowindow.open(map, marker);
+
+		        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		        map.setCenter(coords);
+		    } 
+		});  
+		
 		// 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다 
 		var response1=[
 			[37.5556488,	126.91062927],
@@ -2787,8 +2824,7 @@ let jsonArray3 = [];
 		
 		for (var i = 0; i < 1000; i++) {
 			// 마커를 생성합니다
-			var j=37.5554884;
-			var k=126.8998606;
+			
 			var marker = new kakao.maps.Marker({
 				map : map, // 마커를 표시할 지도
 
@@ -2814,8 +2850,7 @@ let jsonArray3 = [];
 		
 		for (var i = 0; i < 1000; i++) {
 			// 마커를 생성합니다
-			var j=37.5554884;
-			var k=126.8998606;
+			
 			var marker = new kakao.maps.Marker({
 				map : map, // 마커를 표시할 지도
 
@@ -2842,8 +2877,7 @@ let jsonArray3 = [];
 		
 		for (var i = 0; i < 709; i++) {
 			// 마커를 생성합니다
-			var j=37.5554884;
-			var k=126.8998606;
+			
 			var marker = new kakao.maps.Marker({
 				map : map, // 마커를 표시할 지도
 
@@ -2887,8 +2921,7 @@ let jsonArray3 = [];
 </head>
 <body>
 	<div id="map" style="width: 100%; height: 350px;"></div>
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15f705da222625307144938e873224ed"></script>
+	
 </body>
 </html>
 

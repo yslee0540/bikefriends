@@ -8,6 +8,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javafx.util.converter.DateStringConverter;
 
 public class eventVO {
+		private int no;
 		private String event_id;
 		private String event_location;
 		
@@ -46,10 +47,17 @@ public class eventVO {
 		public void setEvent_size(int event_size) {
 			this.event_size = event_size;
 		}
+		
+		public int getNo() {
+			return no;
+		}
+		public void setNo(int no) {
+			this.no = no;
+		}
 		@Override
 		public String toString() {
-			return "eventVO [event_id=" + event_id + ", event_location=" + event_location + ", event_date=" + event_date
-					+ ", event_img=" + event_img + ", event_size=" + event_size + "]";
+			return "eventVO [no=" + no + ", event_id=" + event_id + ", event_location=" + event_location
+					+ ", event_date=" + event_date + ", event_img=" + event_img + ", event_size=" + event_size + "]";
 		}
 		
 		

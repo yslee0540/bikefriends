@@ -15,7 +15,7 @@
 	</update>
 	
 	<select id="one" parameterType="String" resultType="eventVO"> 
-	select * from event where id=#{id}
+	select * from event where event_id=#{event_id}
 	</select>
 	
 	<select id="all" resultType="eventVO">

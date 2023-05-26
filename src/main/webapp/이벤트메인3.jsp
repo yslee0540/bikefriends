@@ -13,7 +13,7 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-	<script type="text/javascript" src="resources/js/jquery-3.6.1.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/out.css">
 <script type="text/javascript">
 	$(function() {
@@ -37,7 +37,7 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
         center: new kakao.maps.LatLng(37.502, 127.026581), // 지도의 중심좌표
-        level: 4// 지도의 확대 레벨
+        level: 8// 지도의 확대 레벨
     };
 
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
@@ -48,13 +48,14 @@ var content = '<div id="div">'+
 '<div class="main">이벤트</div>'+
 '<div id="category">'+
 	'<ul class="list-group">'+
-		'<li class="list-group-item menu"><a href="myevent/내가가입한이벤트.jsp" class="link">같이달려요</a></li>'+
-		'<li class="list-group-item menu"><a href="event/이벤트개설.jsp" class="link">이벤트개설</a></li>'+
-		'<li class="list-group-item menu"><a href="location/공유자전거.jsp" class="link">공유자전거</a></li>'+
+		/* '<li class="list-group-item menu"><a href="myevent/내가가입한이벤트.jsp" class="link">같이달려요</a></li>'+ */
+		'<li class="list-group-item menu"><a href="event/이벤트개설.jsp" class="link">같이달려요</a></li>'+ 
+		'<li class="list-group-item menu"><a href="location/지도실시간대여수표시7.jsp" class="link">자전거공유하기</a></li>'+
 	'</ul>'+
 '</div>'+
 '</div>'+
 '<br><br><br><br><br><br><br><br>'+
+
 '<div id="result"></div>';
 
 // 커스텀 오버레이가 표시될 위치입니다 
