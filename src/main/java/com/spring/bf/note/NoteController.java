@@ -2,6 +2,8 @@ package com.spring.bf.note;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,11 +15,12 @@ public class NoteController {
 	NoteDAO dao;
 
 	@RequestMapping("note/insert")
-	public String insert(NoteVO bag) {
+	public String insert(NoteVO bag, HttpSession session) {
 		System.out.println(bag);
 		dao.insert(bag);
 		
-		return "redirect:receive_notelist";
+		String receiver = (String) session.getAttribute("id");
+	    return "redirect:receive_notelist?receiver=" + receiver;
 	}
 
 	@RequestMapping("note/delete")
