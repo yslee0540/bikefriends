@@ -106,6 +106,13 @@
 				</c:forEach>
 			</div>
 			<br>
+			<div style="padding:0px;">
+	            <a href="list?page=1">
+	                <button class="btn btn-dark">
+	                    <i class="fa-solid fa-list-ul"></i> 목록
+	                </button>
+	            </a>
+	        </div>
 		</div>
 	</div>
 	

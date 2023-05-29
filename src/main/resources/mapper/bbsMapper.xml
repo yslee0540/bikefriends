@@ -100,7 +100,14 @@
 		from bbs b, bbsgroup b2 
 		where b.group_no = b2.group_no
 		and `date` between date_add(now(),interval -1 month) and now()
-		order by hit desc, bbs_no desc limit 20
+		order by hit desc, date desc limit 5
+	</select>
+	
+	<!-- 최신 게시물 리스트 -->
+	<select id="recent" resultType="bbsVO">
+		select * from bbs b, bbsgroup b2 
+		where b.group_no = b2.group_no
+		order by date desc limit 5
 	</select>
 	
 </mapper>

@@ -118,6 +118,13 @@ public class BbsController {
 		model.addAttribute("pages", pages);
 	}
 	
+	//전체 최신 게시물
+	@RequestMapping("bbs/recent")
+	public void recent(Model model) {
+		List<BbsVO> list = dao.recent();
+		model.addAttribute("list", list);
+	}
+	
 	//전체 인기 게시물
 	@RequestMapping("bbs/best")
 	public void best(Model model) {

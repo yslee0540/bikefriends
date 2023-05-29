@@ -4,7 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <table class="table">
 	<tr class="table-warning">
-    	<th colspan="3">인기게시물</th>
+    	<th colspan="3">최신게시물</th>
     </tr>
 	<c:forEach var="vo" items="${list}" end="4">
 		<tr>

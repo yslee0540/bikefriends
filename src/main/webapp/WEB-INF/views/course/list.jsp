@@ -16,8 +16,15 @@ tr:hover {
 <%@ include file="../../../nav.jsp"%>
 <div id="main">
 	<div id="top">
-        <div id="title">코스 공유</div>
-		<a href="insertline.jsp"><button class="btn btn-primary">코스그리기</button></a>
+		<c:choose>
+			<c:when test="${id != null}">
+		        <div id="title">코스 공유</div>
+				<a href="insertline.jsp"><button class="btn btn-primary">코스그리기</button></a>
+			</c:when>
+			<c:otherwise>
+		        <div id="title2">코스 공유</div>
+			</c:otherwise>
+		</c:choose>
      </div>
      <hr>
 	
