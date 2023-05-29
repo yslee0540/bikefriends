@@ -27,7 +27,7 @@
 	
 	<select id="list" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
-			select row_number() over(order by date desc) as no, b.*, m.Sign_img,
+			select row_number() over(order by date desc) as no, b.*, m.*,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
 			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
 			from bbs b, member m
