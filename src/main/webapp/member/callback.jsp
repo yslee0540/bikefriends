@@ -18,7 +18,7 @@
 <body>
 	<script type="text/javascript">
 		var naver_id_login = new naver_id_login("Faa9w2Y7kH0XycxYku9B",
-				"http://localhost:8898/bf/member/allback.jsp");
+				"http://localhost:8887/bf/member/allback.jsp");
 		//alert(naver_id_login.oauthParams.access_token);
 		//naver_id_login.setPopup();
 		naver_id_login.get_naver_userprofile("naverSignInCallback()");

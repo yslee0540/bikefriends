@@ -22,7 +22,7 @@
 				</a>
 			</div>
 			<a href="insert.jsp?group_no=${bbsVO.group_no}">
-				<button class="btn btn-primary">글쓰기</button>
+				<button class="btn" style="background: #14870c;color:white;">글쓰기</button>
 			</a>
 			<%
 				} else {

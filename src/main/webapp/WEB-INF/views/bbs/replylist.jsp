@@ -8,7 +8,7 @@
 			<td class="rewriter" width="100"><b>${status.count}.
 					${vo.writer}</b></td>
 			<td class="redate" width="400"><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-			<td class="rebtn" width="100"><c:if test="${id == vo.writer}">
+			<td class="rebtn" width="100" style="text-align:right;padding-right:20px;"><c:if test="${id == vo.writer}">
 					<a href="replyupdate?reply_no=${vo.reply_no}">
 						<button class="btn btn-sm btn-secondary">수정</button></a>
 					<button class="btn btn-sm btn-secondary b5"
