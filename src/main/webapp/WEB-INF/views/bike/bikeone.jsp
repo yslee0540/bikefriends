@@ -4,10 +4,14 @@
 <%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>	
 <script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
 	
@@ -16,6 +20,9 @@
 			bikereply_writer = "<%=session.getAttribute("id")%>"
 			bikereply_content =  $('#content').val()
 			bikereply_rating =  $('input[name=rating]:checked').val();
+			if(bikereply_content == '' || bikereply_rating == ''){
+				alert("별점,리뷰을 써주세요")
+			}else{
 			$.ajax({
 				url : "bikereplyinsert",
 				data : {	
@@ -29,6 +36,7 @@
 					location.reload()
 				}//success
 			})//ajax
+		}
 		})//bikereplybtn bikereply데이터베이스에 저장
 		 
 		 $(document).on('click', '#replydel', function() {
@@ -116,9 +124,9 @@
 				<div>
 					<textarea style="resize: none; width: 100%;" id="content"
 						name="bikereply_content" placeholder="1000자 이내로 작성해주세요"></textarea>
-				</div>
+				</div>	
 			</form>
-			<button style="float: right;" id="bikereplybtn">등록</button>
+			<button style="float: right;" id="bikereplybtn">작성</button>
 			<br>
 		</div>
 		<%} %>
@@ -138,9 +146,9 @@
 					<tr>
 						<td colspan="3">
 							<button id="replyup" style="float: right;"
-								data-no="${vo.bikereply_no}">수정</button>
-							<button id="replydel" style="float: right;"
-								data-no="${vo.bikereply_no}">삭제</button>
+								data-no="${vo.bikereply_no}" class="btn btn-secondary">수정</button>
+							<button id="replydel" style="float: right;  margin-right: 5px;"
+								data-no="${vo.bikereply_no}" class="btn btn-secondary">삭제</button>
 						</td>
 					</tr>
 					</c:when>

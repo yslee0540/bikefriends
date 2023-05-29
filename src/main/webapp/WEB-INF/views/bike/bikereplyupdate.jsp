@@ -9,18 +9,24 @@
 
 $(function() {
 $("#b1").click(function() {
+	bikereply_content = $('#content').val()	
+	bikereply_rating =  $('input[name=rating]:checked').val();
+	if(bikereply_content == '' || bikereply_rating == ''){
+		alert("별점,리뷰을 써주세요")
+	}else{
 	$.ajax({
 		url : 'bikereplyupdate2',
 		data : {
 			bikereply_no : ${vo.bikereply_no},
-			bikereply_content : $('#content').val(),	
-			bikereply_rating :  $('input[name=rating]:checked').val()
+			bikereply_content : bikereply_content,	
+			bikereply_rating :  bikereply_rating
 		},
 		success : function(result){
 			opener.location.href = 'bikeone?bike_no=' + ${vo.bike_no}		
 			window.close();
-		}		
-		})
+		}//success		
+		})//ajax
+	}
 	})
 })
 </script>
@@ -53,21 +59,21 @@ $("#b1").click(function() {
 			<b>리뷰 수정하기</b>
 		</div>
 		<form id="myform">
-				<fieldset>
-					<span class="text-bold">별점수정</span> <input type="radio"
-						name="rating" value="★★★★★" id="rate1"><label for="rate1">★</label>
-					<input type="radio" name="rating" value="★★★★" id="rate2"><label
-						for="rate2">★</label> <input type="radio" name="rating"
-						value="★★★" id="rate3"><label for="rate3">★</label> <input
-						type="radio" name="rating" value="★★" id="rate4"><label
-						for="rate4">★</label> <input type="radio" name="rating" value="★"
-						id="rate5"><label for="rate5">★</label>
-				</fieldset>
+			<fieldset>
+				<span class="text-bold">별점수정</span><input type="radio" name="rating"
+					value="★★★★★" id="rate1"><label for="rate1">★</label> <input
+					type="radio" name="rating" value="★★★★" id="rate2"><label
+					for="rate2">★</label> <input type="radio" name="rating" value="★★★"
+					id="rate3"><label for="rate3">★</label> <input type="radio"
+					name="rating" value="★★" id="rate4"><label for="rate4">★</label>
+				<input type="radio" name="rating" value="★" id="rate5"><label
+					for="rate5">★</label>
+			</fieldset>
 		</form>
 		<textarea id="content" rows="10" cols="60"
 			style="width: 560px; margin: 10px 20px 0; resize: none;">${vo.bikereply_content}</textarea>
 		<div style="padding: 10px 20px 0; text-align: right;">
-			<button id="b1">수정</button>
+			<button id="b1" class="btn btn-secondary">수정</button>
 		</div>
 	</div>
 </body>
