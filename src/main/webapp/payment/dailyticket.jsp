@@ -8,7 +8,14 @@
 <head>
 <title>CSS 레이아웃 - 3단 레이아웃</title>
 <meta charset="UTF-8">
-
+<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
+	<link rel="stylesheet" href="resources/css/bbsstyle.css">
 <style>
 * {
 	margin: 0;
@@ -66,7 +73,7 @@
 	margin: 3px 1px;
 	cursor: pointer;
 }
-
+.button2 {font-size: 3px; padding: 1px 1px;}
 .button3 {border-radius: 8px; width: 30%;}
 .button4 {border-radius: 8px; width: 20%;background-color: #008CBA;}
 .button5 {border-radius: 8px; width: 15%;background-color: lime;}
@@ -128,11 +135,16 @@ div.c {
 </head>
 
 <body>
+
+
+        
+<jsp:include page="../nav.jsp"></jsp:include>
+
 	<div id="container">
 		<header id="header">
 			<h1>이용권 선택</h1>
 			
-			<a href="paidList"><button>구매내역</button></a>
+			<a href="paidList"><button class="button2">구매내역</button></a>
 				</header>
 		
 		<main id="contents">
