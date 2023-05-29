@@ -143,8 +143,9 @@ div.c {
 	<div id="container">
 		<header id="header">
 			<h1>이용권 선택</h1>
-			
-			<a href="paidList"><button class="button2">구매내역</button></a>
+			<div style="padding: 1px 2px 0;text-align: right;line-height:1;">
+	           <a href="paidList"><button >구매내역</button></a>
+	        </div>
 				</header>
 		
 		<main id="contents">
