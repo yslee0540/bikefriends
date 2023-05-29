@@ -63,6 +63,11 @@ public class BbsDAO {
 		return list;
 	}
 	
+	public List<BbsVO> recent() {
+		List<BbsVO> list = my.selectList("bbs.recent");
+		return list;
+	}
+	
 	//게시판 페이징
 	public int count(int group_no) {
 		return my.selectOne("bbs.count", group_no);

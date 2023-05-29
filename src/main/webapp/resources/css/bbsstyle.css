@@ -164,11 +164,21 @@ textarea {
 }
 
 /* 메인페이지 */
-.mainbtn {
+/* .mainbtn {
     width: 200px;
     height: 80px;
     margin: 20px 0;
     font-size: 17px;
+} */
+.mainbtn {
+    width: 200px;
+    height: 50px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+.mainbtn:hover {
+    background: #ddd;
 }
 
 .main_image {

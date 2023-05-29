@@ -42,7 +42,7 @@
 						writer: '${id}'
 					},
 					success : function() {
-						location.href = "list";
+						location.href = "list?page=1";
 					}
 				})
 			}
