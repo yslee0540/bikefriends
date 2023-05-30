@@ -51,9 +51,6 @@ button {
 <body>
 	<jsp:include page="/nav.jsp"></jsp:include>
 	<h1>보낸 쪽지함</h1>
-	<p>
-		<a class="nav-link active" href="/bf">메인으로</a>
-	</p>
 	<div>
 		<a href="receive_notelist?receiver=<%= session.getAttribute("id") %>"><button type="button" id="receive">받은쪽지함</button></a>
 		<a href="send_notelist?sender=<%= session.getAttribute("id") %>"><button type="button" id="send">보낸쪽지함</button></a> 
