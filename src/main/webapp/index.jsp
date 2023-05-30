@@ -123,7 +123,7 @@
 		map.setZoomable(false);
 		
 	</script> -->
-	<jsp:include page="따릉이.jsp"></jsp:include>
+	<jsp:include page="/따릉이.jsp"></jsp:include>
 
 </body>
 </html>

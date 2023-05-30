@@ -9,16 +9,30 @@
 	
 	
 	
-	<select id="all"  resultType="PayVO">
+	<!-- <select id="all"  resultType="PayVO">
 		select * from
 		 
 		payment 
+	</select> -->
+	
+	<delete id="delete" parameterType="String">
+		delete from payment where id = #{id}
+	</delete>
+	
+	<select id="all" resultType="PayVO" parameterType="page1VO">
+	 	select *
+		from (
+		select ROW_NUMBER() over(order by id desc) as pay_no, p.*
+		from
+		payment p) p2
+		where p2.pay_no between #{start} and #{end} 
 	</select>
 	
-	<delete id="delete" parameterType="payVO">
-		delete * from payment
-		
-	</delete>
+	 <select id="count" resultType="Integer">
+		select count(*) from payment
+	</select>
+	
+	
 	
 	
 	

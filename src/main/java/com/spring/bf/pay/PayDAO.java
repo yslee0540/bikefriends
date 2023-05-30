@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.spring.bf.pay.PayVO;
-import com.spring.bf.pay.PageVO;
+import com.spring.bf.pay.Page1VO;
 import com.spring.bf.pay.PayVO;
 
 
@@ -35,8 +35,9 @@ public class PayDAO { // CRUD
 		List<PayVO> list = my.selectList("pay.all");
 		return list;
 }
-	public void delete(PayVO bag) {
-		int result = my.delete("pay.delete");
+	public void delete(String id) {
+		System.out.println("DAO String : " + id);
+		int result = my.delete("pay.delete", id);
 	}
 	
 	
@@ -45,11 +46,11 @@ public class PayDAO { // CRUD
 	}
 	
 
-	public List<PayVO> all(PageVO vo) {
+	public List<PayVO> all(Page1VO vo) {
 		return my.selectList("pay.all", vo);
 	}
 	
-	public List<PayVO> list2(PageVO vo) {
+	public List<PayVO> list2(Page1VO vo) {
 		return my.selectList("pay.list2", vo);
 	}
 	public int count() {

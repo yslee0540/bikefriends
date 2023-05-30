@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 //import com.spring.bf.pay.BbsDAO;
 import com.spring.bf.pay.PayVO;
-import com.spring.bf.pay.PageVO;
+import com.spring.bf.pay.Page1VO;
 //import com.spring.bf.pay.ReplyDAO;
 //import com.spring.bf.pay.ReplyVO;
 import com.spring.bf.pay.PayVO;
@@ -38,11 +38,17 @@ public class RestController {
 	}
 	
 	@RequestMapping("payment/paidList")
-	public String paidList(Model model) {
-		List<PayVO> list = dao.list();
+	public String paidList(Page1VO vo, Model model) {
+		vo.setStartEnd(vo.getPage());
+		List<PayVO> list = dao.all(vo);
+		int count = dao.count();
+		System.out.println("all count>> " + count);
+		int pages = count / 10 + 1; //전체 페이지 개수 구하
 		model.addAttribute("list", list);
-		System.out.println("list : "+list);
-		return "payment/list_result";	
+		model.addAttribute("count", count);
+		model.addAttribute("pages", pages);
+		return "payment/list_result";
+		
 	}
 	
 	/*
@@ -53,14 +59,19 @@ public class RestController {
 	 * }
 	 */
 	
-	@RequestMapping("payment/delete")//여기 주의하자 !! bag가 아닌 id만있으니 id만했음.!
-	public void delete(PayVO bag) {
-		System.out.println("delete요청됨.");
+	//@RequestMapping("payment/delete")//여기 주의하자 !! bag가 아닌 id만있으니 id만했음.!
+	//public void delete(PayVO bag) {
+	//	System.out.println("delete요청됨.");
 		
+	//	System.out.println(dao);
+	//	dao.delete(bag);
+	//}
+	@RequestMapping("payment/delete")//여기 주의하자 !! bag가 아닌 id만있으니 id만했음.!
+	public void delete(String id) {
+		System.out.println("delete요청됨.");
 		System.out.println(dao);
-		dao.delete(bag);
+		dao.delete(id);
 	}
-	
 	
 //	@RequestMapping("json2")
 //	@ResponseBody //요청을 받으면 return되는 데이터를 json으로 만들어서 요청하는 곳으로 다시 보냄.
@@ -200,7 +211,17 @@ public class RestController {
 //		return list;
 //	}
 //	
-	
+	@RequestMapping("payment/payAll")
+	public void all(Page1VO vo, Model model) {
+		vo.setStartEnd(vo.getPage());
+		List<PayVO> list = dao.all(vo);
+		int count = dao.count();
+		System.out.println("all count>> " + count);
+		int pages = count / 10 + 1; //전체 페이지 개수 구하
+		model.addAttribute("list", list);
+		model.addAttribute("count", count);
+		model.addAttribute("pages", pages);
+	}
 
 
 @RequestMapping("payList")
@@ -210,26 +231,26 @@ public void list(PayVO vo, Model model) {
 }
 
 @RequestMapping("payList2")
-public void list2(PageVO vo, Model model) {
+public void list2(Page1VO vo, Model model) {
 	vo.setStartEnd(vo.getPage());
 	List<PayVO> list = dao.list2(vo);
 	model.addAttribute("list", list);
 }
 
-@RequestMapping("payAll")
-public void all(PageVO vo, Model model) {
-	vo.setStartEnd(vo.getPage());
-	List<PayVO> list = dao.all(vo);
-	int count = dao.count();
-	System.out.println("all count>> " + count);
-	int pages = count / 10 + 1; //전체 페이지 개수 구하
-	model.addAttribute("list", list);
-	model.addAttribute("count", count);
-	model.addAttribute("pages", pages);
-}
+//@RequestMapping("payAll")
+//public void all(Page1VO vo, Model model) {
+//	vo.setStartEnd(vo.getPage());
+	//List<PayVO> list = dao.all(vo);
+	//int count = dao.count();
+	//System.out.println("all count>> " + count);
+	//int pages = count / 10 + 1; //전체 페이지 개수 구하
+	//model.addAttribute("list", list);
+	//model.addAttribute("count", count);
+	//model.addAttribute("pages", pages);
+//}
 
 @RequestMapping("payAll2")
-public void all2(PageVO vo, Model model) {
+public void all2(Page1VO vo, Model model) {
 	vo.setStartEnd(vo.getPage());
 	List<PayVO> list = dao.all(vo);
 	int count = dao.count();

@@ -5,6 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>구매하기</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
+	<link rel="stylesheet" href="resources/css/bbsstyle.css">
 <style>
 * {
 	margin: 0;
@@ -222,6 +227,7 @@
 </head>
 
 <body>
+ <jsp:include page="/nav.jsp"></jsp:include>
 	<div id="container">
 		<header id="header">
 			<h1>구매하기</h1>
@@ -231,10 +237,10 @@
 		결제수단<br> <img src="../resources/image/kakao.png"><br>
 		<hr color="lime">
 		<h1>구매자 정보</h1>
-		아이디: <input id="id" value="multicampus"><br>
-		이메일: <input id="email" value="jocharlie@naver.com"><br>
-		구매자이름: <input id="user" value="조창현"><br> 구매자 전화번호: <input
-			id="tel" value="010-5655-4127"><br>
+		아이디: <input id="id" value="본인 아이디"><br>
+		이메일: <input id="email" value="본인 이메일"><br>
+		구매자이름: <input id="user" value="이름"><br> 구매자 전화번호: <input
+			id="tel" value="전화번호"><br>
 		<hr color="lime">
 		<input type="text" value="이용약관"> <br> (필수) 개인의 사생활 어쩌구저쩌구
 		네 그렇습니다.<br> (필수) 법적 책임의 어쩌구 저쩌구<br> <input type="checkbox">

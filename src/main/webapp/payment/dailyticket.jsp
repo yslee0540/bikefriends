@@ -141,17 +141,18 @@ div.c {
 <jsp:include page="../nav.jsp"></jsp:include>
 
 	<div id="container">
+	
 		<header id="header">
 			<h1>이용권 선택</h1>
 			<div style="padding: 1px 2px 0;text-align: right;line-height:1;">
-	           <a href="paidList"><button >구매내역</button></a>
+	          <a href="paidList?page=1"><button>구매내역</button></a>
 	        </div>
 				</header>
 		
 		<main id="contents">
 		<a href="dailyticket.jsp">
 		<button class="button button3">일일권</button>
-		</a>|
+		</a>
 		<a href="regularticket.jsp">
 		<button class="button button3">정기권</button>
 		</a>

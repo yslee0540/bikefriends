@@ -1,6 +1,6 @@
 package com.spring.bf.pay;
 
-public class PageVO {
+public class Page1VO {
 	private int start;
 	private int end;
 	private int page;
