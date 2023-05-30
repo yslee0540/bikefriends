@@ -219,14 +219,24 @@ public class MemberController {
 
 	/* 메인페이지 로그아웃 */
 	@RequestMapping("member/logout")
-	public String logoutMainGET(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	public void logoutMainGET(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-
-		String previousPage = request.getRequestURI();
-	    session.setAttribute("previousPage", previousPage);
-	    System.out.println(session.getAttribute(previousPage));
 		session.invalidate();
 		System.out.println("로그아웃 실행");
-		return "redirect:/index.jsp";
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+			out.println("<script>alert('로그아웃 되었습니다.'); history.go(-1);</script>");
+			System.out.println("back");
+			out.flush();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+//		return "redirect:/index.jsp";
 	}
 }
