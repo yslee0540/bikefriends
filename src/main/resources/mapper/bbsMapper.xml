@@ -17,7 +17,7 @@
 	</update>
 	
 	<select id="one" parameterType="int" resultType="bbsVO">
-		select b.*, m.Sign_img,
+		select b.*, m.Sign_img, m.Sign_name,
 		(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
 		(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
      	from bbs b, member m

@@ -22,9 +22,9 @@ public class GroupController {
 	@RequestMapping("bbs/book")
 	public void book(String id, Model model) {
 		String name = dao.book(id);
-		name = name.substring(name.length()-3, name.length());
+		//name = name.substring(4, name.length());
 		GroupVO vo = dao.one(name);
-		model.addAttribute("group", vo);
+		model.addAttribute("vo", vo);
 	}
 	
 }

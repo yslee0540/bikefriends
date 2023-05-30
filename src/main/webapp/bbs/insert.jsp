@@ -21,6 +21,14 @@
 					alert('내용을 입력하세요')
 				}
 			})
+			$.ajax({
+				url : "insertView",
+				dataType: "json",
+				success : function(json) {
+					$('#img').html("<img src=" + json.sign_img +  " class=img>");
+					$('#name').html(json.sign_name);
+				}
+			})
 		})
 	</script>
 </head>
@@ -31,10 +39,10 @@
     <div id="main">
     	<form action="insert" method="post" enctype="multipart/form-data">
 	        <table>
-	            <tr class="post1">
-	                <td class="profile" rowspan="2"><img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" class="img"></td>
-	                <td><b>${id}</b></td>
-	            </tr>
+	        	<tr class="post1">
+	            	<td class="profile" rowspan="2"><span id="img"></span></td>
+					<td><b><span id="name"></span></b></td>
+            	</tr>
 	            <tr>
 	                <td id="bbsinsert">
 	                	<input name="group_no" value="<%= group_no %>" type="hidden">

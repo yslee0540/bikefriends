@@ -19,14 +19,16 @@
 	</update>
 	
 	<select id="one" parameterType="int" resultType="courseVO">
-		select * from course
-		where course_no = #{course_no}
+		select * from course c, member m
+		where c.writer = m.Sign_id
+		and course_no = #{course_no}
 	</select>
 	
 	<select id="list" parameterType="courseVO" resultType="courseVO">
 		select * from (
-			select row_number() over(order by course_no desc) as no, c.*
-			from course c 
+			select row_number() over(order by course_no desc) as no, c.*, m.Sign_name
+			from course c, member m
+			where c.writer = m.Sign_id 
 		) as c2
 		where c2.no between #{start} and #{end}
 	</select>

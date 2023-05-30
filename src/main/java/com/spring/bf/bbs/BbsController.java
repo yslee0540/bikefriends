@@ -10,10 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.bf.bbsLike.BbsLikeDAO;
 import com.spring.bf.bbsLike.BbsLikeVO;
+import com.spring.bf.member.MemberDAO;
+import com.spring.bf.member.MemberVO;
 
 @Controller
 public class BbsController {
@@ -22,6 +25,9 @@ public class BbsController {
 	
 	@Autowired
 	BbsLikeDAO dao2;
+	
+	@Autowired
+	MemberDAO dao3;
 	
 	@RequestMapping("bbs/list")
 	public void list(BbsVO vo, Model model) {
@@ -49,7 +55,7 @@ public class BbsController {
 		
 		BbsVO vo = dao.one(bbs_no);
 		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
-		model.addAttribute("vo", vo);
+		model.addAttribute("bbsVO", vo);
 		
 		//좋아요 눌렀는지 확인
 		String id = (String)session.getAttribute("id");
@@ -58,6 +64,12 @@ public class BbsController {
 		vo2.setMember_id(id);
 		int count = dao2.one(vo2);
 		model.addAttribute("like", count);
+	}
+
+	@RequestMapping("bbs/delete")
+	public void delete(int bbs_no) {
+		System.out.println(bbs_no);
+		dao.delete(bbs_no);
 	}
 	
 	@RequestMapping("bbs/insert")
@@ -75,10 +87,13 @@ public class BbsController {
 		return "redirect:list?group_no=" + vo.getGroup_no() + "&page=1";
 	}
 	
-	@RequestMapping("bbs/delete")
-	public void delete(int bbs_no) {
-		System.out.println(bbs_no);
-		dao.delete(bbs_no);
+	@RequestMapping("bbs/insertView")
+	@ResponseBody
+	public MemberVO insertView(HttpSession session) {
+		String id = (String)session.getAttribute("id");
+		System.out.println(id);
+		MemberVO vo = dao3.one(id);
+		return vo;
 	}
 	
 	@RequestMapping("bbs/update2")

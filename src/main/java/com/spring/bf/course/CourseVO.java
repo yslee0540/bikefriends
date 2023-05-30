@@ -13,15 +13,16 @@ public class CourseVO {
 	private String writer;
 	private String line_lat;
 	private String line_lng;
+	private String Sign_name;
 	private int start;
 	private int end;
 	private int page;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp date;
-	
+
 	public void setStartEnd(int page) {
-		start = 1 + (page - 1) * 20; 
+		start = 1 + (page - 1) * 20;
 		end = page * 20;
 	}
 
@@ -47,6 +48,14 @@ public class CourseVO {
 
 	public void setEnd(int end) {
 		this.end = end;
+	}
+
+	public String getSign_name() {
+		return Sign_name;
+	}
+
+	public void setSign_name(String sign_name) {
+		Sign_name = sign_name;
 	}
 
 	public String getLine_lat() {

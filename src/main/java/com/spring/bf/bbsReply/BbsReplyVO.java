@@ -9,10 +9,19 @@ public class BbsReplyVO {
 	private int reply_no;
 	private int bbs_no;
 	private String writer;
+	private String Sign_name;
 	private String content;
-	
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp date;
+
+	public String getSign_name() {
+		return Sign_name;
+	}
+
+	public void setSign_name(String sign_name) {
+		Sign_name = sign_name;
+	}
 
 	public int getReply_no() {
 		return reply_no;
