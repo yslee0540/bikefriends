@@ -40,12 +40,6 @@
 			}) //ajax
 		})
 	})//$
-	
-	
-	
-// 	 var testDate ="${pages}";  
-
-
 
 </script>
 </head>
