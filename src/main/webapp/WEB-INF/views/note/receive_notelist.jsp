@@ -45,7 +45,7 @@ button {
 	text-align: center;
 }
 
-#messageTable {
+#noteTable {
 	position: relative;
 }
 
@@ -69,6 +69,7 @@ button {
 .paging .active {
 	font-weight: bold;
 }
+
 </style>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -115,8 +116,6 @@ $(function() {
 </head>
 <body>
 	<jsp:include page="/nav.jsp"></jsp:include>
-
-	<div id="main" style="padding-top: 0px;"></div>
 	<h1>받은 쪽지함</h1>
 	<div>
 		<a href="receive_notelist?receiver=<%= session.getAttribute("id") %>"><button
@@ -124,8 +123,8 @@ $(function() {
 			href="send_notelist?sender=<%= session.getAttribute("id") %>"><button
 				type="button" id="send">보낸쪽지함</button></a>
 	</div>
-	<div id = "notePage">
-		<table id="nbTable">
+	<div id = "notePage" style="width: 1000px;margin: auto;">
+		<table id="noteTable">
 			<tr>
 				<th class="checkbox-column"></th>
 				<th>보낸 사람</th>
