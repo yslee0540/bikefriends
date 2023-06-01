@@ -64,17 +64,21 @@
 	<div class="row" style="width: 850px;margin: auto;">
 		<jsp:include page="menu.jsp"></jsp:include>
 	    
-		<div id="main" class="col-6" style="margin-left:225px;">
+		<div id="main" class="col-6">
 			<div id="top">
 				<c:choose>
 					<c:when test="${id == vo.writer}">
-						<div id="title">${vo.title}</div>
-						<a href="updateline?course_no=${vo.course_no}">
-							<button class="btn btn-primary">수정</button></a>
-						<button class="btn btn-danger" id="coursedelete">삭제</button>
+						<div class="row">
+							<div class="col-sm-8" id="title2" style="word-wrap: break-word;">${vo.title}</div>
+							<div class="col-sm-4">
+								<a href="updateline?course_no=${vo.course_no}">
+									<button class="btn btn-primary">수정</button></a>
+								<button class="btn btn-danger" id="coursedelete">삭제</button>
+							</div>
+						</div>
 					</c:when>
 					<c:otherwise>
-						<div id="title2">${vo.title}</div>
+						<div id="title2" style="word-wrap: break-word;">${vo.title}</div>
 					</c:otherwise>
 				</c:choose>
 			</div>

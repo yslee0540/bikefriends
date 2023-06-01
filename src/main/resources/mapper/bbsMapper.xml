@@ -55,9 +55,10 @@
 	
 	<select id="search" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
-			select row_number() over(order by date desc) as no, b.*
-			from bbs b
+			select row_number() over(order by date desc) as no, b.*, m.Sign_name
+			from bbs b, member m
 			where content like CONCAT('%', #{content}, '%')
+			and b.writer = m.Sign_id
 			and group_no = #{group_no}
 		) as b2
 		where b2.no between #{start} and #{end}

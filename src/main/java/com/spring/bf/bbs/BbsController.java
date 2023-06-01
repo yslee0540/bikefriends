@@ -31,14 +31,14 @@ public class BbsController {
 	
 	@RequestMapping("bbs/list")
 	public void list(BbsVO vo, Model model) {
-		vo.setStartEnd(vo.getPage());
+		vo.setStartEnd(vo.getPage(), 10);
 		List<BbsVO> list = dao.list(vo);
 		int count = dao.count(vo.getGroup_no());
 		int pages = 0;
-		if (count % 20 == 0) {
-			pages = count / 20;
+		if (count % 10 == 0) {
+			pages = count / 10;
 		} else {
-			pages = count / 20 + 1;
+			pages = count / 10 + 1;
 		}
 		model.addAttribute("list", list);
 		model.addAttribute("pages", pages);
@@ -119,8 +119,9 @@ public class BbsController {
 	
 	@RequestMapping("bbs/search")
 	public void search(BbsVO vo, Model model) {
-		vo.setStartEnd(vo.getPage());
+		vo.setStartEnd(vo.getPage(), 20);
 		List<BbsVO> list = dao.search(vo);
+		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
 		
 		int count = dao.count(vo);
 		int pages = 0;
@@ -150,16 +151,16 @@ public class BbsController {
 	//각 게시판별
 	@RequestMapping("bbs/bestlist")
 	public void best(BbsVO vo, Model model) {
-		vo.setStartEnd(vo.getPage());
+		vo.setStartEnd(vo.getPage(), 10);
 		List<BbsVO> list = dao.best(vo);
 		model.addAttribute("list", list);
 		
 		int count = dao.count2(vo.getGroup_no());
 		int pages = 0;
-		if (count % 20 == 0) {
-			pages = count / 20;
+		if (count % 10 == 0) {
+			pages = count / 10;
 		} else {
-			pages = count / 20 + 1;
+			pages = count / 10 + 1;
 		}
 		model.addAttribute("pages", pages);
 		

@@ -48,7 +48,7 @@ public class CourseDAO {
 	}
 	
 	//검색 페이징
-	public int count(String title) {
-		return my.selectOne("course.count2", title);
+	public int count(CourseVO vo) {
+		return my.selectOne("course.count2", vo);
 	}
 }

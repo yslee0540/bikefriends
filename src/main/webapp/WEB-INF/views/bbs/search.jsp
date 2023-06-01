@@ -19,9 +19,11 @@ tr:hover {
 <%@ include file="header.jsp"%>
 </head>
 <body>
-	<%@ include file="../../../nav.jsp"%>
-
-	<div id="main">
+<%@ include file="../../../nav.jsp"%>
+<div class="row" style="width: 850px;margin: auto;">
+	<jsp:include page="menu2.jsp"></jsp:include>
+    
+	<div id="main" class="col-6">
 
 		<div id="top">
 			<div id="title2">
@@ -34,14 +36,14 @@ tr:hover {
 		</c:if>
 		<c:if test="${!empty list}">
 			<table class="table">
-				<tr class="table-info">
+				<tr style="background-color: #b7d5ac;">
 					<th width="100">작성자</th>
 					<th>내용</th>
 					<th width="150">날짜</th>
 				</tr>
 				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td style="word-wrap: break-word;">${vo.writer}</td>
+						<td style="word-wrap: break-word;">${vo.sign_name}</td>
 						<td class="scontent"><a href="one?bbs_no=${vo.bbs_no}">${vo.content}</a>
 						</td>
 						<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
@@ -52,24 +54,15 @@ tr:hover {
 		<hr>
 
 
-		<div class="row">
-			<div class="col-sm-5"
-				style="text-align: right; padding-bottom: 20px;">
-				<a href="list?group_no=<%=group_no%>&page=1">
-					<button style="margin-right: 50px;" class="btn btn-dark">
-						<i class="fa-solid fa-list-ul"></i> 목록
-					</button>
-				</a>
-			</div>
-			<div id="search" class="col-sm-7">
-				<form action="search">
-					<input name="group_no" value="<%=group_no%>" type="hidden">
-					<input placeholder="내용" name="content">
-					<input name="page" value="1" type="hidden">
-					<button>검색</button>
-				</form>
-			</div>
+		<div id="search" style="text-align:center;">
+			<form action="search">
+				<input name="group_no" value="<%=group_no%>" type="hidden">
+				<input placeholder="내용" name="content">
+				<input name="page" value="1" type="hidden">
+				<button>검색</button>
+			</form>
 		</div>
+			
 		<div id="page">
 			<ul class="pagination justify-content-center">
 				<%
@@ -116,5 +109,6 @@ tr:hover {
 			</ul>
 		</div>
 	</div>
+</div>
 </body>
 </html>

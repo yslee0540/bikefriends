@@ -17,7 +17,7 @@ tr:hover {
 <div class="row" style="width: 850px;margin: auto;">
 	<jsp:include page="menu.jsp"></jsp:include>
     
-	<div id="main" class="col-6" style="margin-left:225px;">
+	<div id="main" class="col-6">
 		<div id="top">
 			<c:choose>
 				<c:when test="${id != null}">
@@ -43,7 +43,9 @@ tr:hover {
 			<c:forEach items="${list}" var="vo">
 				<tr>
 					<td>${vo.sign_name}</td>
-					<td><a href="one?course_no=${vo.course_no}">${vo.title}</a></td>
+					<td style="word-wrap: break-word;">
+						<a href="one?course_no=${vo.course_no}">${vo.title}</a>
+					</td>
 					<td>${vo.rate}</td>
 					<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 				</tr>
@@ -51,7 +53,12 @@ tr:hover {
 		</table>
 		<div id="search" style="text-align:center;padding-bottom:0px;">
 			<form action="search">
-				<input placeholder="제목" name="title">
+				<select name="type">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="sign_name">작성자</option>
+				</select>
+				<input name="keyword">
 				<input name="page" value="1" type="hidden">
 				<button>검색</button>
 			</form>

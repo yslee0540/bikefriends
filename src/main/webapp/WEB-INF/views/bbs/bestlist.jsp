@@ -12,7 +12,7 @@
 <div class="row" style="width: 850px;margin: auto;">
 	<jsp:include page="menu2.jsp"></jsp:include>
     
-	<div id="main" class="col-6" style="margin-left:225px;">
+	<div id="main" class="col-6">
 
 		<div id="top">
 			<%

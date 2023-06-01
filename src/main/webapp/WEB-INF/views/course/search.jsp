@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	String title = request.getParameter("title");
+	String keyword = request.getParameter("keyword");
+	String type = request.getParameter("type");
 	int pages = (int) request.getAttribute("pages");
 	int nowpage = Integer.parseInt(request.getParameter("page"));
 %>
@@ -18,13 +19,14 @@ tr:hover {
 </style>
 </head>
 <body>
-	<%@ include file="../../../nav.jsp"%>
-
-	<div id="main">
-
+<%@ include file="../../../nav.jsp"%>
+<div class="row" style="width: 850px;margin: auto;">
+	<jsp:include page="menu.jsp"></jsp:include>
+    
+	<div id="main" class="col-6">
 		<div id="top">
 			<div id="title2">
-				'<%=title%>' 검색결과
+				'<%=keyword%>' 검색결과
 			</div>
 		</div>
 		<hr>
@@ -33,15 +35,17 @@ tr:hover {
 		</c:if>
 		<c:if test="${!empty list}">
 			<table class="table">
-				<tr class="table-secondary">
+				<tr style="background-color: #b7d5ac;">
 					<th width="120">작성자</th>
 					<th>제목</th>
-					<th width="150">날짜</th>
+					<th width="70">별점</th>
+					<th width="120">날짜</th>
 				</tr>
 				<c:forEach var="vo" items="${list}">
 					<tr>
-						<td style="word-wrap: break-word;">${vo.writer}</td>
-						<td><a href="one?course_no=${vo.course_no}">${vo.title}</a></td>
+						<td style="word-wrap: break-word;">${vo.sign_name}</td>
+						<td class="scontent"><a href="one?course_no=${vo.course_no}">${vo.title}</a></td>
+						<td>${vo.rate}</td>
 						<td><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 					</tr>
 				</c:forEach>
@@ -50,7 +54,12 @@ tr:hover {
 
 		<div id="search" style="text-align:center;">
 			<form action="search">
-				<input placeholder="제목" name="title">
+				<select name="type">
+					<option value="title">제목</option>
+					<option value="content">내용</option>
+					<option value="sign_name">작성자</option>
+				</select>
+				<input name="keyword">
 				<input name="page" value="1" type="hidden">
 				<button>검색</button>
 			</form>
@@ -62,7 +71,7 @@ tr:hover {
 					if (nowpage > 1) {
 				%>
 				<li class="page-item"><a class="page-link"
-					href="search?title=<%= title %>&page=<%= nowpage - 1 %>">Previous</a>
+					href="search?type=<%= type %>&keyword=<%= keyword %>&page=<%= nowpage - 1 %>">Previous</a>
 				</li>
 				<%
 					} else {
@@ -76,13 +85,13 @@ tr:hover {
 					if (p == nowpage) {
 				%>
 				<li class="page-item active"><a class="page-link"
-					href="search?title=<%= title %>&page=<%= p %>"><%=p%></a>
+					href="search?type=<%= type %>&keyword=<%= keyword %>&page=<%= p %>"><%=p%></a>
 				</li>
 				<%
 					} else {
 				%>
 				<li class="page-item"><a class="page-link"
-					href="search?title=<%= title %>&page=<%= p %>"><%=p%></a>
+					href="search?type=<%= type %>&keyword=<%= keyword %>&page=<%= p %>"><%=p%></a>
 				</li>
 				<%
 					}
@@ -92,7 +101,7 @@ tr:hover {
 					if (nowpage < pages) {
 				%>
 				<li class="page-item"><a class="page-link"
-					href="search?title=<%= title %>&page=<%= nowpage + 1 %>">Next</a>
+					href="search?type=<%= type %>&keyword=<%= keyword %>&page=<%= nowpage + 1 %>">Next</a>
 				</li>
 				<%
 					} else {
@@ -104,5 +113,6 @@ tr:hover {
 			</ul>
 		</div>
 	</div>
+</div>
 </body>
 </html>

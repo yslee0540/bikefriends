@@ -14,7 +14,7 @@
 				bbs_no: ${bbsVO.bbs_no},
 			},
 			success: function(x) {
-				$('#replylist').html(x)
+				$('#replylist').html(x);
 			}
 		})
 	}
@@ -22,7 +22,7 @@
 	
 	$(function() {
 		/* 댓글 새로고침 */
-		$('#refresh').click(function() {
+		$(document).on('click', '#refresh', function() {
 			replylist();
 		})
 		
@@ -40,9 +40,9 @@
 					},
 					success: function() {
 						replylist();
-						$('#reinput').val("")
-						cmt_cnt = cmt_cnt + 1
-						$('.reply').html('댓글 ' + cmt_cnt + '개')
+						$('#reinput').val("");
+						cmt_cnt = cmt_cnt + 1;
+						$('.reply').html('댓글 ' + cmt_cnt + '개 <span id="refresh">새로고침</span>');
 					}
 				})
 			} else {
@@ -59,7 +59,7 @@
 						bbs_no: ${bbsVO.bbs_no}
 					},
 					success: function() {
-						location.href = 'list?group_no=' + ${bbsVO.group_no} + '&page=1'
+						location.href = 'list?group_no=' + ${bbsVO.group_no} + '&page=1';
 					}
 				})
 			}
@@ -75,8 +75,8 @@
 					},
 					success: function() {
 						replylist();
-						cmt_cnt = cmt_cnt - 1
-						$('.reply').html('댓글 ' + cmt_cnt + '개')
+						cmt_cnt = cmt_cnt - 1;
+						$('.reply').html('댓글 ' + cmt_cnt + '개 <span id="refresh">새로고침</span>');
 					}
 				})
 			}
@@ -86,7 +86,7 @@
 		like = ${like}
 		like_cnt = ${bbsVO.like_cnt}
 		if(like >= 1) {
-			$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>')
+			$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>');
 		}
 		
 		id = '${id}'
@@ -100,10 +100,10 @@
 							member_id: '${id}'
 						},
 						success: function() {
-							like = 0
-							$('#like').html('<i class="fa-regular fa-heart"></i>')
-							like_cnt = like_cnt - 1
-							$('#like_cnt').html(like_cnt)
+							like = 0;
+							$('#like').html('<i class="fa-regular fa-heart"></i>');
+							like_cnt = like_cnt - 1;
+							$('#like_cnt').html(like_cnt);
 						}
 					})
 				} else {
@@ -114,10 +114,10 @@
 							member_id: '${id}'
 						},
 						success: function() {
-							like = 1
-							$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>')
-							like_cnt = like_cnt + 1
-							$('#like_cnt').html(like_cnt)
+							like = 1;
+							$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>');
+							like_cnt = like_cnt + 1;
+							$('#like_cnt').html(like_cnt);
 						}
 					})
 				}
@@ -131,7 +131,7 @@
 <div class="row" style="width: 850px;margin: auto;">
 	<jsp:include page="menu2.jsp"></jsp:include>
     
-	<div id="main" class="col-6" style="margin-left:225px;">
+	<div id="main" class="col-6">
         <div id="top">
             <c:choose>
             	<c:when test="${id == bbsVO.writer}">

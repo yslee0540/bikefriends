@@ -68,7 +68,7 @@ public class CourseController {
 	public void search(CourseVO vo, Model model) {
 		vo.setStartEnd(vo.getPage());
 		List<CourseVO> list = dao.search(vo);
-		int count = dao.count(vo.getTitle());
+		int count = dao.count(vo);
 		int pages = 0;
 		if (count % 20 == 0) {
 			pages = count / 20;

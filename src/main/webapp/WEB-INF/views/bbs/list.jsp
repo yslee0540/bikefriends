@@ -12,7 +12,7 @@
 <div class="row" style="width: 850px;margin: auto;">
 	<jsp:include page="menu2.jsp"></jsp:include>
     
-	<div id="main" class="col-6" style="margin-left:225px;">
+	<div id="main" class="col-6">
 
 		<div id="top">
 			<%
@@ -82,9 +82,16 @@
 				<%
 					int pages = (int) request.getAttribute("pages");
 					int nowpage = Integer.parseInt(request.getParameter("page"));
+					int i = 0;
+					if (nowpage % 10 == 0) {
+						i = nowpage / 10 - 1;
+					} else {
+						i = nowpage / 10;
+					}
 				%>
 				<div id="page">
 					<ul class="pagination justify-content-center">
+						<!-- 이전 -->
 						<%
 							if (nowpage > 1) {
 						%>
@@ -98,8 +105,9 @@
 						<%
 							}
 						%>
+						<!-- 페이지 -->
 						<%
-							for (int p = 1; p <= pages; p++) {
+							for (int p = 10 * i + 1; p <= 10 * (i + 1); p++) {
 							if (p == nowpage) {
 						%>
 						<li class="page-item active"><a class="page-link"
@@ -113,8 +121,12 @@
 						</li>
 						<%
 							}
+							if (p == pages) {
+								break;
+							}
 						}
 						%>
+						<!-- 다음 -->
 						<%
 							if (nowpage < pages) {
 						%>
