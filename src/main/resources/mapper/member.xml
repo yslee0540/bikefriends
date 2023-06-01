@@ -23,6 +23,11 @@
 		where b2.no between #{start} and #{end} AND writer = #{writer}
 	</select>
 	
+	<select id="count" parameterType="String" resultType="Integer">
+		select count(*) from bbs
+		where writer = #{writer}
+	</select>
+	
 	<select id="idChk" resultType="int">
 		select COUNT(*) from member
 		where Sign_id = #{Sign_id}

@@ -27,11 +27,11 @@
 	$(function() {
 		$('.pages').click(function() {
 			$.ajax({
-				url : "bikelist", 
+				url : "bikelist",
 				data : {
 					page : $(this).text()
 				},
-				success : function(result) { 
+				success : function(result) {
 					$('#main').html(result)
 				},
 				error : function() {
@@ -39,8 +39,31 @@
 				}
 			}) //ajax
 		})
-	})//$
+		
+		$('#searchbtn').click(function() {
+			searchtype = $('[name=searchtype]').val()
+			keyword = $('[name=keyword]').val()
+			
+			console.log(searchtype)
+			console.log(keyword)
+			$.ajax({
+				url : "bikelistsearch",
+				data : {
+					searchtype : searchtype,
+					keyword : keyword
+				},
+				success : function(result) {
+					$('#main').html(result)
+					$('#main').html(result)
+				},
+				error : function() {
+					alert('실패.@@@')
+				}
+			}) //ajax
+		})
+		
 
+	})//$
 </script>
 </head>
 <body>
@@ -71,6 +94,14 @@
 			<%
 				}
 			%>
+		</div>
+		<div
+			style="display: flex; justify-content: center; align-items: center; margin-top: 10px">
+			<select name="searchtype">
+				<option value="bike_brand">브랜드</option>
+				<option value="bike_category">종류</option>
+			</select> <input type="text" name="keyword">
+			<button type="button" id="searchbtn">검색</button>
 		</div>
 	</div>
 </body>

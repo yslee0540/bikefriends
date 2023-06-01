@@ -23,17 +23,17 @@
 		<a href="file.jsp">
 			<button>변경</button>
 		</a>
-		<form action="sign_update" method="get">
+		<form action="sign_update" method="get" class="table" style="vertical-align: middle;">
 			<table style="text-align:center">
-				<tr><td>이름</td><td><input name="Sign_name" value="${vo.sign_name}"></td></tr>
-				<tr><td>나이</td><td><input name="Sign_age" type="number" value="${vo.sign_age}"></td></tr>  
-				<tr><td>성별</td><td><input name="Sign_gender" value="${vo.sign_gender}"></td></tr>
-				<tr><td>소개</td><td><input name="Sign_bio" value="${vo.sign_bio}"></td></tr>
-				<tr><td>이메일</td><td><input name="Sign_email" value="${vo.sign_email}"></td></tr>
-				<tr><td>주소</td><td><input name="Sign_address" value="${vo.sign_address}"></td></tr>
-				<tr><td>전화번호</td><td><input name="Sign_phone" value="${vo.sign_phone}"></td></tr>
-				<tr><td colspan="2"><button type="submit" style="padding: 5px 20px 5px 20px">수정</button></td></tr>
+				<tr><td style="text-align: center;">이름</td><td><input class="form-control" name="Sign_name" value="${vo.sign_name}"></td></tr>
+				<tr><td style="text-align: center;">나이</td><td><input class="form-control" name="Sign_age" type="number" value="${vo.sign_age}"></td></tr>  
+				<tr><td style="text-align: center;">성별</td><td><input class="form-control" name="Sign_gender" value="${vo.sign_gender}"></td></tr>
+				<tr><td style="text-align: center;">소개</td><td><input class="form-control" name="Sign_bio" value="${vo.sign_bio}"></td></tr>
+				<tr><td style="text-align: center;">이메일</td><td><input class="form-control" name="Sign_email" value="${vo.sign_email}"></td></tr>
+				<tr><td style="text-align: center;">주소</td><td><input class="form-control" name="Sign_address" value="${vo.sign_address}"></td></tr>
+				<tr><td style="text-align: center;">전화번호</td><td><input class="form-control" name="Sign_phone" value="${vo.sign_phone}"></td></tr>
 			</table>
+			<button class="btn btn-primary" type="submit" style="padding: 5px 20px 5px 20px">수정</button>
 		</form>
 		<%
 			} else {
