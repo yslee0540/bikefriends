@@ -11,6 +11,7 @@
        <typeAlias type="com.spring.bf.myevent.myeventVO" alias="myeventVO"></typeAlias>
        <typeAlias type="com.spring.bf.bike.BikeVO" alias="bikeVO"></typeAlias>
        <typeAlias type="com.spring.bf.bike.PageVO" alias="pageVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.SearchVO" alias="searchVO"></typeAlias>
        <typeAlias type="com.spring.bf.bike.BikeReplyVO" alias="bikereplyVO"></typeAlias>
        <typeAlias type="com.spring.bf.pay.PayVO" alias="PayVO"></typeAlias>
        <typeAlias type="com.spring.bf.bbsReply.BbsReplyVO" alias="bbsReplyVO"></typeAlias>
