@@ -82,6 +82,10 @@ public class MemberDAO { // CRUD
 		return list;
 	}
 	
+	public int count(String id) {
+		return my.selectOne("member.count", id);
+	}
+	
 	public MemberVO select(String id) {
 		ResultSet rs = null; // 항목명 + 결과 데이터를 담고 있는 테이블
 		// 기본형 정수/실수/문자/논리만 값으로 초기화

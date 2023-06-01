@@ -13,7 +13,8 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
-	<link rel="stylesheet" href="resources/css/bbsstyle.css">	
+	<link rel="stylesheet" href="resources/css/bbsstyle.css">
+
 </head>
 <body>
 <center>
@@ -22,19 +23,51 @@
 	<%
 	if (session.getAttribute("id") != null) {
 	%>
+	<!--  
 	<img src="../resources/img/${bag.sign_img}" width="250" height="250" alt="내 프로필 사진">
-	<div>
-		이름 : ${bag.sign_name}<br>
-		성별 : ${bag.sign_gender}<br>
-		나이 : ${bag.sign_age}<br>
-		소갯말 : ${bag.sign_bio}<br>
-		이메일 : ${bag.sign_email}<br>
-		주소 : ${bag.sign_address}<br>
-		전화번호 : ${bag.sign_phone}<br>
+	-->
+	<div style="width: 500px; margin: auto;">
+		<div style="text-align: center;">
+            <img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png">
+        </div>
+        <table class="table" style="vertical-align: middle;">
+        <tr>
+        	<td width="170" style="text-align: center;">이름</td>
+        	<td>${bag.sign_name}</td>
+        </tr>
+        <tr>
+        	<td width="170" style="text-align: center;">성별</td>
+        	<td>${bag.sign_gender}</td>
+        </tr>
+        <tr>
+        	<td width="170" style="text-align: center;">나이</td>
+        	<td>${bag.sign_age}</td>
+        </tr>
+        <tr>
+        	<td width="170" style="text-align: center;">소갯말</td>
+        	<td>${bag.sign_bio}</td>
+        </tr>
+        <tr>
+        	<td width="170" style="text-align: center;">이메일</td>
+        	<td>${bag.sign_email}</td>
+        </tr>
+        <tr>
+        	<td width="170" style="text-align: center;">주소</td>
+        	<td>${bag.sign_address}</td>
+        </tr>
+        <tr>
+        	<td width="170" style="text-align: center;">전화번호</td>
+        	<td>${bag.sign_phone}</td>
+        </tr>
+		</table>
 	</div>
 	<a href="/bf/member/update?id=<%=session.getAttribute("id")%>">
-		<button>수정하기</button>
+		<button class="btn btn-primary">수정하기</button>
 	</a>
+	
+	<br>
+	
+	<!-- 
 	<c:if test="${empty list}">
 				<div style="text-align: center; padding: 0 0 20px;">게시물 없음</div>
 	</c:if>
@@ -75,6 +108,7 @@
 	<%
 		}
 	%>
+	 -->
 </center>
 </body>
 </html>
