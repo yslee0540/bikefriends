@@ -45,8 +45,8 @@ button {
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
-<link rel="stylesheet" href="resources/css/bbsstyle.css">
+<script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
+<link rel="stylesheet" href="../resources/css/bbsstyle.css">
 </head>
 <body>
 	<jsp:include page="/nav.jsp"></jsp:include>
