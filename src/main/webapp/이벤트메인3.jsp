@@ -15,6 +15,9 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet" type="text/css" href="resources/css/out.css">
+<link rel="stylesheet" type="text/css" href="resources/css/bbsstyle.css">
+<link rel="stylesheet" type="text/css" href="resources/css/style.css">
+
 <style>
 #result{
 width:750px;

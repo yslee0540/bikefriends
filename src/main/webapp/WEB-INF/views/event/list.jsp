@@ -3,6 +3,13 @@
 <%@page import="com.spring.bf.event.eventVO"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script     
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/out.css">
 <style>
   table {
     width: 100%;
@@ -21,7 +28,10 @@ a {
 	color: blue;
 }
 </style>
-<table style="background:white;">
+<table class="table ">
+	<tr class="table-warning " style="text-align:center">
+    	<th colspan="4 ">인증샷 챌린지</th>
+    </tr>
 	<tr align="center">
 		<td class="top" width="150">id</td>
 		<td class="top" width="150">장소</td>
