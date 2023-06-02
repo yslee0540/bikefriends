@@ -123,7 +123,7 @@ $(function() {
 			href="send_notelist?sender=<%= session.getAttribute("id") %>"><button
 				type="button" id="send">보낸쪽지함</button></a>
 	</div>
-	<div id = "notePage" style="width: 1000px;margin: auto;">
+	<div id = "notePage" style="width: 500px; margin: auto;">
 		<table id="noteTable">
 			<tr>
 				<th class="checkbox-column"></th>

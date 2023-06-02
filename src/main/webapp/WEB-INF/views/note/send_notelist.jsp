@@ -55,7 +55,8 @@ button {
 		<a href="receive_notelist?receiver=<%= session.getAttribute("id") %>"><button type="button" id="receive">받은쪽지함</button></a>
 		<a href="send_notelist?sender=<%= session.getAttribute("id") %>"><button type="button" id="send">보낸쪽지함</button></a> 
 	</div>
-	<table id="messageTable">
+	<div id = "notePage" style="width: 500px; margin: auto;">
+	<table id="noteTable">
 		<tr>
 			<th>받은 사람</th>
 			<th>제목</th>
@@ -69,6 +70,7 @@ button {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<button type="button" onclick="location.href='NoteSend.jsp'">쪽지보내기</button>
 	<script>
 		
