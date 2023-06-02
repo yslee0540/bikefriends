@@ -172,7 +172,7 @@ div.c {
 		<main id="contents">
 		<a href="dailyticket.jsp">
 			<button class="button button3">일일권</button>
-		</a> | <a href="regularticket.jsp">
+		</a><a href="regularticket.jsp">
 			<button class="button button3">정기권</button>
 		</a>
 		<hr color="gray">
