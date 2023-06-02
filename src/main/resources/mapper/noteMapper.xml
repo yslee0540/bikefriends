@@ -5,7 +5,7 @@
 
 	<insert id="create" parameterType="noteVO">
 		insert into note values
-		(#{no}, #{title}, #{content}, #{sender}, #{receiver}, #{date})
+		(#{no}, #{title}, #{content}, #{sender}, #{receiver}, now())
 	</insert>
 	
 	<delete id="del" parameterType="int">

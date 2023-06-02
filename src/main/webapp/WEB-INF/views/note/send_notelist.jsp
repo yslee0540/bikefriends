@@ -45,20 +45,18 @@ button {
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
-<link rel="stylesheet" href="resources/css/bbsstyle.css">
+<script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
+<link rel="stylesheet" href="../resources/css/bbsstyle.css">
 </head>
 <body>
 	<jsp:include page="/nav.jsp"></jsp:include>
 	<h1>보낸 쪽지함</h1>
-	<p>
-		<a class="nav-link active" href="/bf">메인으로</a>
-	</p>
 	<div>
 		<a href="receive_notelist?receiver=<%= session.getAttribute("id") %>"><button type="button" id="receive">받은쪽지함</button></a>
 		<a href="send_notelist?sender=<%= session.getAttribute("id") %>"><button type="button" id="send">보낸쪽지함</button></a> 
 	</div>
-	<table id="messageTable">
+	<div id = "notePage" style="width: 500px; margin: auto;">
+	<table id="noteTable">
 		<tr>
 			<th>받은 사람</th>
 			<th>제목</th>
@@ -72,6 +70,7 @@ button {
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 	<button type="button" onclick="location.href='NoteSend.jsp'">쪽지보내기</button>
 	<script>
 		
