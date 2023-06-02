@@ -15,4 +15,10 @@
 		select Sign_address from member
 		where Sign_id = #{Sign_id}
 	</select>
+	
+	<select id="auto" parameterType="map" resultType="map">
+	    select * from bbsgroup
+	    where group_name like CONCAT('%', #{value}, '%')
+    </select>
+    
 </mapper>

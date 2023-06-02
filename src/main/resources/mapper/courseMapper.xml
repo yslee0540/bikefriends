@@ -19,23 +19,36 @@
 	</update>
 	
 	<select id="one" parameterType="int" resultType="courseVO">
-		select * from course
-		where course_no = #{course_no}
+		select * from course c, member m
+		where c.writer = m.Sign_id
+		and course_no = #{course_no}
 	</select>
 	
 	<select id="list" parameterType="courseVO" resultType="courseVO">
 		select * from (
-			select row_number() over(order by course_no desc) as no, c.*
-			from course c 
+			select row_number() over(order by course_no desc) as no, c.*, m.Sign_name
+			from course c, member m
+			where c.writer = m.Sign_id 
 		) as c2
 		where c2.no between #{start} and #{end}
 	</select>
 	
 	<select id="search" parameterType="courseVO" resultType="courseVO">
 		select * from (
-			select row_number() over(order by course_no desc) as no, c.*
-			from course c 
-			where title like CONCAT('%', #{title}, '%')
+			select row_number() over(order by course_no desc) as no, c.*, m.Sign_name
+			from course c, member m
+			where c.writer = m.Sign_id
+			<choose>
+				<when test="type.equals('title')">
+					and title like CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="type.equals('content')">
+					and content like CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="type.equals('sign_name')">
+					and Sign_name = #{keyword}
+				</when>
+			</choose>
 		) as c2
 		where c2.no between #{start} and #{end}
 	</select>
@@ -45,9 +58,20 @@
 		select count(*) from course
 	</select>
 	
-	<select id="count2" parameterType="String" resultType="Integer">
-		select count(*) from course
-		where title like CONCAT('%', #{title}, '%')
+	<select id="count2" parameterType="courseVO" resultType="Integer">
+		select count(*) from course c, member m
+		where c.writer = m.Sign_id
+		<choose>
+			<when test="type.equals('title')">
+				and title like CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type.equals('content')">
+				and content like CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type.equals('sign_name')">
+				and Sign_name = #{keyword}
+			</when>
+		</choose>
 	</select>
 	
 </mapper>

@@ -8,9 +8,11 @@
 <%@ include file="header.jsp"%>
 </head>
 <body>
-	<%@ include file="../../../nav.jsp"%>
-
-	<div id="main">
+<%@ include file="../../../nav.jsp"%>
+<div class="row" style="width: 850px;margin: auto;">
+	<jsp:include page="menu2.jsp"></jsp:include>
+    
+	<div id="main" class="col-6">
 
 		<div id="top">
 			<%
@@ -23,7 +25,7 @@
 				</a>
 			</div>
 			<a href="insert.jsp?group_no=${bbsVO.group_no}">
-				<button class="btn btn-primary">글쓰기</button>
+				<button class="btn" style="background: #14870c;color:white;">글쓰기</button>
 			</a>
 			<%
 				} else {
@@ -42,13 +44,6 @@
 
 		<c:if test="${empty list}">
 			<div style="text-align: center; padding: 0 0 20px;">게시물 없음</div>
-			<div style="padding: 0 20px;">
-				<a href="grouplist">
-					<button style="margin-right: 50px;" class="btn btn-dark">
-						<i class="fa-solid fa-list-ul"></i> 목록
-					</button>
-				</a>
-			</div>
 		</c:if>
 		<c:if test="${!empty list}">
 			<c:forEach var="vo" items="${list}">
@@ -132,5 +127,6 @@
 		</c:if>
 		
 	</div>
+</div>
 </body>
 </html>

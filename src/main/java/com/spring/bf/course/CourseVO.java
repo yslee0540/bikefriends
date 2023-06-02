@@ -13,15 +13,20 @@ public class CourseVO {
 	private String writer;
 	private String line_lat;
 	private String line_lng;
+	private String Sign_name;
 	private int start;
 	private int end;
 	private int page;
 
+	// 검색
+	private String type;
+	private String keyword;
+
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp date;
-	
+
 	public void setStartEnd(int page) {
-		start = 1 + (page - 1) * 20; 
+		start = 1 + (page - 1) * 20;
 		end = page * 20;
 	}
 
@@ -47,6 +52,30 @@ public class CourseVO {
 
 	public void setEnd(int end) {
 		this.end = end;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getSign_name() {
+		return Sign_name;
+	}
+
+	public void setSign_name(String sign_name) {
+		Sign_name = sign_name;
 	}
 
 	public String getLine_lat() {
@@ -116,11 +145,9 @@ public class CourseVO {
 	@Override
 	public String toString() {
 		return "CourseVO [course_no=" + course_no + ", rate=" + rate + ", content=" + content + ", title=" + title
-				+ ", writer=" + writer + ", line_lat=" + line_lat + ", line_lng=" + line_lng + ", date=" + date
-				+ ", getLine_lat()=" + getLine_lat() + ", getLine_lng()=" + getLine_lng() + ", getWriter()="
-				+ getWriter() + ", getDate()=" + getDate() + ", getTitle()=" + getTitle() + ", getCourse_no()="
-				+ getCourse_no() + ", getRate()=" + getRate() + ", getContent()=" + getContent() + ", getClass()="
-				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", writer=" + writer + ", line_lat=" + line_lat + ", line_lng=" + line_lng + ", Sign_name="
+				+ Sign_name + ", start=" + start + ", end=" + end + ", page=" + page + ", type=" + type + ", keyword="
+				+ keyword + ", date=" + date + "]";
 	}
 
 }

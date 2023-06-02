@@ -40,9 +40,9 @@ public class BbsVO {
 		Sign_img = sign_img;
 	}
 
-	public void setStartEnd(int page) {
-		start = 1 + (page - 1) * 20;
-		end = page * 20;
+	public void setStartEnd(int page, int count) {
+		start = 1 + (page - 1) * count;
+		end = page * count;
 	}
 
 	public int getStart() {

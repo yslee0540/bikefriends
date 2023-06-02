@@ -17,7 +17,7 @@
 	</update>
 	
 	<select id="one" parameterType="int" resultType="bbsVO">
-		select b.*, m.Sign_img,
+		select b.*, m.Sign_img, m.Sign_name,
 		(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
 		(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
      	from bbs b, member m
@@ -42,7 +42,7 @@
 		where group_no = #{group_no}
 	</select>
 	
-	<select id="count2" parameterType="bbsVO" resultType="Integer">
+	<select id="searchCount" parameterType="bbsVO" resultType="Integer">
 		select count(*) from bbs
 		where content like CONCAT('%', #{content}, '%')
 		and group_no = #{group_no}
@@ -55,9 +55,10 @@
 	
 	<select id="search" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
-			select row_number() over(order by date desc) as no, b.*
-			from bbs b
+			select row_number() over(order by date desc) as no, b.*, m.Sign_name
+			from bbs b, member m
 			where content like CONCAT('%', #{content}, '%')
+			and b.writer = m.Sign_id
 			and group_no = #{group_no}
 		) as b2
 		where b2.no between #{start} and #{end}
@@ -69,7 +70,7 @@
 	</update>
 	
 	<!-- 각 게시판 인기 게시물 -->
-	<select id="best2" parameterType="bbsVO" resultType="bbsVO">
+	<select id="bestList" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
 			select *, row_number() over(order by date desc) as no,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
@@ -82,7 +83,7 @@
 		and b2.no between #{start} and #{end}
 	</select>
 	
-	<select id="count3" parameterType="int" resultType="Integer">
+	<select id="bestCount" parameterType="int" resultType="Integer">
 		select count(*) from (
 			select *,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,

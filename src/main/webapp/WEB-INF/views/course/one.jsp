@@ -60,59 +60,67 @@
 </script>
 </head>
 <body>
-	<%@ include file="../../../nav.jsp"%>
-	<div id="main">
-		<div id="top">
-			<c:choose>
-				<c:when test="${id == vo.writer}">
-					<div id="title">${vo.title}</div>
-					<a href="updateline?course_no=${vo.course_no}">
-						<button class="btn btn-primary">수정</button></a>
-					<button class="btn btn-danger" id="coursedelete">삭제</button>
-				</c:when>
-				<c:otherwise>
-					<div id="title2">${vo.title}</div>
-				</c:otherwise>
-			</c:choose>
-		</div>
-		<hr>
-
-		<div class="style">작성자: ${vo.writer} 날짜: <fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
-		<div style="position: relative;">
-			<div id="map" style="width: 600px; height: 350px;"></div>
-			<p class="modes">
-			    <button id="zoom">확대/축소 켜기</button>
-			</p>
-		</div>
-		<p class="style">
-			<input type="checkbox" id="chkBicycle"
-				onclick="setOverlayMapTypeId()"/> 자전거도로 정보 보기
-		</p>
-		<div class="style">
-			<b>출발</b> <span id="start"></span><br>
-			<br> <b>내용</b><br> ${vo.content}<br>
-			<br>
-			<div class="starRev" style="padding-bottom: 10px;">
-				<b>별점</b>
-				<c:forEach begin="1" end="5" varStatus="status">
-					<c:choose>
-						<c:when test="${status.count <= vo.rate}">
-							<span class="starR on">★</span>
-						</c:when>
-						<c:otherwise>
-							<span class="starR off">★</span>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
+<%@ include file="../../../nav.jsp"%>
+	<div class="row" style="width: 850px;margin: auto;">
+		<jsp:include page="menu.jsp"></jsp:include>
+	    
+		<div id="main" class="col-6">
+			<div id="top">
+				<c:choose>
+					<c:when test="${id == vo.writer}">
+						<div class="row">
+							<div class="col-sm-8" id="title2" style="word-wrap: break-word;">${vo.title}</div>
+							<div class="col-sm-4">
+								<a href="updateline?course_no=${vo.course_no}">
+									<button class="btn btn-primary">수정</button></a>
+								<button class="btn btn-danger" id="coursedelete">삭제</button>
+							</div>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div id="title2" style="word-wrap: break-word;">${vo.title}</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
-			<br>
-			<div style="padding:0px;">
-	            <a href="list?page=1">
-	                <button class="btn btn-dark">
-	                    <i class="fa-solid fa-list-ul"></i> 목록
-	                </button>
-	            </a>
-	        </div>
+			<hr>
+	
+			<div class="style">작성자: ${vo.sign_name} 날짜: <fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd HH:mm:ss" /></div>
+			<div style="position: relative;">
+				<div id="map" style="width: 600px; height: 350px;"></div>
+				<p class="modes">
+				    <button id="zoom">확대/축소 켜기</button>
+				</p>
+			</div>
+			<p class="style">
+				<input type="checkbox" id="chkBicycle"
+					onclick="setOverlayMapTypeId()"/> 자전거도로 정보 보기
+			</p>
+			<div class="style">
+				<b>출발</b> <span id="start"></span><br>
+				<br> <b>내용</b><br> ${vo.content}<br>
+				<br>
+				<div class="starRev" style="padding-bottom: 10px;">
+					<b>별점</b>
+					<c:forEach begin="1" end="5" varStatus="status">
+						<c:choose>
+							<c:when test="${status.count <= vo.rate}">
+								<span class="starR on">★</span>
+							</c:when>
+							<c:otherwise>
+								<span class="starR off">★</span>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				</div>
+				<br>
+				<div style="padding:0px;">
+		            <a href="list?page=1">
+		                <button class="btn btn-dark">
+		                    <i class="fa-solid fa-list-ul"></i> 목록
+		                </button>
+		            </a>
+		        </div>
+			</div>
 		</div>
 	</div>
 	

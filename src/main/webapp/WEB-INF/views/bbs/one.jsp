@@ -11,10 +11,10 @@
 		$.ajax({
 			url: "replylist",
 			data: {
-				bbs_no: ${vo.bbs_no},
+				bbs_no: ${bbsVO.bbs_no},
 			},
 			success: function(x) {
-				$('#replylist').html(x)
+				$('#replylist').html(x);
 			}
 		})
 	}
@@ -22,31 +22,31 @@
 	
 	$(function() {
 		/* 댓글 새로고침 */
-		$('#refresh').click(function() {
+		$(document).on('click', '#refresh', function() {
 			replylist();
 		})
 		
 		/* 댓글 입력 */
-		cmt_cnt = ${vo.cmt_cnt}
+		cmt_cnt = ${bbsVO.cmt_cnt}
 		$('#b1').click(function() {
-			content = $('#reinput').val()
+			content = $('#reinput').val();
 			if (content != '') {
 				$.ajax({
 					url: "replyinsert",
 					data: {
-						bbs_no: ${vo.bbs_no},
+						bbs_no: ${bbsVO.bbs_no},
 						writer: '${id}',
 						content: content
 					},
 					success: function() {
 						replylist();
-						$('#reinput').val("")
-						cmt_cnt = cmt_cnt + 1
-						$('.reply').html('댓글 ' + cmt_cnt + '개')
+						$('#reinput').val("");
+						cmt_cnt = cmt_cnt + 1;
+						$('.reply').html('댓글 ' + cmt_cnt + '개 <span id="refresh">새로고침</span>');
 					}
 				})
 			} else {
-				alert('내용을 입력하세요')
+				alert('내용을 입력하세요');
 			}
 		})
 		
@@ -56,10 +56,10 @@
 				$.ajax({
 					url: "delete",
 					data: {
-						bbs_no: ${vo.bbs_no}
+						bbs_no: ${bbsVO.bbs_no}
 					},
 					success: function() {
-						location.href = 'list?group_no=' + ${vo.group_no} + '&page=1'
+						location.href = 'list?group_no=' + ${bbsVO.group_no} + '&page=1';
 					}
 				})
 			}
@@ -75,49 +75,49 @@
 					},
 					success: function() {
 						replylist();
-						cmt_cnt = cmt_cnt - 1
-						$('.reply').html('댓글 ' + cmt_cnt + '개')
+						cmt_cnt = cmt_cnt - 1;
+						$('.reply').html('댓글 ' + cmt_cnt + '개 <span id="refresh">새로고침</span>');
 					}
 				})
 			}
 		})
 		
 		/* 좋아요 */
-		like = ${like}
-		like_cnt = ${vo.like_cnt}
+		like = ${like};
+		like_cnt = ${bbsVO.like_cnt};
 		if(like >= 1) {
-			$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>')
+			$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>');
 		}
 		
-		id = '${id}'
+		id = '${id}';
 		if (id != '') {
 			$('#like').click(function() {
 				if (like >= 1) {
 					$.ajax({
 						url: "likeDown",
 						data: {
-							bbs_no: ${vo.bbs_no},
+							bbs_no: ${bbsVO.bbs_no},
 							member_id: '${id}'
 						},
 						success: function() {
-							like = 0
-							$('#like').html('<i class="fa-regular fa-heart"></i>')
-							like_cnt = like_cnt - 1
-							$('#like_cnt').html(like_cnt)
+							like = 0;
+							$('#like').html('<i class="fa-regular fa-heart"></i>');
+							like_cnt = like_cnt - 1;
+							$('#like_cnt').html(like_cnt);
 						}
 					})
 				} else {
 					$.ajax({
 						url: "likeUp",
 						data: {
-							bbs_no: ${vo.bbs_no},
+							bbs_no: ${bbsVO.bbs_no},
 							member_id: '${id}'
 						},
 						success: function() {
-							like = 1
-							$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>')
-							like_cnt = like_cnt + 1
-							$('#like_cnt').html(like_cnt)
+							like = 1;
+							$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>');
+							like_cnt = like_cnt + 1;
+							$('#like_cnt').html(like_cnt);
 						}
 					})
 				}
@@ -128,19 +128,20 @@
 </head>
 <body>
 <%@ include file="../../../nav.jsp" %>
-
-	<div id="main">
-
+<div class="row" style="width: 850px;margin: auto;">
+	<jsp:include page="menu2.jsp"></jsp:include>
+    
+	<div id="main" class="col-6">
         <div id="top">
             <c:choose>
-            	<c:when test="${id == vo.writer}">
-            		<div id="title">${vo.group_name}</div>
-		            <a href="update?bbs_no=${vo.bbs_no}">
+            	<c:when test="${id == bbsVO.writer}">
+            		<div id="title">${bbsVO.group_name}</div>
+		            <a href="update?bbs_no=${bbsVO.bbs_no}">
 		            	<button class="btn btn-primary" id="b2">수정</button></a>
 		            <button class="btn btn-danger" id="b3">삭제</button>
             	</c:when>
             	<c:otherwise>
-            		<div id="title2">${vo.group_name}</div>
+            		<div id="title2">${bbsVO.group_name}</div>
             	</c:otherwise>
             </c:choose>
         </div>
@@ -148,26 +149,26 @@
 
         <table>
             <tr class="post1">
-                <td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
-                <td class="bbswriter"><b>${vo.writer}</b></td>
-                <td class="bbsdate"><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                <td class="profile" rowspan="3"><img src="${bbsVO.sign_img}" class="img"></td>
+                <td class="bbswriter"><b>${bbsVO.sign_name}</b></td>
+                <td class="bbsdate"><fmt:formatDate value="${bbsVO.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
             </tr>
             <tr>
                 <td class="bbscon" colspan="2">
-                	${vo.content}
-                	<c:if test="${!empty vo.img}">
+                	${bbsVO.content}
+                	<c:if test="${!empty bbsVO.img}">
 	                	<br><br>
-	                	<img src="../resources/upload/${vo.img}" width="495">
+	                	<img src="../resources/upload/${bbsVO.img}" width="495">
                 	</c:if>
                 </td>
             </tr>
             <tr>
                 <td class="bbsinfo" colspan="2">
-                	<i class="fa-regular fa-eye"></i> ${vo.hit}
+                	<i class="fa-regular fa-eye"></i> ${bbsVO.hit}
                 	<span id="like">
                    		<i class="fa-regular fa-heart"></i>
 	                </span>
-                    <span id="like_cnt">${vo.like_cnt}</span>
+                    <span id="like_cnt">${bbsVO.like_cnt}</span>
                 </td>
             </tr>
         </table>
@@ -181,19 +182,20 @@
         <table>
             <tr style="border-bottom: 1px solid #c1c1c1;">
                 <td class="reply" colspan="3">
-                	댓글 ${vo.cmt_cnt}개 
+                	댓글 ${bbsVO.cmt_cnt}개 
                 	<span id="refresh">새로고침</span>
                 </td>
             </tr>
         </table>
         <div id="replylist"></div>
         <div style="padding: 20px 20px 0;">
-            <a href="list?group_no=${vo.group_no}&page=1">
+            <a href="list?group_no=${bbsVO.group_no}&page=1">
                 <button class="btn btn-dark">
                     <i class="fa-solid fa-list-ul"></i> 목록
                 </button>
             </a>
         </div>
     </div>
+</div>
 </body>
 </html>

@@ -8,9 +8,11 @@
 <%@ include file="header.jsp"%>
 </head>
 <body>
-	<%@ include file="../../../nav.jsp"%>
-
-	<div id="main">
+<%@ include file="../../../nav.jsp"%>
+<div class="row" style="width: 850px;margin: auto;">
+	<jsp:include page="menu2.jsp"></jsp:include>
+    
+	<div id="main" class="col-6">
 
 		<div id="top">
 			<%
@@ -41,20 +43,13 @@
 		<div id="best">
 			<c:if test="${empty list}">
 				<div style="text-align: center; padding: 0 0 20px;">게시물 없음</div>
-				<div style="padding: 0 20px;">
-					<a href="grouplist">
-						<button style="margin-right: 50px;" class="btn btn-dark">
-							<i class="fa-solid fa-list-ul"></i> 목록
-						</button>
-					</a>
-				</div>
 			</c:if>
 			<c:if test="${!empty list}">
 				<c:forEach var="vo" items="${list}">
 					<table>
 						<tr class="post">
 							<td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
-							<td class="bbswriter"><b>${vo.writer}</b></td>
+							<td class="bbswriter"><b>${vo.sign_name}</b></td>
 							<td class="bbsdate"><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 						</tr>
 						<tr>
@@ -75,31 +70,28 @@
 					<hr>
 				</c:forEach>
 				
-				<div class="row">
-					<div class="col-sm-5"
-						style="text-align: right; padding-bottom: 20px;">
-						<a href="grouplist">
-							<button style="margin-right: 50px;" class="btn btn-dark">
-								<i class="fa-solid fa-list-ul"></i> 목록
-							</button>
-						</a>
-					</div>
-					<div id="search" class="col-sm-7">
-						<form action="search">
-							<input name="group_no" value="${bbsVO.group_no}" type="hidden">
-							<input placeholder="내용" name="content">
-							<input name="page" value="1" type="hidden">
-							<button>검색</button>
-						</form>
-					</div>
+				<div id="search" style="text-align:center;">
+					<form action="search">
+						<input name="group_no" value="${bbsVO.group_no}" type="hidden">
+						<input placeholder="내용" name="content">
+						<input name="page" value="1" type="hidden">
+						<button>검색</button>
+					</form>
 				</div>
 				
 				<%
 					int pages = (int) request.getAttribute("pages");
 					int nowpage = Integer.parseInt(request.getParameter("page"));
+					int i = 0;
+					if (nowpage % 10 == 0) {
+						i = nowpage / 10 - 1;
+					} else {
+						i = nowpage / 10;
+					}
 				%>
 				<div id="page">
 					<ul class="pagination justify-content-center">
+						<!-- 이전 -->
 						<%
 							if (nowpage > 1) {
 						%>
@@ -113,8 +105,9 @@
 						<%
 							}
 						%>
+						<!-- 페이지 -->
 						<%
-							for (int p = 1; p <= pages; p++) {
+							for (int p = 10 * i + 1; p <= 10 * (i + 1); p++) {
 							if (p == nowpage) {
 						%>
 						<li class="page-item active"><a class="page-link"
@@ -128,8 +121,12 @@
 						</li>
 						<%
 							}
+							if (p == pages) {
+								break;
+							}
 						}
 						%>
+						<!-- 다음 -->
 						<%
 							if (nowpage < pages) {
 						%>
@@ -148,5 +145,6 @@
 			</c:if>
 		</div>
 	</div>
+</div>
 </body>
 </html>

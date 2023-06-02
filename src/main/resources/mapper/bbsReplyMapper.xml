@@ -20,7 +20,9 @@
 	</select>
 	
 	<select id="all" resultType="bbsreplyVO">
-		select * from bbsreply where bbs_no = #{bbs_no}
+		select * from bbsreply b, member m
+		where b.writer = m.Sign_id
+		and bbs_no = #{bbs_no}
 		order by reply_no
 	</select>
 	
