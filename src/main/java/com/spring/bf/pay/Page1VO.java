@@ -1,9 +1,9 @@
 package com.spring.bf.pay;
 
 public class Page1VO {
-	private int start;
-	private int end;
-	private int page;
+	private int start; //1
+	private int end; //10
+	private int page; // 1
 
 	public void setStartEnd(int page) {
 		//page별로 start, end값만 구해주면 됨.
@@ -39,5 +39,12 @@ public class Page1VO {
 	public void setEnd(int end) {
 		this.end = end;
 	}
+
+	@Override
+	public String toString() {
+		return "Page1VO [start=" + start + ", end=" + end + ", page=" + page + "]";
+	}
+	
+	
 
 }

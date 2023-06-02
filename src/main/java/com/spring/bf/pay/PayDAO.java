@@ -34,19 +34,19 @@ public class PayDAO { // CRUD
 	public List<PayVO> list() {
 		List<PayVO> list = my.selectList("pay.all");
 		return list;
-}
+	}
+	
 	public void delete(String id) {
 		System.out.println("DAO String : " + id);
 		int result = my.delete("pay.delete", id);
 	}
 	
-	
 	public PayVO createdId() {
 		return my.selectOne("pay.createdId");
 	}
 	
-
 	public List<PayVO> all(Page1VO vo) {
+		System.out.println("Page1VO : " + vo);
 		return my.selectList("pay.all", vo);
 	}
 	

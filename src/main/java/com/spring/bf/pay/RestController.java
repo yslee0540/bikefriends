@@ -29,10 +29,19 @@ public class RestController {
 	@RequestMapping("payment/insertpay")
 	public String insert(PayVO bag, Model model) {
 		System.out.println("insertpay : "+bag);
+		
+		Page1VO vo = new Page1VO();
+		vo.setPage(1); 
+		vo.setStartEnd(1);
+		
 		dao.insert(bag);
 		
-		List<PayVO> list = dao.list();
+		List<PayVO> list = dao.all(vo); ////asdfasdfasdfasdfasdfasdf
+		int count = dao.count();
+		int pages = count / 10 + 1;
 		model.addAttribute("list", list);
+		model.addAttribute("count", count);
+		model.addAttribute("pages", pages);
 		System.out.println("list : "+list);
 		return "payment/list_result";	
 	}

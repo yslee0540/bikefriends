@@ -16,9 +16,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
 	<link rel="stylesheet" href="resources/css/bbsstyle.css">
-<style>
-
-
 
 <style>
 * {
@@ -35,6 +32,7 @@
 }
 
 #header {
+line-height: 120px;
 	width: 100%;
 	height: 120px;
 	text-align: center;
@@ -67,15 +65,15 @@
 	background-color: #4CAF50; /* Green */
 	border: none;
 	color: white;
-	padding: 30px;
+	padding: 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	margin: 4px 2px;
+	margin: 3px 1px;
 	cursor: pointer;
 }
-
+.button2 {font-size: 3px; padding: 1px 1px;}
 .button3 {
 	border-radius: 8px;
 	width: 30%;
@@ -83,13 +81,13 @@
 
 .button4 {
 	border-radius: 8px;
-	width: 30%;
+	width: 20%;
 	background-color: #008CBA;
 }
 
 .button5 {
 	border-radius: 8px;
-	width: 20%;
+	width: 15%;
 	background-color: lime;
 }
 
@@ -97,7 +95,7 @@ div.c {
 	font-size: 20px;
 }
 
-.pagination {
+/* .pagination {
 	display: inline-block;
 }
 
@@ -118,7 +116,12 @@ div.c {
 
 .pagination a:hover:not(.active) {
 	background-color: #ddd;
+} */
+
+.result_1 {
+font-size: large;
 }
+
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
@@ -131,9 +134,9 @@ div.c {
 				success: function(json) {
 					
 					money = json.money
+					money_string = '결제금액 ' + money
+					$('#result_1').html(money)
 					
-					
-					$('#result').html(money)
 				} //success
 			}) //ajax
 		})//b3
@@ -178,23 +181,21 @@ div.c {
 		<hr color="gray">
 		<br> <br> <br>
 		<div class="c">기본 대여 시간</div>
-		<br> <br> <br>
+		<br> <br> <br> <br>
 		
-		
-		<br> <br>
-<button id="b1" class="button button4" value="1000">1달 이용권<br>(무제한)<br>50000</button>
+<button id="b1" class="button button4" value="50000">1달 이용권<br>(무제한)<br>50000</button>
 		
 		
 		<br> <br> <br>
 		</main>
 		<hr color="red">
 		<footer id="footer">
-			<h2>결제금액</h2>
-			<div id="result"></div>
-			
-			
-				<button class="button button5">다음</button>
-			
+			<div>
+			<span >결제금액</span>
+			<span  id="result_1"  style="font-size:large"></span>
+			</div>
+			<div id="result" style="padding: 1px 2px 0;text-align: right;line-height:1;"></div>
+			<button class="button button5" >다음</button>
 		</footer>
 	</div>
 </body>
