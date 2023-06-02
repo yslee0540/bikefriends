@@ -48,13 +48,13 @@ public class BbsDAO {
 	}
 	
 	//조회수
-	public int update(int bbs_no) {
+	public int hit(int bbs_no) {
 		int result = my.update("bbs.hit", bbs_no);
 		return result;
 	}
 	
-	public List<BbsVO> best(BbsVO vo) {
-		List<BbsVO> list = my.selectList("bbs.best2", vo);
+	public List<BbsVO> bestList(BbsVO vo) {
+		List<BbsVO> list = my.selectList("bbs.bestList", vo);
 		return list;
 	}
 	
@@ -74,13 +74,13 @@ public class BbsDAO {
 	}
 	
 	//검색 페이징
-	public int count(BbsVO vo) {
-		return my.selectOne("bbs.count2", vo);
+	public int searchCount(BbsVO vo) {
+		return my.selectOne("bbs.searchCount", vo);
 	}
 	
 	//인기게시판 페이징
-	public int count2(int group_no) {
-		return my.selectOne("bbs.count3", group_no);
+	public int bestCount(int group_no) {
+		return my.selectOne("bbs.bestCount", group_no);
 	}
 
 }

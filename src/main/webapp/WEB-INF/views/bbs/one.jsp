@@ -29,7 +29,7 @@
 		/* 댓글 입력 */
 		cmt_cnt = ${bbsVO.cmt_cnt}
 		$('#b1').click(function() {
-			content = $('#reinput').val()
+			content = $('#reinput').val();
 			if (content != '') {
 				$.ajax({
 					url: "replyinsert",
@@ -46,7 +46,7 @@
 					}
 				})
 			} else {
-				alert('내용을 입력하세요')
+				alert('내용을 입력하세요');
 			}
 		})
 		
@@ -83,13 +83,13 @@
 		})
 		
 		/* 좋아요 */
-		like = ${like}
-		like_cnt = ${bbsVO.like_cnt}
+		like = ${like};
+		like_cnt = ${bbsVO.like_cnt};
 		if(like >= 1) {
 			$('#like').html('<i class="fa-solid fa-heart" style="color: red;"></i>');
 		}
 		
-		id = '${id}'
+		id = '${id}';
 		if (id != '') {
 			$('#like').click(function() {
 				if (like >= 1) {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <% String group_no = request.getParameter("group_no"); %>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@
 				dataType: "json",
 				success : function(json) {
 					$('#img').html("<img src=" + json.sign_img +  " class=img>");
-					$('#name').html(json.sign_name);
+					//$('#name').html(json.sign_name);
 				}
 			})
 		})
@@ -37,25 +38,32 @@
     <jsp:include page="../nav.jsp"></jsp:include>
 
     <div id="main">
-    	<form action="insert" method="post" enctype="multipart/form-data">
-	        <table>
-	        	<tr class="post1">
-	            	<td class="profile" rowspan="2"><span id="img"></span></td>
-					<td><b><span id="name"></span></b></td>
-            	</tr>
-	            <tr>
-	                <td id="bbsinsert">
-	                	<input name="group_no" value="<%= group_no %>" type="hidden">
-	                	<input name="writer" value="${id}" type="hidden">
-	                    <textarea name="content" id="content" rows="10" placeholder="내용을 입력하세요"></textarea>
-	                	<input type="file" name="file">
-	                </td>
-	            </tr>
-	        </table>
-	        <div style="padding: 10px 20px 0;text-align: right;">
-	            <button id="b1">글쓰기</button>
-	        </div>
-        </form>
+    	<c:choose>
+    		<c:when test="${!empty id}">
+		    	<form action="insert" method="post" enctype="multipart/form-data">
+			        <table>
+			        	<tr class="post1">
+			            	<td class="profile" rowspan="2"><span id="img"></span></td>
+							<td><b>${name}</b></td>
+		            	</tr>
+			            <tr>
+			                <td id="bbsinsert">
+			                	<input name="group_no" value="<%= group_no %>" type="hidden">
+			                	<input name="writer" value="${id}" type="hidden">
+			                    <textarea name="content" id="content" rows="10" placeholder="내용을 입력하세요"></textarea>
+			                	<input type="file" name="file">
+			                </td>
+			            </tr>
+			        </table>
+			        <div style="padding: 10px 20px 0;text-align: right;">
+			            <button id="b1">글쓰기</button>
+			        </div>
+		        </form>
+	        </c:when>
+	        <c:otherwise>
+	        	<div style="text-align:center;font-weight:bold;">로그인 필요</div>
+	        </c:otherwise>
+        </c:choose>
     </div>
 
 </body>

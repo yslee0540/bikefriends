@@ -42,7 +42,7 @@
 		where group_no = #{group_no}
 	</select>
 	
-	<select id="count2" parameterType="bbsVO" resultType="Integer">
+	<select id="searchCount" parameterType="bbsVO" resultType="Integer">
 		select count(*) from bbs
 		where content like CONCAT('%', #{content}, '%')
 		and group_no = #{group_no}
@@ -70,7 +70,7 @@
 	</update>
 	
 	<!-- 각 게시판 인기 게시물 -->
-	<select id="best2" parameterType="bbsVO" resultType="bbsVO">
+	<select id="bestList" parameterType="bbsVO" resultType="bbsVO">
 		select * from (
 			select *, row_number() over(order by date desc) as no,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
@@ -83,7 +83,7 @@
 		and b2.no between #{start} and #{end}
 	</select>
 	
-	<select id="count3" parameterType="int" resultType="Integer">
+	<select id="bestCount" parameterType="int" resultType="Integer">
 		select count(*) from (
 			select *,
 			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,

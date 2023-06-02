@@ -51,7 +51,7 @@ public class BbsController {
 	@RequestMapping("bbs/one")
 	public void one(int bbs_no, Model model, HttpSession session) {
 		//조회수
-		dao.update(bbs_no);
+		dao.hit(bbs_no);
 		
 		BbsVO vo = dao.one(bbs_no);
 		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
@@ -123,7 +123,7 @@ public class BbsController {
 		List<BbsVO> list = dao.search(vo);
 		vo.setGroup_name(dao.groupone(vo.getGroup_no()));
 		
-		int count = dao.count(vo);
+		int count = dao.searchCount(vo);
 		int pages = 0;
 		if (count % 20 == 0) {
 			pages = count / 20;
@@ -152,10 +152,10 @@ public class BbsController {
 	@RequestMapping("bbs/bestlist")
 	public void best(BbsVO vo, Model model) {
 		vo.setStartEnd(vo.getPage(), 10);
-		List<BbsVO> list = dao.best(vo);
+		List<BbsVO> list = dao.bestList(vo);
 		model.addAttribute("list", list);
 		
-		int count = dao.count2(vo.getGroup_no());
+		int count = dao.bestCount(vo.getGroup_no());
 		int pages = 0;
 		if (count % 10 == 0) {
 			pages = count / 10;
