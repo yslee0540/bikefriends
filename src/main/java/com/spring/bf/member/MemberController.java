@@ -72,19 +72,9 @@ public class MemberController {
 			session.setAttribute("id", bag.getSign_id());
 			bag = dao.one(bag.getSign_id());
 			session.setAttribute("name", bag.getSign_name());
-			response.setCharacterEncoding("UTF-8");
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out;
-			try {
-				out = response.getWriter();
-				out.println("<script>history.go(-2);</script>");
-				System.out.println("back");
-				out.flush();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			session.setAttribute("email", bag.getSign_email());
+			session.setAttribute("phone", bag.getSign_phone());
+			System.out.println("name : " + bag.getSign_name());
 			return "redirect:/index.jsp"; // views아래 파일이름.jsp
 		} else {
 			// views아래가 아니고, webapp아래
@@ -196,6 +186,11 @@ public class MemberController {
 		if (result == 1) { // 로그인 세션 시도
 			System.out.println("로그인 성공");
 			session.setAttribute("id", bag.getSign_id());
+			bag = dao.one(bag.getSign_id());
+			session.setAttribute("name", bag.getSign_name());
+			session.setAttribute("email", bag.getSign_email());
+			session.setAttribute("phone", bag.getSign_phone());
+			System.out.println("name : " + bag.getSign_name());
 			// model.addAttribute("vo", vo);
 			// views아래 파일이름.jsp
 		} else {
@@ -221,12 +216,12 @@ public class MemberController {
 	@RequestMapping("member/logout")
 	public String logoutMainGET(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession();
-
-		String previousPage = request.getRequestURI();
-	    session.setAttribute("previousPage", previousPage);
-	    System.out.println(session.getAttribute(previousPage));
 		session.invalidate();
 		System.out.println("로그아웃 실행");
+				
 		return "redirect:/index.jsp";
 	}
+	
+	
+	
 }
