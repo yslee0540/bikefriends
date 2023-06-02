@@ -34,7 +34,7 @@
 		insert into payment1(id, money, name, tel, email ) values (#{id}, #{money}, #{name}, #{tel}, #{email})
 	</insert>
 	<delete id="delete" parameterType="String">
-		delete from payment1 where id = #{id}
+		delete from payment1 where pay_no = #{pay_no}
 	</delete>
 	
 	<select id="all" resultType="PayVO" parameterType="page1VO">

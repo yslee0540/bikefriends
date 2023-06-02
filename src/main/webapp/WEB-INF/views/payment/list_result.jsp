@@ -118,7 +118,7 @@ td {
 
 	$(function() {
 		$('.delete').click(function() {
-			alert($(this).attr("value"))
+			//alert($(this).attr("value"))
 			
 			$.ajax ({
 			url : "delete", 
@@ -160,7 +160,7 @@ td {
 						<td class="down">${bag.email}</td>
 						
 						
-						<td><button class="delete" value="${bag.id}" >삭제</button></td>
+						<td><button class="delete" value="${bag.pay_no}" >삭제</button></td>
 					</tr>
 
 				</c:forEach>
