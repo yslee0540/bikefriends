@@ -50,7 +50,7 @@ var content = '<div id="div">'+
 	'<ul class="list-group">'+
 		/* '<li class="list-group-item menu"><a href="myevent/내가가입한이벤트.jsp" class="link">같이달려요</a></li>'+ */
 		'<li class="list-group-item menu"><a href="event/이벤트개설.jsp" class="link">같이달려요</a></li>'+ 
-		'<li class="list-group-item menu"><a href="location/지도실시간대여수표시7.jsp" class="link">자전거공유하기</a></li>'+
+		'<li class="list-group-item menu"><a href="event/이벤트개설2.jsp" class="link">인증샷챌린지</a></li>'+
 	'</ul>'+
 '</div>'+
 '</div>'+

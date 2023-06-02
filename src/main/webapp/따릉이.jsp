@@ -42,7 +42,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 		url : "http://openapi.seoul.go.kr:8088/49747167436369633836706f6a5367/json/bikeList/2001/2709/",
 		success : function(response) {
 			console.log("ajax2--0")
-			for (let i = 0; i < 709; i++) {
+			for (let i = 0; i < 703; i++) {
 				var jsonObject = {
 					"data" : response['rentBikeStatus']['row'][i].parkingBikeTotCnt,
 					"lat":response['rentBikeStatus']['row'][i].stationLatitude,
@@ -2891,7 +2891,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 		}
 		
 		
-		for (var i = 0; i < 709; i++) {
+		for (var i = 0; i < 703; i++) {
 			// 마커를 생성합니다
 			
 			var marker = new kakao.maps.Marker({
