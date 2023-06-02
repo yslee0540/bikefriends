@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbsreply">
+	
+	<insert id="create" parameterType="bbsreplyVO">
+		insert into bbsreply(bbs_no, writer, content)
+		values (#{bbs_no}, #{writer}, #{content})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from bbsreply where reply_no = #{reply_no}
+	</delete>
+	
+	<update id="update" parameterType="bbsreplyVO">
+		update bbsreply set content = #{content} where reply_no = #{reply_no}
+	</update>
+	
+	<select id="one" parameterType="int" resultType="bbsreplyVO">
+		select * from bbsreply where reply_no = #{reply_no}
+	</select>
+	
+	<select id="all" resultType="bbsreplyVO">
+		select * from bbsreply b, member m
+		where b.writer = m.Sign_id
+		and bbs_no = #{bbs_no}
+		order by reply_no
+	</select>
+	
+</mapper>

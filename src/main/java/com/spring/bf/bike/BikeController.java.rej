@@ -1,0 +1,11 @@
+diff a/src/main/java/com/spring/bf/bike/BikeController.java b/src/main/java/com/spring/bf/bike/BikeController.java	(rejected hunks)
+@@ -78,6 +78,8 @@
+ 		System.out.println(list.size());
+ 		model.addAttribute("list", list);
+ 		
++		BikeReplyVO bag2 = dao2.one(bike_no);
++		model.addAttribute("bag2", bag2);
+ 	}
+ 
+ }
+\ No newline at end of file

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+body {
+    margin: 20px 0;
+}
+
+#div {
+    margin: auto;
+    width: 800px;
+}
+
+#div1 {
+    margin: auto;
+    padding-top: 10px;
+    width: 200px;
+    float: left;
+    text-align: center;
+}
+
+#div2 {
+    margin: auto;
+    width: 600px;
+    float: right;
+    border: 1px solid rgb(240 240 240);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(240 240 240);
+    background: white;
+}
+
+.main {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 5px;
+    color: rgb(0, 110, 255);
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+.link {
+    padding: 0 30px;
+}
+
+#category {
+	 float: left;
+    width: 220px;
+    margin: auto;
+    border: 1px solid rgb(240 240 240);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(240 240 240);
+}
+
+.menu {
+    border: none;
+    border-bottom: 1px solid rgb(240 240 240);
+}
+
+.menu:hover {
+    background: rgb(220, 239, 255);
+    font-weight: bold;
+}
+
+/* 메뉴 끝 */
+
+.writer {
+    float: left;
+    width: 300px;
+    padding: 10px 5px 10px 20px;
+}
+
+.date {
+    float: right;
+    width: 120px;
+    text-align: right;
+    padding: 10px 20px 10px 5px;
+}
+
+.content {
+    width: 500px;
+    padding: 50px 20px 10px;
+}
+
+.bookmark {
+	padding: 5px 20px;
+	text-align: right;
+}
+
+.page {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.title {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+    vertical-align: bottom;
+    padding-left: 10px;
+}
+
+#top {
+    text-align: right;
+    padding: 20px 10px 0;
+}
+
+#bbsinsert {
+    padding: 15px 0;
+}

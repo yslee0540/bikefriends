@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bike">
+
+
+	<insert id="insert" parameterType="bikeVO">
+		insert into bike values
+		(null,#{shop_name},#{shop_content},#{shop_img},#{shop_location},#{shop_businessnumber},null)
+	</insert>
+
+	<!-- <select id="all" resultType="bikeVO"> select * from bike </select> -->
+
+	<select id="all2" resultType="bikeVO" parameterType="pageVO">
+
+		select * from
+		(select row_number() over(order by bike_no desc) as
+		bike_no_no,b.*
+		from bike
+		b) bike2
+		where bike2.bike_no_no between ${start}
+		and ${end}
+
+		<!-- where bike2.bike_no_no between 1 and 6 ${start} and ${end} -->
+
+	</select>
+
+	<select id="count" resultType="Integer">
+		select count(*) from bike
+	</select>
+
+	<select id="one" parameterType="int" resultType="bikeVO">
+		select * from
+		bike where bike_no = #{bike_no}
+	</select>
+
+	
+	<!-- <select id="search" parameterType="searchVO" resultType="bikeVO">
+		select * from bike
+		<if test='searchtype.equals("bike_brand")'> 
+			where bike_brand like concat('%',#{keyword},'%') </if>
+		<if test='searchtype.equals("bike_category")'>
+			where bike_category like concat('%',#{keyword},'%') </if>
+	</select> --> 
+	<select id="searchbrand" parameterType="searchVO" resultType="bikeVO">
+    select * from (select row_number() over (order by bike_no desc) as bike_no_no, b.*
+    from bike b where bike_brand like concat('%', #{keyword}, '%') ) AS bike2
+   where bike2.bike_no_no between ${start} and ${end}
+</select> 
+
+	<select id="searchcaegory" parameterType="searchVO" resultType="bikeVO">
+    select * from (select row_number() over (order by bike_no desc) as bike_no_no, b.*
+    from bike b where bike_category like concat('%', #{keyword}, '%') ) AS bike2
+  where bike2.bike_no_no between ${start} and ${end}
+</select> 
+
+<select id="countbrand"  resultType="int">
+  SELECT COUNT(*) FROM bike WHERE bike_brand LIKE CONCAT('%', #{keyword}, '%')
+</select>
+<select id="countcategory" resultType="int">
+  SELECT COUNT(*) FROM bike WHERE bike_category LIKE CONCAT('%', #{keyword}, '%')
+</select>
+
+</mapper>

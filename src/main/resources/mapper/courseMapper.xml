@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="course">
+	
+	<insert id="insert" parameterType="courseVO">
+		insert into course(line_lat, line_lng, writer, title, content, rate)
+		values (#{line_lat}, #{line_lng},
+		#{writer}, #{title}, #{content}, #{rate})
+	</insert>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from course where course_no = #{course_no}
+	</delete>
+	
+	<update id="update" parameterType="courseVO">
+		update course
+		set rate = #{rate}, content = #{content}, title = #{title}
+		where course_no = #{course_no}
+	</update>
+	
+	<select id="one" parameterType="int" resultType="courseVO">
+		select * from course c, member m
+		where c.writer = m.Sign_id
+		and course_no = #{course_no}
+	</select>
+	
+	<select id="list" parameterType="courseVO" resultType="courseVO">
+		select * from (
+			select row_number() over(order by course_no desc) as no, c.*, m.Sign_name
+			from course c, member m
+			where c.writer = m.Sign_id 
+		) as c2
+		where c2.no between #{start} and #{end}
+	</select>
+	
+	<select id="search" parameterType="courseVO" resultType="courseVO">
+		select * from (
+			select row_number() over(order by course_no desc) as no, c.*, m.Sign_name
+			from course c, member m
+			where c.writer = m.Sign_id
+			<choose>
+				<when test="type.equals('title')">
+					and title like CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="type.equals('content')">
+					and content like CONCAT('%', #{keyword}, '%')
+				</when>
+				<when test="type.equals('sign_name')">
+					and Sign_name = #{keyword}
+				</when>
+			</choose>
+		) as c2
+		where c2.no between #{start} and #{end}
+	</select>
+	
+	<!-- 페이징 -->
+	<select id="count" resultType="Integer">
+		select count(*) from course
+	</select>
+	
+	<select id="count2" parameterType="courseVO" resultType="Integer">
+		select count(*) from course c, member m
+		where c.writer = m.Sign_id
+		<choose>
+			<when test="type.equals('title')">
+				and title like CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type.equals('content')">
+				and content like CONCAT('%', #{keyword}, '%')
+			</when>
+			<when test="type.equals('sign_name')">
+				and Sign_name = #{keyword}
+			</when>
+		</choose>
+	</select>
+	
+</mapper>

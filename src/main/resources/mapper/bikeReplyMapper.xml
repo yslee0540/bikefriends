@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bikereply">
+
+
+	<insert id="insert" parameterType="bikereplyVO">
+		insert into bikereply values
+		(null,#{bikereply_writer} ,#{bikereply_content},#{bike_no}, now(),#{bikereply_rating}, #{bikereply_writername})
+	</insert>
+ 	
+ 	<select id="all" resultType="bikereplyVO">
+ 		select * from bikereply where bike_no = #{bike_no}
+ 	</select>
+ 	
+ 	<delete id="delete" parameterType="Integer">
+ 		delete from bikereply where bikereply_no = #{bikereply_no}
+ 	</delete>
+	
+	<select id="one" parameterType="int" resultType="bikereplyVO">
+		select * from bikereply where bikereply_no = #{bikereply_no}
+	</select>
+	
+	<update id="update" parameterType="bikereplyVO">
+		update bikereply set bikereply_content = #{bikereply_content} , bikereply_rating = #{bikereply_rating} where bikereply_no = #{bikereply_no}
+	</update>
+
+</mapper>

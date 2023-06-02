@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bbs">
+	
+	<insert id="create" parameterType="bbsVO">
+		insert into bbs(content, writer, group_no, img)
+		values (#{content}, #{writer}, #{group_no}, #{img})
+	</insert>
+	
+	<delete id="delete" parameterType="Integer">
+		delete from bbs where bbs_no = #{bbs_no}
+	</delete>
+	
+	<update id="update" parameterType="bbsVO">
+		update bbs set content = #{content}, img = #{img}
+		where bbs_no = #{bbs_no}
+	</update>
+	
+	<select id="one" parameterType="int" resultType="bbsVO">
+		select b.*, m.Sign_img, m.Sign_name,
+		(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
+		(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
+     	from bbs b, member m
+		where b.writer = m.Sign_id
+		and bbs_no = #{bbs_no}
+	</select>
+	
+	<select id="list" parameterType="bbsVO" resultType="bbsVO">
+		select * from (
+			select row_number() over(order by date desc) as no, b.*, m.*,
+			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
+			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
+			from bbs b, member m
+			where b.writer = m.Sign_id
+			and group_no = #{group_no}
+		) as b2
+		where b2.no between #{start} and #{end}
+	</select>
+	
+	<select id="count" parameterType="int" resultType="Integer">
+		select count(*) from bbs
+		where group_no = #{group_no}
+	</select>
+	
+	<select id="searchCount" parameterType="bbsVO" resultType="Integer">
+		select count(*) from bbs
+		where content like CONCAT('%', #{content}, '%')
+		and group_no = #{group_no}
+	</select>
+	
+	<!-- 그룹이름 -->
+	<select id="groupone" parameterType="int" resultType="bbsVO">
+		select * from `bbsgroup` where group_no = #{group_no}
+	</select>
+	
+	<select id="search" parameterType="bbsVO" resultType="bbsVO">
+		select * from (
+			select row_number() over(order by date desc) as no, b.*, m.Sign_name
+			from bbs b, member m
+			where content like CONCAT('%', #{content}, '%')
+			and b.writer = m.Sign_id
+			and group_no = #{group_no}
+		) as b2
+		where b2.no between #{start} and #{end}
+	</select>
+	
+	<update id="hit" parameterType="int">
+		update bbs set hit = hit + 1
+		where bbs_no = #{bbs_no}
+	</update>
+	
+	<!-- 각 게시판 인기 게시물 -->
+	<select id="bestList" parameterType="bbsVO" resultType="bbsVO">
+		select * from (
+			select *, row_number() over(order by date desc) as no,
+			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
+			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
+			from bbs b, member m
+			where b.writer = m.Sign_id
+			and group_no = #{group_no}
+		) as b2
+		where hit >= 30 and like_cnt >= 3
+		and b2.no between #{start} and #{end}
+	</select>
+	
+	<select id="bestCount" parameterType="int" resultType="Integer">
+		select count(*) from (
+			select *,
+			(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt,
+			(select count(*) from bbsreply where bbs_no = b.bbs_no) as cmt_cnt
+			from bbs b 
+			where group_no = #{group_no}
+		) as b2
+		where hit >= 30 and like_cnt >= 3
+	</select>
+	
+	<!-- 인기 게시물 리스트 -->
+	<select id="best" resultType="bbsVO">
+		select *,
+		(select count(*) from bbslike where bbs_no = b.bbs_no) as like_cnt
+		from bbs b, bbsgroup b2 
+		where b.group_no = b2.group_no
+		and `date` between date_add(now(),interval -1 month) and now()
+		order by hit desc, date desc limit 5
+	</select>
+	
+	<!-- 최신 게시물 리스트 -->
+	<select id="recent" resultType="bbsVO">
+		select * from bbs b, bbsgroup b2 
+		where b.group_no = b2.group_no
+		order by date desc limit 5
+	</select>
+	
+</mapper>

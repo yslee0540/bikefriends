@@ -3,15 +3,44 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-<!-- 
-
+<!-- SQL문 정의할 때 VO표현을 간단하게 하고 싶은 경우. 
+     별명을 지어서 사용 -->
    <typeAliases>
-       <typeAlias type="com.spring.bf.????.shopVO" alias="shopVO"></typeAlias>
+      <typeAlias type="com.spring.bf.event.eventVO" alias="eventVO"></typeAlias>
+       <typeAlias type="com.spring.bf.location.locationVO" alias="locationVO"></typeAlias>
+       <typeAlias type="com.spring.bf.myevent.myeventVO" alias="myeventVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.BikeVO" alias="bikeVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.PageVO" alias="pageVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.SearchVO" alias="searchVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bike.BikeReplyVO" alias="bikereplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.pay.PayVO" alias="payVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bbsReply.BbsReplyVO" alias="bbsReplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.group.GroupVO" alias="groupVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bbsLike.BbsLikeVO" alias="bbsLikeVO"></typeAlias>
+       <typeAlias type="com.spring.bf.course.CourseVO" alias="courseVO"></typeAlias>
+       <typeAlias type="com.spring.bf.member.MemberVO" alias="memberVO"></typeAlias>
+       <typeAlias type="com.spring.bf.bbs.BbsVO" alias="bbsVO"></typeAlias>
+       <typeAlias type="com.spring.bf.note.NoteVO" alias="noteVO"></typeAlias> 
+       <typeAlias type="com.spring.bf.pay.Page1VO" alias="page1VO"></typeAlias>
+       <typeAlias type="com.spring.bf.eventreply.eventreplyVO" alias="eventreplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.eventchallenge.eventchallengeVO" alias="eventchallengeVO"></typeAlias>
    </typeAliases>
-   
    <mappers>
-      <mapper resource="mapper/memberMapper.xml" />
+   <!-- SQL문 정의하는 파일들의 목록을 지정. -->
+      <mapper resource="mapper/eventMapper.xml" />
+      <mapper resource="mapper/locationMapper.xml" />
+      <mapper resource="mapper/myeventMapper.xml" />
+      <mapper resource="mapper/bikeMapper.xml" />
+      <mapper resource="mapper/bikeReplyMapper.xml" />
+      <mapper resource="mapper/payMapper.xml" />
+      <mapper resource="mapper/bbsMapper.xml" />
+      <mapper resource="mapper/bbsReplyMapper.xml" />
+      <mapper resource="mapper/GroupMapper.xml" />
+      <mapper resource="mapper/bbsLikeMapper.xml" />
+      <mapper resource="mapper/courseMapper.xml" />
+      <mapper resource="mapper/member.xml" />
+      <mapper resource="mapper/noteMapper.xml" />
+      <mapper resource="mapper/eventreplyMapper.xml" />
+      <mapper resource="mapper/eventchallengeMapper.xml" />
    </mappers>
-   
-    -->
 </configuration>
