@@ -20,6 +20,8 @@
        <typeAlias type="com.spring.bf.member.MemberVO" alias="memberVO"></typeAlias>
        <typeAlias type="com.spring.bf.bbs.BbsVO" alias="bbsVO"></typeAlias>
        <typeAlias type="com.spring.bf.note.NoteVO" alias="noteVO"></typeAlias> 
+       <typeAlias type="com.spring.bf.eventreply.eventreplyVO" alias="eventreplyVO"></typeAlias>
+       <typeAlias type="com.spring.bf.eventchallenge.eventchallengeVO" alias="eventchallengeVO"></typeAlias>
    </typeAliases>
    <mappers>
    <!-- SQL문 정의하는 파일들의 목록을 지정. -->
@@ -36,5 +38,7 @@
       <mapper resource="mapper/courseMapper.xml" />
       <mapper resource="mapper/member.xml" />
       <mapper resource="mapper/noteMapper.xml" />
+      <mapper resource="mapper/eventreplyMapper.xml" />
+      <mapper resource="mapper/eventchallengeMapper.xml" />
    </mappers>
 </configuration>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="eventchallenge">
+	
+	<insert id="create" parameterType="eventchallengeVO">
+		insert into eventchallenge(no,writer,content,img)
+		 values (#{no}, #{writer}, #{content}, #{img})
+	</insert>
+	
+	<delete id="del"  parameterType="String">
+		delete from eventchallenge where id = #{id}
+	</delete>
+	
+	<update id="up"  parameterType="eventchallengeVO">
+		update eventchallenge set content = #{content} where no = #{no}
+	</update>
+	
+	<select id="one" parameterType="String" resultType="eventchallengeVO"> 
+	select * from eventchallenge where writer=#{writer}
+	</select>
+	
+	<select id="imgone" parameterType="String" resultType="eventchallengeVO"> 
+	select * from eventchallenge where img=#{img}
+	</select>
+	
+	<select id="all" resultType="eventchallengeVO">
+	select * from eventchallenge
+	</select>
+</mapper>

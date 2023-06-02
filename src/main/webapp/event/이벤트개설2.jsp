@@ -1,5 +1,3 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -12,21 +10,30 @@
 	rel="stylesheet">
 <script     
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <link rel="stylesheet" type="text/css" href="../resources/css/out.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/bbsstyle.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<style>
+#result{
+width:750px;
+margin: auto;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		//시작하자마자 $.ajax() 호출하면 됨. 
+		$.ajax({
+			url : "../eventchallenge/challengelist",
+			success : function(x) {
+				$('#result').html(x)
+			} //success
+		}) //ajax
+	})
+		</script>
 </head>
 <body>
   <jsp:include page="../nav.jsp"></jsp:include>
-      <form action="insert" method="post"
-					enctype="multipart/form-data" >
-  아이디<input type="text" name="event_id" value="apple"><br>
-  이벤트장소<input type="text" name="event_location" value="강남역" ><br>
-  이벤트수용인원<input type="number" name="event_size" value="10"><br>
-   이미지첨부<input type="file" name="file" ><br>
-   	  이벤트날짜<input type="date" name="event_date"><br>
-  
- <button type="submit">글쓰기</button> 
-	</form>
+<div id="result"></div>
 </body>
 </html>
