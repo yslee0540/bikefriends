@@ -46,4 +46,10 @@
 		set Sign_img = #{Sign_img}
 		where Sign_id = #{Sign_id}
 	</update>
+	
+	<update id="password"  parameterType="memberVO">
+		update `member`
+		set Sign_pw = #{Sign_pw}
+		where Sign_id = #{Sign_id}
+	</update>
 </mapper>

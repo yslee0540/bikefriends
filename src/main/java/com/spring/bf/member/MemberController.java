@@ -1,7 +1,6 @@
 package com.spring.bf.member;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
@@ -14,14 +13,10 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-
-import com.spring.bf.bbs.BbsVO;
 
 @Controller
 public class MemberController {
@@ -113,12 +108,30 @@ public class MemberController {
 	public String sign_update(MemberVO bag, HttpServletRequest request) {
 		String id = (String) request.getSession().getAttribute("id");
 		System.out.println("세션 id : " + id);
-
 		bag.setSign_id(id);
 		dao.update(bag);
+		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		
+		session.setAttribute("id", bag.getSign_id());
+		session.setAttribute("name", bag.getSign_name());
+		session.setAttribute("email", bag.getSign_email());
+		session.setAttribute("phone", bag.getSign_phone());
+
 		return "redirect:one?id=" + id;
 	}
+	
+	@RequestMapping("member/sign_password")
+	public String sign_password(MemberVO bag, HttpServletRequest request) {
+		String id = (String) request.getSession().getAttribute("id");
+		System.out.println("세션 id : " + id);
+		bag.setSign_id(id);
+		dao.password(bag);
 
+		return "redirect:one?id=" + id;
+	}
+	
 	@RequestMapping("member/one")
 	public void one(String id, Model model) {
 		MemberVO bag = dao.one(id);

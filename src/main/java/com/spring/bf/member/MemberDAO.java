@@ -66,6 +66,12 @@ public class MemberDAO { // CRUD
 		System.out.println(bag);
 	}
 	
+	public void password(MemberVO bag) {
+		my.selectOne("member.password", bag);
+		System.out.println(bag);
+	}
+	
+	
 	public void updateIMG(MemberVO bag) {
 		my.selectOne("member.upimg", bag);
 		System.out.println(bag);
