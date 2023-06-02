@@ -41,7 +41,7 @@
         //naver_id_login.setPopup();
         naver_id_login.init_naver_id_login();
     </script>
-	<button>비밀번호 찾기</button> | 
+	<button onclick="location.href='findPassword.jsp'">비밀번호 찾기</button> | 
 	<button onclick="location.href='sign_up.jsp'">회원가입</button>
 	<%
 		}

@@ -64,7 +64,9 @@
 	<a href="/bf/member/update?id=<%=session.getAttribute("id")%>">
 		<button class="btn btn-primary">수정하기</button>
 	</a>
-	
+	<a href="/bf/member/password.jsp">
+		<button class="btn btn-primary">비밀번호 변경</button>
+	</a>
 	<br>
 	
 	<!-- 
