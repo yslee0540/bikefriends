@@ -17,10 +17,11 @@
 	$(function() {
 		$('#bikereplybtn').click(function() {
 			bikereply_writer = "<%=session.getAttribute("id")%>"
+			bikereply_writername = "<%=session.getAttribute("name")%>"
 			bikereply_content =  $('#content').val()
 			bikereply_rating =  $('input[name=rating]:checked').val();
-			if(bikereply_content == '' || bikereply_rating == ''){
-				alert("별점,리뷰을 써주세요")
+			if(bikereply_content == '' ){
+				alert("리뷰를 작성해주세요")
 			}else{
 			$.ajax({
 				url : "bikereplyinsert",
@@ -29,6 +30,7 @@
 					bikereply_writer : bikereply_writer,
 					bikereply_content : bikereply_content,
 					bikereply_rating : bikereply_rating,
+					bikereply_writername : bikereply_writername
 				},
 				success : function(x) {
 					$('#insertreply').html(x)
@@ -39,14 +41,14 @@
 		})//bikereplybtn bikereply데이터베이스에 저장
 		 
 		 $(document).on('click', '#replydel', function() {
-			if (confirm('댓글 삭제하시겠습니까?')) {
+			if (confirm('리뷰 삭제하시겠습니까?')) {
 				$.ajax({
 					url: "bikereplydelete",
 					data: {
 						bikereply_no: $(this).data('no')
 					},
 					success: function() {
-						alert('댓글 삭제 완료')
+						alert('리뷰 삭제 완료')
 						location.reload()
 					}//success
 				})//ajax
@@ -112,13 +114,13 @@
 			<form id="myform">
 				<fieldset>
 					<span class="text-bold">추천점수</span> <input type="radio"
-						name="rating" value="★★★★★" id="rate1"><label for="rate1">★</label>
+						name="rating" value="★★★★★" id="rate1" ><label for="rate1">★</label>
 					<input type="radio" name="rating" value="★★★★" id="rate2"><label
 						for="rate2">★</label> <input type="radio" name="rating"
 						value="★★★" id="rate3"><label for="rate3">★</label> <input
 						type="radio" name="rating" value="★★" id="rate4"><label
 						for="rate4">★</label> <input type="radio" name="rating" value="★"
-						id="rate5"><label for="rate5">★</label>
+						id="rate5" checked="checked"><label for="rate5">★</label>
 				</fieldset>
 				<div>
 					<textarea style="resize: none; width: 100%;" id="content"
@@ -134,7 +136,7 @@
 				<table style="width: 100%; height:100px; margin-bottom:3px; border: 1px solid #444444; table-layout: fixed;">
 					<tr>
 						<td style="width: 15%; color: #FAD000;">${vo.bikereply_rating}</td>
-						<td style="width: 60%; text-align: right;">${vo.bikereply_writer}</td>
+						<td style="width: 60%; text-align: right;">${vo.bikereply_writername}</td>
 						<td style="width: 25%; text-align: right; font-size: 6px">${vo.date}</td>
 					</tr>
 					<tr>

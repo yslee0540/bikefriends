@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-	<c:set var = "val01Name" value="${param.val01}"/>  
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +22,7 @@
 				//$('#main').html()
 			} //success
 		}) //ajaxssssss
+		
 	})//$
 				
 	
@@ -46,8 +45,6 @@
    <jsp:include page="bikelist.jsp">
 		<jsp:param name="pages" value="${pages}" />		
 	</jsp:include>
-
-	
 	<div id="main" style="padding-top: 0px;"></div>
 </body>
 </html>

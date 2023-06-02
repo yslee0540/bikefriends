@@ -4,7 +4,7 @@
 	<table style="width: 100%; margin: 5px;">
 		<tr>
 			<td style="width: 15%; color: #FAD000;">${bag.bikereply_rating}</td>
-			<td style="width: 60%; text-align: right;">${bag.bikereply_writer}</td>
+			<td style="width: 60%; text-align: right;">${bag.bikereply_writername}</td>
 			<td style="width: 25%; text-align: right; font-size: 6px">${bag.date}</td>
 		</tr>
 		<tr>

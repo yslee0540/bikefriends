@@ -10,6 +10,7 @@ public class BikeReplyVO {
 	private String bikereply_writer;
 	private String bikereply_content;
 	private String bikereply_rating;
+	private String bikereply_writername;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp date;
@@ -64,17 +65,23 @@ public class BikeReplyVO {
 		this.date = date;
 	}
 
+	public String getBikereply_writername() {
+		return bikereply_writername;
+	}
+
+	public void setBikereply_writername(String bikereply_writername) {
+		this.bikereply_writername = bikereply_writername;
+	}
+
 	@Override
 	public String toString() {
 		return "BikeReplyVO [bikereply_no=" + bikereply_no + ", bike_no=" + bike_no + ", bikereply_writer="
 				+ bikereply_writer + ", bikereply_content=" + bikereply_content + ", bikereply_rating="
-				+ bikereply_rating + ", date=" + date + "]";
+				+ bikereply_rating + ", bikereply_writername=" + bikereply_writername + ", date=" + date + "]";
 	}
 
 
 
-	
-	
 	
 	
 	

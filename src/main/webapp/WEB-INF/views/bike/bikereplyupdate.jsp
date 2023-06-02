@@ -5,15 +5,15 @@
 <head>
 <script type="text/javascript" src="../resources/js/jquery-3.6.4.js"></script>
 <script type="text/javascript">
-
+	$( document ).ready( function() {
+		var ratingcheck = "${vo.bikereply_rating}";
+		 $('input:radio[name=rating][value="' + ratingcheck + '"]').prop('checked', true);
+    });
 
 $(function() {
 $("#b1").click(function() {
 	bikereply_content = $('#content').val()	
 	bikereply_rating =  $('input[name=rating]:checked').val();
-	if(bikereply_content == '' || bikereply_rating == ''){
-		alert("별점,리뷰을 써주세요")
-	}else{
 	$.ajax({
 		url : 'bikereplyupdate2',
 		data : {
@@ -26,7 +26,6 @@ $("#b1").click(function() {
 			window.close();
 		}//success		
 		})//ajax
-	}
 	})
 })
 </script>
@@ -53,20 +52,19 @@ $("#b1").click(function() {
 <title>자전거 리뷰 수정</title>
 </head>
 <body>
-	<jsp:include page="../../../nav.jsp"></jsp:include>
 	<div id="main">
 		<div style="padding: 0px 20px 10px;">
 			<b>리뷰 수정하기</b>
 		</div>
 		<form id="myform">
 			<fieldset>
-				<span class="text-bold">별점수정</span><input type="radio" name="rating"
-					value="★★★★★" id="rate1"><label for="rate1">★</label> <input
-					type="radio" name="rating" value="★★★★" id="rate2"><label
-					for="rate2">★</label> <input type="radio" name="rating" value="★★★"
-					id="rate3"><label for="rate3">★</label> <input type="radio"
-					name="rating" value="★★" id="rate4"><label for="rate4">★</label>
-				<input type="radio" name="rating" value="★" id="rate5"><label
+				<span class="text-bold">별점수정</span>
+				<input type="radio" name="rating" value="★★★★★" id="rate1" class="starrating"><label for="rate1">★</label> 
+				<input type="radio" name="rating" value="★★★★" id="rate2" class="starrating"><label for="rate2">★</label> 
+				<input type="radio" name="rating" value="★★★"
+					id="rate3" class="starrating"><label for="rate3">★</label> <input type="radio"
+					name="rating" value="★★" id="rate4" class="starrating"><label for="rate4">★</label>
+				<input type="radio" name="rating" value="★" id="rate5" class="starrating"><label
 					for="rate5">★</label>
 			</fieldset>
 		</form>

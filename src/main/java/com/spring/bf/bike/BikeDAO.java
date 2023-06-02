@@ -1,6 +1,7 @@
 package com.spring.bf.bike;
 
 import java.util.List;
+import java.util.HashMap;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,20 @@ public class BikeDAO {
 	public BikeVO one(int bike_no) {
 		BikeVO bag = my.selectOne("bike.one",bike_no);
 		return bag;
+	}
+	
+	public List<BikeVO> searchbrand(SearchVO vo) {
+		return my.selectList("bike.searchbrand" ,vo);
+	}
+	public List<BikeVO> searchcaegory(SearchVO vo) {
+		return my.selectList("bike.searchcaegory" ,vo);
+	}
+	
+	public int countbrand(String keyword) {
+		return my.selectOne("bike.countbrand",keyword);
+	}
+	public int countcategory(String keyword) {
+		return my.selectOne("bike.countcategory",keyword);
 	}
 	
 }

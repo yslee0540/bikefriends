@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <html>
 <head>
-
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>자전거정보</title>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 <style>
 #main {
 	margin: auto;
@@ -27,11 +34,11 @@
 	$(function() {
 		$('.pages').click(function() {
 			$.ajax({
-				url : "bikelist", 
+				url : "bikelist",
 				data : {
 					page : $(this).text()
 				},
-				success : function(result) { 
+				success : function(result) {
 					$('#main').html(result)
 				},
 				error : function() {
@@ -39,9 +46,30 @@
 				}
 			}) //ajax
 		})
-	})//$
+		
+		$('#searchbtn').click(function() {
+			searchtype = $('[name=searchtype]').val()
+			keyword = $('[name=keyword]').val()
+			
+			$.ajax({
+				url : "bikelistsearchdata",
+				data : {
+					searchtype : searchtype,
+					keyword : keyword
+				},
+				success : function(result) {
+					$('#main').html(result)
+				},
+				error : function() {
+					alert('실패.@@@')
+				}
+			}) //ajax
+		})
+		
 
+	})//$
 </script>
+<link rel="stylesheet" href="../resources/css/bbsstyle.css">
 </head>
 <body>
 	<div id="main">
@@ -71,6 +99,14 @@
 			<%
 				}
 			%>
+		</div>
+		<div
+			style="display: flex; justify-content: center; align-items: center; margin-top: 10px">
+			<select name="searchtype">
+				<option value="bike_brand">브랜드</option>
+				<option value="bike_category">종류</option>
+			</select> <input type="text" name="keyword">
+			<button type="button" id="searchbtn">검색</button>
 		</div>
 	</div>
 </body>

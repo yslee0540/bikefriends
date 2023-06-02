@@ -5,7 +5,7 @@
 
 	<insert id="insert" parameterType="bikereplyVO">
 		insert into bikereply values
-		(null,#{bikereply_writer} ,#{bikereply_content},#{bike_no}, now(),#{bikereply_rating})
+		(null,#{bikereply_writer} ,#{bikereply_content},#{bike_no}, now(),#{bikereply_rating}, #{bikereply_writername})
 	</insert>
  	
  	<select id="all" resultType="bikereplyVO">
