@@ -88,7 +88,7 @@ public class BikeController {
 		BikeReplyVO bag2 = dao2.one(bike_no);
 		model.addAttribute("bag2", bag2);
 	}
-	
+	//검색하기위해서 만듬
 	@RequestMapping("bike/bikelistsearch")
 	public void listsearch(Model model ,String searchtype,String keyword, SearchVO vo) {
 		System.out.println(searchtype +" 검색타입");
@@ -121,7 +121,7 @@ public class BikeController {
 		model.addAttribute("searchtype", searchtype);
 	}
 	
-	
+	//검색해서 첫페이지를 바로 보여주기위해서 만듬
 	@RequestMapping("bike/bikelistsearchdata")
 	public void listsearch2(Model model ,String searchtype,String keyword, SearchVO vo) {
 		System.out.println(searchtype +" 검색타입");
