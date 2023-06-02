@@ -59,19 +59,21 @@
 	background-color: #888888;
 	text-align: center;
 	clear: left;
+	
 }
 
 .button {
 	background-color: #4CAF50; /* Green */
 	border: none;
 	color: white;
-	padding: 25px;
+	padding: 20px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 	margin: 3px 1px;
 	cursor: pointer;
+	
 }
 .button2 {font-size: 3px; padding: 1px 1px;}
 .button3 {border-radius: 8px; width: 30%;}
@@ -79,6 +81,11 @@
 .button5 {border-radius: 8px; width: 15%;background-color: lime;}
 div.c {
   font-size: 20px;
+}
+
+
+.result_1 {
+font-size: large;
 }
 
 </style>
@@ -91,27 +98,21 @@ div.c {
 				url: "json1000",
 				dataType : "json",
 				success: function(json) {
-					
 					money = json.money
-					
-					
-					$('#result').html(money)
+					money_string = '결제금액 ' + money
+					$('#result_1').html(money)
 				} //success
 			}) //ajax
 		})//b3
-		
-	
 	
 		$('#b3').click(function() {
 			$.ajax({
 				url: "json2000",
 				dataType : "json",
 				success: function(json) {
-					
 					money = json.money
-					
-					
-					$('#result').html(money)
+					money_string = '결제금액 ' + money
+					$('#result_1').html(money)
 				} //success
 			}) //ajax
 		})//b3
@@ -141,10 +142,11 @@ div.c {
 <jsp:include page="../nav.jsp"></jsp:include>
 
 	<div id="container">
+	
 		<header id="header">
 			<h1>이용권 선택</h1>
 			<div style="padding: 1px 2px 0;text-align: right;line-height:1;">
-	           <a href="paidList"><button >구매내역</button></a>
+	          <a href="paidList?page=1"><button>구매내역</button></a>
 	        </div>
 				</header>
 		
@@ -167,10 +169,12 @@ div.c {
 		<hr color="red">
 		
 		<footer id="footer">
-			<h2>결제금액</h2><div id="result"></div>
-			
-			<button  class="button button5">다음</button>
-			
+			<div>
+			<span >결제금액</span>
+			<span  id="result_1"  style="font-size:large"></span>
+			</div>
+			<div id="result" style="padding: 1px 2px 0;text-align: right;line-height:1;"></div>
+			<button class="button button5" >다음</button>
 		</footer>
 	</div>
 </body>

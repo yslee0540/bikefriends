@@ -12,6 +12,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+	<script type="text/javascript" src="resources/js/jquery-3.6.4.js"></script>
+	<link rel="stylesheet" href="resources/css/bbsstyle.css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 <script src="/js/jquery.twbsPagination.js"></script>
@@ -89,6 +95,12 @@ td {
 .down {
 	background: lime;
 }
+.find-btn{
+	text-align: center;
+}
+.find-btn1{
+	display :inline-block;
+}
 </style>
 
 
@@ -106,7 +118,7 @@ td {
 
 	$(function() {
 		$('.delete').click(function() {
-			alert($(this).attr("value"))
+			//alert($(this).attr("value"))
 			
 			$.ajax ({
 			url : "delete", 
@@ -123,7 +135,7 @@ td {
 	}) //b2
 	})
 </script>
-
+ <jsp:include page="/nav.jsp"></jsp:include>
 	<div id="container">
 		<header id="header">
 			<h1>구매내역</h1>
@@ -148,7 +160,7 @@ td {
 						<td class="down">${bag.email}</td>
 						
 						
-						<td><button class="delete" value="${bag.id}" >삭제</button></td>
+						<td><button class="delete" value="${bag.pay_no}" >삭제</button></td>
 					</tr>
 
 				</c:forEach>
@@ -156,15 +168,23 @@ td {
 	
 		</main>
 		<footer id="footer">
-		<div class="pagination">
-  <a href="#">&laquo;</a>
-  <a href="#">1</a>
-  <a href="#">2</a>
-  <a href="#">3</a>
-  <a href="#">4</a>
-  <a href="#">5</a>
-  <a href="#">6</a>
-  <a href="#">&raquo;</a>
+		<div class="pagination "style="display: flex; justify-content: center; align-items: center;">
+  <%
+	int pages = (int)request.getAttribute("pages");
+	for(int p = 1; p <= pages; p++){
+%>
+
+	<a href=paidList?page=<%= p %>>
+	
+		<button style="background: lime; color: red; width: 50px;
+		
+		"><%= p %></button>
+	
+	</a>  
+
+<%		
+	}
+%>
 </div>
 		
 		<div class="paging-div">
