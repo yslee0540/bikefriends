@@ -112,8 +112,6 @@ public class MemberController {
 		dao.update(bag);
 		
 		HttpSession session = request.getSession();
-		session.invalidate();
-		
 		session.setAttribute("id", bag.getSign_id());
 		session.setAttribute("name", bag.getSign_name());
 		session.setAttribute("email", bag.getSign_email());
