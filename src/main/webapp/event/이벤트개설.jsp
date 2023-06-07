@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+#b1{
+width:200px;
+margin: auto;
+}
+</style>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
 	rel="stylesheet">
@@ -13,9 +19,11 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/out.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/bbsstyle.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
   <jsp:include page="../nav.jsp"></jsp:include>
+  <div id="b1" style="margin: 0 auto;">
       <form action="insert" method="post"
 					enctype="multipart/form-data" >
   아이디<input type="text" name="event_id" value="apple"><br>
@@ -26,5 +34,6 @@
   
  <button type="submit">글쓰기</button> 
 	</form>
+	</div>
 </body>
 </html>
