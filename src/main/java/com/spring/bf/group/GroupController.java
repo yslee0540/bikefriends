@@ -21,11 +21,12 @@ public class GroupController {
 		model.addAttribute("list", list);
 	}
 
-	// 각 게시판 즐겨찾기
+	// 내 지역 게시판
 	@RequestMapping("bbs/book")
 	public void book(String id, Model model) {
+		//회원정보에서 주소 가져오기
 		String name = dao.book(id);
-		// name = name.substring(4, name.length());
+		// 그룹 정보 가져오기
 		GroupVO vo = dao.one(name);
 		model.addAttribute("vo", vo);
 	}
