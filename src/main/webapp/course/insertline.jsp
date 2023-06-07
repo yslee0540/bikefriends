@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,48 +47,39 @@
 				})
 			}
 		})
-		
-		$("#csearch").keyup(function(e){if(e.keyCode == 13) search();});
 	})
 </script>
 </head>
 <body>
 <%@ include file="../nav.jsp"%>
 	<div id="main">
-		<c:choose>
-    		<c:when test="${!empty id}">
-				<div class="style">
-					<input id="csearch" placeholder="장소 검색">
-					<button onclick="search()">검색</button>
-				</div>
-				<div style="position: relative;">
-					<div id="map" style="width: 600px; height: 350px;"></div>
-					<p class="modes">
-					    <button onclick="selectOverlay('POLYLINE')" class="btn btn-dark">그리기</button>
-					</p>
-				</div>
-				<p class="style">
-					<input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" checked/>
-					자전거도로 정보 보기
-				</p>
-				<div class="style">
-					제목: <input id="ctitle"><br>
-					내용<br> <textarea rows="5" cols="30" id="content"></textarea><br>
-					<div class="starRev" style="padding-bottom:10px;">
-						점수: 
-				        <span class="starR" value="1">★</span>
-				        <span class="starR" value="2">★</span>
-				        <span class="starR" value="3">★</span>
-				        <span class="starR" value="4">★</span>
-				        <span class="starR" value="5">★</span>
-				    </div>
-					<button onclick="getDataFromDrawingMap()" id="save">작성</button>
-				</div>
-			</c:when>
-			<c:otherwise>
-	        	<div style="text-align:center;font-weight:bold;">로그인 필요</div>
-	        </c:otherwise>
-		</c:choose>
+		<div class="style">
+			<input id="csearch" placeholder="장소 검색">
+			<button onclick="search()">검색</button>
+		</div>
+		<div style="position: relative;">
+			<div id="map" style="width: 600px; height: 350px;"></div>
+			<p class="modes">
+			    <button onclick="selectOverlay('POLYLINE')" class="btn btn-dark">그리기</button>
+			</p>
+		</div>
+		<p class="style">
+			<input type="checkbox" id="chkBicycle" onclick="setOverlayMapTypeId()" checked/>
+			자전거도로 정보 보기
+		</p>
+		<div class="style">
+			제목: <input id="ctitle"><br>
+			내용<br> <textarea rows="5" cols="30" id="content"></textarea><br>
+			<div class="starRev" style="padding-bottom:10px;">
+				점수: 
+		        <span class="starR" value="1">★</span>
+		        <span class="starR" value="2">★</span>
+		        <span class="starR" value="3">★</span>
+		        <span class="starR" value="4">★</span>
+		        <span class="starR" value="5">★</span>
+		    </div>
+			<button onclick="getDataFromDrawingMap()" id="save">작성</button>
+		</div>
 	</div>
 	
 	<script type="text/javascript"

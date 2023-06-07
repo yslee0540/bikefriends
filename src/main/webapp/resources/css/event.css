@@ -1,0 +1,299 @@
+@charset "UTF-8";
+
+body {
+    margin: 0px 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: black;
+    text-decoration: underline;
+}
+
+#main {
+    margin: auto;
+    width: 600px;
+    border: 1px solid rgb(240 240 240);
+    border-radius: 15px;
+    box-shadow: 2px 2px 10px rgb(240 240 240);
+    padding: 20px 0;
+    margin-top:0px;
+}
+
+#menu1 {
+   
+    margin-top: 0px;
+    width: 300px;
+    text-align: center;
+    padding: 0px;
+}
+
+#menu #weather {
+    /* margin-top: 0px; */
+    border: 1px solid rgb(240 240 240);
+    box-shadow: 2px 2px 10px rgb(240 240 240);
+    border-radius: 15px;
+    padding: 10px 0;
+    /* width: 300px; */
+}
+
+#menu1 #category1 {
+   /*  margin-top: 20px; */
+    border: 1px solid rgb(240 240 240);
+    box-shadow: 10px 10px 10px 10px rgb(240 240 240 240);
+    border-radius: 15px;
+    /* width: 300px; */
+}
+
+#item1 {
+    border-radius: 15px 15px 0 0;
+}
+#item2 {
+    border-radius: 0 0 15px 15px;
+}
+.list-group-item {
+    border: none;
+    border-bottom: 1px solid #eee;
+}
+.list-group-item:hover {
+    color: white;
+    background: #14870c;
+}
+.list-group a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+#top {
+    text-align: right;
+    padding: 0 20px;
+}
+
+#title {
+    float: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#title2 {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 게시판 */
+.best {
+	font-size:14px;
+	font-weight:normal;
+	padding-left:5px;
+}
+
+table {
+    width: 600px;
+    table-layout: fixed;
+}
+
+.post {
+    width: 600px;
+}
+
+.profile {
+    vertical-align: top;
+    width: 80px;
+    padding: 10px 5px 10px 20px;
+}
+
+.img {
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+}
+
+.bbswriter {
+    width: 270px;
+    padding: 10px 5px 10px;
+}
+
+.bbsdate {
+    width: 250px;
+    text-align: right;
+    padding: 10px 20px 10px 5px;
+}
+
+.bbscon {
+    width: 520px;
+    padding: 5px 20px 10px 5px;
+    word-wrap: break-word;
+}
+
+.bbsinfo {
+    padding: 10px 20px 10px 5px;
+    text-align: right;
+}
+
+#search {
+    padding-bottom: 20px;
+}
+
+/* 그룹 */
+.groupbtn {
+    width: 250px;
+    height: 50px;
+    border-radius: 12px;
+    text-align: center;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+}
+
+.group1 {
+    width: 260px;
+    padding: 0px 5px 0 20px;
+    text-align: center;
+}
+
+.group2 {
+    width: 260px;
+    padding: 0px 20px 0 5px;
+    text-align: center;
+}
+
+/* 게시물 상세 */
+#reinsert {
+    padding: 10px 20px;
+}
+
+#reinput {
+    width: 450px;
+}
+
+.reply {
+    padding: 10px 20px;
+}
+
+#refresh {
+	font-size: 13px;
+	color: #777;
+	cursor: pointer;
+	margin-left: 5px;
+}
+
+.rewriter {
+    width: 50px;
+    padding: 10px 5px 10px 20px;
+}
+
+.redate {
+	width: 100px;
+    padding: 10px 20px 10px 5px;
+}
+
+.recon {
+    padding: 0px 20px 15px;
+    word-wrap: break-word;
+}
+
+#like {
+    cursor: pointer;
+}
+
+/* 글쓰기 */
+#bbsinsert {
+    padding: 10px 20px 0 0;
+    width: 520px;
+}
+
+textarea {
+    width: 100%;
+}
+
+/* 메인페이지 */
+/* .mainbtn {
+    width: 200px;
+    height: 80px;
+    margin: 20px 0;
+    font-size: 17px;
+} */
+.mainbtn {
+    width: 200px;
+    height: 50px;
+    margin: 20px 0;
+    border: 1px solid #ddd;
+}
+
+.mainbtn:hover {
+    background: #ddd;
+}
+
+.main_image {
+    position: relative;
+    opacity: 0.7;
+}
+
+.main_image_text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+/* 검색 */
+.scontent {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 인기게시물 */
+.hotcon {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 코스 공유 */
+#map, #drawingMap {
+	margin: 20px 0;
+}
+
+.starR {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	color: transparent;
+	text-shadow: 0 0 0 #f0f0f0;
+	font-size: 1.4em;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+
+/* 별 이모지에 마우스 오버 시 */
+.starR:hover {
+	text-shadow: 0 0 0 #ccc;
+}
+
+/* 별 이모지를 클릭 후 class="on"이 되었을 경우 */
+.starR.on {
+	text-shadow: 0 0 0 #ffbc00;
+}
+
+/* 페이징 */
+.active>.page-link, .page-link.active {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: #14870c;
+    border-color: #14870c;
+}
+
+.page-link {
+    color: black;
+}
+
+.page-link:hover {
+    color: black;
+    text-decoration: none;
+}

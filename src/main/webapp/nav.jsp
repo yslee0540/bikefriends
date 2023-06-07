@@ -19,7 +19,7 @@
 				</ul></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/bf/bike/bikemain" style="color:white;">자전거정보</a></li>
-			<li class="nav-item"><a class="nav-link" href="/bf/이벤트메인3.jsp" style="color:white;">이벤트</a></li>
+			<li class="nav-item"><a class="nav-link" href="/bf/event/eventmain" style="color:white;">이벤트</a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="/bf/payment/dailyticket.jsp" style="color:white;">이용권</a></li>
 		</ul>

@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../resources/css/out.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/bbsstyle.css">
 <link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 <style>
 #result{
 width:750px;
@@ -34,6 +35,8 @@ margin: auto;
 </head>
 <body>
   <jsp:include page="../nav.jsp"></jsp:include>
+  		<jsp:include page="menu.jsp"></jsp:include>
+  
 <div id="result"></div>
 </body>
 </html>

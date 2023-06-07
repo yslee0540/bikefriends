@@ -107,6 +107,12 @@ public class eventController {
 		eventVO vo = dao.one(event_id);
 		model.addAttribute("vo", vo);
 	}
+	
+	@RequestMapping("event/eventmain")
+	public void eventmain(Model model) {
+		List<eventVO> list = dao.list();
+		model.addAttribute("list", list);
+	}
 
 	// https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%9E%90%EB%8F%99%EC%B0%A8
 

@@ -243,7 +243,7 @@
 			
 		</header>
 		<main id="contents">
-		결제수단<br> <img src="../resources/image/kakao.png"><br>
+		결제수단<br> <img src="../resources/img/kakao.png"><br>
 		<hr color="lime">
 
 		<h3>구매자 정보</h3>

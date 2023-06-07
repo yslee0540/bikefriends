@@ -28,20 +28,26 @@ a {
 	color: blue;
 }
 </style>
-<table class="table ">
-	<tr class="table-warning " style="text-align:center">
-    	<th colspan="4 ">인증샷 챌린지</th>
+<div id="main" class="col-6">
+<div id="top">
+<table class="table style=width:650px;">
+	<tr style="text-align:center;background-color: #b7d5ac;">
+    	<th colspan="4 ">번개 모임</th>
     </tr>
 	<tr align="center">
-		<td class="top" width="150">id</td>
+		<td class="top" width="150"></td>
+		<td class="top" width="150">제목</td>
 		<td class="top" width="150">장소</td>
 		<td class="top" width="200">모임 날짜</td>
 		<td class="top" width="150">참여 인원</td>
+		<td class="top" width="150">id</td>
 	</tr>
 
 	<c:forEach var="eventVO" items="${list}">
 
 		<tr align="center">
+		<td class="down">${eventVO.no}</td>
+		<td class="down">${eventVO.title}</td>
 			<td class="down">${eventVO.event_id}</td>
 			<td class="down"  ><a href="event/one?event_id=${eventVO.event_id}">${eventVO.event_location}</a></td>
 			<td class="down">${eventVO.event_date}</td>
@@ -50,3 +56,5 @@ a {
 
 	</c:forEach>
 </table>
+</div>
+</div>
