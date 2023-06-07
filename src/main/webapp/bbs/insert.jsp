@@ -26,7 +26,7 @@
 				url : "insertView",
 				dataType: "json",
 				success : function(json) {
-					$('#img').html("<img src=" + json.sign_img +  " class=img>");
+					$('#img').html("<img src=" + json.sign_img +  " class=img  style=object-fit:cover>");
 					//$('#name').html(json.sign_name);
 				}
 			})
