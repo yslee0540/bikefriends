@@ -8,18 +8,18 @@
 	</insert>
 	
 	<delete id="del"  parameterType="String">
-		delete from event where id = #{event_id}
+		delete from event where no=#{no}
 	</delete>
 	
 	<update id="up"  parameterType="eventVO">
-		update event set event = #{event_event},size=#{event_size},date=#{event_date} where id = #{id}
+		update event set event = #{event_event},size=#{event_size},date=#{event_date} where no=#{no}
 	</update>
 	
 	<select id="one" parameterType="String" resultType="eventVO"> 
-	select * from event where event_id=#{event_id}
+	select * from event where no=#{no}
 	</select>
 	
 	<select id="all" resultType="eventVO">
-	select * from event
+	select * from event order by no desc
 	</select>
 </mapper>

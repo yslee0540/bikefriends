@@ -50,6 +50,7 @@ public class MemberController {
 			System.out.println(e);
 		}
 		bag.setSign_age(age);
+		bag.setSign_img("/bf/resources/img/profile.jpg");
 		System.out.println(bag);
 		System.out.println(dao);
 		dao.insert(bag);

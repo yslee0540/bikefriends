@@ -26,7 +26,7 @@ margin: auto;
   <div id="b1" style="margin: 0 auto;">
       <form action="insert" method="post"
 					enctype="multipart/form-data" >
-  이름<input type="text" name="event_id" ><br>
+  <input type="hidden" name="event_id" value="${id}"><br>
   이벤트장소<input type="text" name="event_location"  ><br>
   제목<input type="text" name="title"  ><br>
   comment<input type="text" name="content"  ><br>

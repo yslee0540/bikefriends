@@ -47,7 +47,7 @@
 
 		<tr align="center">
 			<td class="down">${eventVO.no}</td>
-			<td class="down"><a href="one?event_id=${eventVO.event_id}">${eventVO.title}</a></td>
+			<td class="down"><a href="one?event_id=${eventVO.no}">${eventVO.title}</a></td>
 			<td class="down">${eventVO.event_id}</td>
 			<td class="down"  >${eventVO.event_location}</td>
 			<td class="down">${eventVO.event_date}</td>
