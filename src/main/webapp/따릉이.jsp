@@ -13,7 +13,6 @@ var geocoder = new kakao.maps.services.Geocoder();
 	var ajax1=$.ajax({
 		url : "http://openapi.seoul.go.kr:8088/49747167436369633836706f6a5367/json/bikeList/1/1000/",
 		success : function(response) {
-			console.log("ajax2--0")
 			for (let i = 0; i < 1000; i++) {
 				var jsonObject = {
 					"data" : response['rentBikeStatus']['row'][i].parkingBikeTotCnt,
@@ -27,7 +26,6 @@ var geocoder = new kakao.maps.services.Geocoder();
 	var ajax2=$.ajax({
 		url : "http://openapi.seoul.go.kr:8088/49747167436369633836706f6a5367/json/bikeList/1001/2000/",
 		success : function(response) {
-			console.log("ajax2--0")
 			for (let i = 0; i < 1000; i++) {
 				var jsonObject = {
 					"data" : response['rentBikeStatus']['row'][i].parkingBikeTotCnt,
@@ -41,8 +39,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 	var ajax3=$.ajax({
 		url : "http://openapi.seoul.go.kr:8088/49747167436369633836706f6a5367/json/bikeList/2001/2709/",
 		success : function(response) {
-			console.log("ajax2--0")
-			for (let i = 0; i < 703; i++) {
+			for (let i = 0; i < 690; i++) {
 				var jsonObject = {
 					"data" : response['rentBikeStatus']['row'][i].parkingBikeTotCnt,
 					"lat":response['rentBikeStatus']['row'][i].stationLatitude,
@@ -2891,7 +2888,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 		}
 		
 		
-		for (var i = 0; i < 703; i++) {
+		for (var i = 0; i < 690; i++) {
 			// 마커를 생성합니다
 			
 			var marker = new kakao.maps.Marker({
