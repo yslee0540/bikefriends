@@ -43,7 +43,7 @@
 <jsp:include page="../../../nav.jsp"></jsp:include>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=15f705da222625307144938e873224ed&libraries=services"></script>
 <div id="main"style="text-align: center;font-weight: bold;font-size: 2.0em;line-height: 1.0em;">${vo.title}</div>
-<div id="main"style="text-align: center;"><img src="../resources/img/location/${vo.location_img}" width="300"></div>
+<div id="main"style="text-align: center;"><img src="../resources/upload/${vo.event_img}" width="300"></div>
 <div id="main">모임장소:${vo.event_location}</div>
 <div id="main">모임날짜:<fmt:formatDate value="${vo.event_date}" pattern="yyyy-MM-dd" /></div>
 <div id="main" class="col-6" style="float:left;margin-left:200px; width:45%;">
