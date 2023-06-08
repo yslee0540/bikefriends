@@ -48,7 +48,7 @@
 				<c:forEach var="vo" items="${list}">
 					<table>
 						<tr class="post">
-							<td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img"></td>
+							<td class="profile" rowspan="3"><img src="${vo.sign_img}" class="img" style="object-fit: cover;"></td>
 							<td class="bbswriter"><b>${vo.sign_name}</b></td>
 							<td class="bbsdate"><fmt:formatDate value="${vo.date}" pattern="yyyy-MM-dd" /></td>
 						</tr>

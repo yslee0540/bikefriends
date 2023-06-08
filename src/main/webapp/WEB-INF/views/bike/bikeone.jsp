@@ -38,7 +38,7 @@
 				}//success
 			})//ajax
 		}
-		})//bikereplybtn bikereply데이터베이스에 저장
+		})
 		 
 		 $(document).on('click', '#replydel', function() {
 			if (confirm('리뷰 삭제하시겠습니까?')) {
@@ -109,6 +109,7 @@
 				</tr>
 			</table>
 		</div>
+		<!--로그인 하지않으면 리뷰 작성 안됨  -->
 		<%if(session.getAttribute("id") != null){ %>
 		<div id="bikereply">
 			<form id="myform">
@@ -142,6 +143,7 @@
 					<tr>
 						<td colspan="3" style="width: 100%;  overflow-x:auto;">${vo.bikereply_content}</td>
 					</tr>
+					<!--로그인한 ID와 작성한 ID가 동일할시 -->
 					<c:choose>
 					<c:when test="${id == vo.bikereply_writer}">
 					<tr>

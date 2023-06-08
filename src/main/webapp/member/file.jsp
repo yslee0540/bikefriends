@@ -8,7 +8,8 @@
 </head>
 <body>
 	<form action="upload_ok" method="post" enctype="multipart/form-data">
-		파일 선택 : <input type="file" name="file">
+		파일 선택 : <input type="file" name="file"><br>
+		<input name="fileUrl" placeholder="이미지 주소">
 		<input type="submit" value="전송">
 	</form>
 </body>

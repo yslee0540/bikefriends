@@ -149,7 +149,7 @@
 
         <table>
             <tr class="post1">
-                <td class="profile" rowspan="3"><img src="${bbsVO.sign_img}" class="img"></td>
+                <td class="profile" rowspan="3"><img src="${bbsVO.sign_img}" class="img" style="object-fit: cover;"></td>
                 <td class="bbswriter"><b>${bbsVO.sign_name}</b></td>
                 <td class="bbsdate"><fmt:formatDate value="${bbsVO.date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
             </tr>

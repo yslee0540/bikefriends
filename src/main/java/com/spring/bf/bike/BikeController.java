@@ -62,13 +62,10 @@ public class BikeController {
 	//자전거 전체 정보 불러오기
 	@RequestMapping("bike/bikelist")
 	public void list(PageVO vo, Model model) {
-		System.out.println(vo);
 		vo.setStartEnd(vo.getPage());
 		List<BikeVO> list = dao.all(vo);
 		int count = dao.count();
-		System.out.println("all count>> " + count);
 		int pages = count / 6 + 1; // 전체 페이지 개수 
-		System.out.println("페이지"+pages);
 		model.addAttribute("list", list);
 		model.addAttribute("count", count);
 		model.addAttribute("pages", pages);
@@ -88,31 +85,24 @@ public class BikeController {
 		BikeReplyVO bag2 = dao2.one(bike_no);
 		model.addAttribute("bag2", bag2);
 	}
-	//검색하기위해서 만듬
+	//검색조건으로 검색
 	@RequestMapping("bike/bikelistsearch")
-	public void listsearch(Model model ,String searchtype,String keyword, SearchVO vo) {
-		System.out.println(searchtype +" 검색타입");
-		System.out.println(keyword + " 키워드");
-		System.out.println(vo + " page");
-		
-		//SearchVO vo = new SearchVO();
+	public void listsearch
+	(Model model ,String searchtype,String keyword, SearchVO vo) {
 		vo.setStartEnd(vo.getPage());
 		vo.setSearchtype(searchtype);
 		vo.setKeyword(keyword);
 		
-		
 		List<BikeVO> list = null;
 		int count = 0 ;
+		//키워드에따라 검색결과 다르게 받아오기
 		if(searchtype.equals("bike_brand")){
 			list = dao.searchbrand(vo);
 			count =	dao.countbrand(keyword);
-			System.out.println("brand>>" + count);
 		}else if(searchtype.equals("bike_category")) {
 			list = dao.searchcaegory(vo);
 			count = dao.countcategory(keyword);
-			System.out.println("catagery>>"+ count);
 		}
-		System.out.println("검색 갯수는 " + count);
 		int pages = count / 6 + 1; // 전체 페이지 개수 
 		model.addAttribute("list", list);
 		model.addAttribute("count", count);

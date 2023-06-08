@@ -15,8 +15,15 @@ public class eventVO {
 		private Date event_date;
 		private String event_img;
 		private int event_size;
-		
-	
+		private String title;
+		private String location_img;
+		private String content;
+		public int getNo() {
+			return no;
+		}
+		public void setNo(int no) {
+			this.no = no;
+		}
 		public String getEvent_id() {
 			return event_id;
 		}
@@ -47,19 +54,30 @@ public class eventVO {
 		public void setEvent_size(int event_size) {
 			this.event_size = event_size;
 		}
-		
-		public int getNo() {
-			return no;
+		public String getTitle() {
+			return title;
 		}
-		public void setNo(int no) {
-			this.no = no;
+		public void setTitle(String title) {
+			this.title = title;
+		}
+		public String getLocation_img() {
+			return location_img;
+		}
+		public void setLocation_img(String location_img) {
+			this.location_img = location_img;
+		}
+		public String getContent() {
+			return content;
+		}
+		public void setContent(String content) {
+			this.content = content;
 		}
 		@Override
 		public String toString() {
 			return "eventVO [no=" + no + ", event_id=" + event_id + ", event_location=" + event_location
-					+ ", event_date=" + event_date + ", event_img=" + event_img + ", event_size=" + event_size + "]";
+					+ ", event_date=" + event_date + ", event_img=" + event_img + ", event_size=" + event_size
+					+ ", title=" + title + ", location_img=" + location_img + ", content=" + content + "]";
 		}
-		
 		
 		
 }

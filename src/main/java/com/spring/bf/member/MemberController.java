@@ -145,7 +145,7 @@ public class MemberController {
 	}
 
 	@RequestMapping("member/upload_ok")
-	public String upload(MultipartFile file, MultipartHttpServletRequest request) throws Exception {
+	public String upload(String fileUrl, MultipartFile file, MultipartHttpServletRequest request) throws Exception {
 		MemberVO bag = new MemberVO();
 
 		if (!file.isEmpty()) {
@@ -155,7 +155,9 @@ public class MemberController {
 			File target = new File(uploadPath + "/" + savedName);
 			file.transferTo(target);
 
-			bag.setSign_img(savedName);
+			bag.setSign_img("/bf/resources/upload/" + savedName);
+		} else {
+			bag.setSign_img(fileUrl);
 		}
 
 //		UUID uuid = UUID.randomUUID();
@@ -168,7 +170,7 @@ public class MemberController {
 
 		dao.updateIMG(bag);
 
-		return "redirect:myInfo.jsp";
+		return "redirect:one?id=" + id;
 	}
 
 	@RequestMapping("member/naverLogin")

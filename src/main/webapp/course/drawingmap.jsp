@@ -99,7 +99,7 @@ var lat = '';
 var lng = '';
 
 // Drawing Manager에서 가져온 데이터 중 
-// 선과 다각형의 꼭지점 정보를 kakao.maps.LatLng객체로 생성하고 배열로 반환하는 함수입니다 
+// 선의 꼭지점 정보를 kakao.maps.LatLng객체로 생성하고 배열로 반환하는 함수입니다 
 function pointsToPath(points) {
     var len = points.length, 
         path = [], 

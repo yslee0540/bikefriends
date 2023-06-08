@@ -5,17 +5,17 @@ import java.sql.Timestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
 public class eventreplyVO {
-	private int reply_no;
+	private int no;
 	private int bbs_no;
 	private String writer;
 	private String content;
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Timestamp date;
 	public int getReply_no() {
-		return reply_no;
+		return no;
 	}
-	public void setReply_no(int reply_no) {
-		this.reply_no = reply_no;
+	public void setReply_no(int no) {
+		this.no = no;
 	}
 	public int getBbs_no() {
 		return bbs_no;
@@ -43,7 +43,7 @@ public class eventreplyVO {
 	}
 	@Override
 	public String toString() {
-		return "eventreplyVO [reply_no=" + reply_no + ", bbs_no=" + bbs_no + ", writer=" + writer + ", content="
+		return "eventreplyVO [no=" + no + ", bbs_no=" + bbs_no + ", writer=" + writer + ", content="
 				+ content + ", date=" + date + "]";
 	}
 	

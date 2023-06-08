@@ -28,7 +28,7 @@
 	-->
 	<div style="width: 500px; margin: auto;">
 		<div style="text-align: center;">
-            <img src="https://ssl.pstatic.net/static/pwe/address/img_profile.png">
+            <img src="${bag.sign_img}" width="120" height="120" style="object-fit: cover;">
         </div>
         <table class="table" style="vertical-align: middle;">
         <tr>
@@ -62,8 +62,7 @@
 		</table>
 	</div>
 	<a href="/bf/member/update?id=<%=session.getAttribute("id")%>">
-		<button class="btn btn-primary">수정하기</button>
-	</a>
+		<button class="btn btn-primary">수정하기</button></a>
 	<a href="/bf/member/password.jsp">
 		<button class="btn btn-primary">비밀번호 변경</button>
 	</a>

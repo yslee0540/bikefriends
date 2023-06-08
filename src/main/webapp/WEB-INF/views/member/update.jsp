@@ -19,7 +19,7 @@
 		<%
 			if (session.getAttribute("id") != null) {
 		%>
-		<img src="../resources/img/${vo.sign_img}" width="250" height="250" alt="내 프로필 사진"><br>
+		<img src="${vo.sign_img}" width="120" height="120" style="object-fit: cover;" alt="내 프로필 사진"><br>
 		<a href="file.jsp">
 			<button>변경</button>
 		</a>

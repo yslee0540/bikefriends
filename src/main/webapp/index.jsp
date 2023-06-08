@@ -85,7 +85,7 @@
                 </a>
             </div>
             <div class="col">
-                <a href="이벤트메인3.jsp">
+                <a href="event/eventmain">
                     <button class="btn mainbtn">
                         <i class="fa-solid fa-users"></i> 이벤트
                     </button>
