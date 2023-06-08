@@ -3,8 +3,8 @@
 <mapper namespace="event">
 	
 	<insert id="create" parameterType="eventVO">
-		insert into event (event_id,event_location,event_date, event_img,event_size) 
-		values (#{event_id}, #{event_location}, #{event_date}, #{event_img},#{event_size})
+		insert into event (event_id,event_location,event_date, event_img,event_size,title,content) 
+		values (#{event_id}, #{event_location}, #{event_date}, #{event_img},#{event_size},#{title},#{content})
 	</insert>
 	
 	<delete id="del"  parameterType="String">

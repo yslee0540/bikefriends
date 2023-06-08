@@ -26,8 +26,10 @@ margin: auto;
   <div id="b1" style="margin: 0 auto;">
       <form action="insert" method="post"
 					enctype="multipart/form-data" >
-  아이디<input type="text" name="event_id" ><br>
+  이름<input type="text" name="event_id" ><br>
   이벤트장소<input type="text" name="event_location"  ><br>
+  제목<input type="text" name="title"  ><br>
+  comment<input type="text" name="content"  ><br>
   이벤트수용인원<input type="number" name="event_size"><br>
    이미지첨부<input type="file" name="file" ><br>
    	  이벤트날짜<input type="date" name="event_date"><br>
