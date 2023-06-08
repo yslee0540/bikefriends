@@ -17,7 +17,7 @@ import com.spring.bf.eventchallenge.eventchallengeVO;
 public class eventchallengeController {
 
 	@Autowired
-	eventchallengeDAO dao; // 전역변수(글로벌 변수)
+	test dao; // 전역변수(글로벌 변수)
 	// 컨트롤 하는 기능(CRUD)
 	// 회원가입, 수정, 탈퇴, 정보검색
 
