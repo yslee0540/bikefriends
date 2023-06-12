@@ -53,6 +53,16 @@
 * #### `[조창현] 결제`
 * #### `[이돈우] 쪽지`
 
+
+| **결제** | **마이페이지** |
+|:---:|:---:|
+| <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/76095e8d-12b0-4438-8180-b398a3144e60" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/63716329-7ebb-4a26-8c35-7d47d974938b" width="440" height="260" /> | 
+| **비밀번호 찾기** | **자전거정보** |
+| <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/f6fe7ce7-6641-4ca7-82cc-232682d0de5b" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/dee8d6f8-aeff-485e-ab57-3cfea462f7b7" width="440" height="260" /> | 
+| **커뮤니티** | **회원가입** |
+| <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/1d5da9f9-0231-4770-8de8-985bdfebe23f" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/fbb9d33e-a961-4863-acb9-40ac4a52024c" width="440" height="260" /> | 
+
+
 <br>
 
 ## 4. PPT
