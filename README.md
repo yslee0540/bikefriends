@@ -53,6 +53,10 @@
 * #### `[조창현] 결제`
 * #### `[이돈우] 쪽지`
 
+<details>
+  <summary>화면구현 1 보기</summary>
+
+<br>
 
 | **결제** | **마이페이지** |
 |:---:|:---:|
@@ -61,7 +65,21 @@
 | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/f6fe7ce7-6641-4ca7-82cc-232682d0de5b" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/dee8d6f8-aeff-485e-ab57-3cfea462f7b7" width="440" height="260" /> | 
 | **커뮤니티** | **회원가입** |
 | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/1d5da9f9-0231-4770-8de8-985bdfebe23f" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/fbb9d33e-a961-4863-acb9-40ac4a52024c" width="440" height="260" /> | 
+</details>  
 
+<details>
+  <summary>화면구현 2 보기</summary>
+
+<br>
+  
+| **코스그리기 1** | **코스그리기 2** |
+|:---:|:---:|
+| <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/62d7817f-2780-42b5-9ff0-b29e00af876e" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/a62c2dd8-76ca-4432-bce0-eb7ea8e59375" width="440" height="260" /> | 
+| **메인화면** | **이벤트 1** |
+| <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/a6d540c9-e029-4c22-ad7f-d782edfdc80f" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/c0549a25-83e5-4c83-98df-0145d5e9a91d" width="440" height="260" /> | 
+| **이벤트 2** | **이벤트 3** |
+| <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/4c6fda4f-9b9b-4c00-bb62-e78f14033527" width="440" height="260" /> | <img src ="https://github.com/shinbeomsik/finalbike/assets/124110586/9b736696-0357-41a1-b540-eee8f8b1ba5d" width="440" height="260" /> | 
+</details>
 
 <br>
 
