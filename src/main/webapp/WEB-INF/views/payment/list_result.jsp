@@ -129,6 +129,7 @@ td {
 				
 				location.href="list_result.jsp"
 				$('#result').append(x+"<br>")
+				
 			}
 
 		}) //ajax
